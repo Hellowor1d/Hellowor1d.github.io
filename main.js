@@ -5,6 +5,9 @@ var main_state = {
         game.load.image('field', 'assets/bg.png');
         game.load.image('cat','assets/cat.png');
         game.load.image('money','assets/money.png');
+        game.load.image('finger','assets/finger.png');
+        game.load.image('right','assets/right.png');
+        game.load.image('left','assets/left.png');
         game.load.audio('getmoney', 'assets/getmoney.wav');
     },
 //创建对象
@@ -31,6 +34,9 @@ var main_state = {
             fill: '#ffffff'
         };
         this.timeText = game.add.text(350, 10, '时间：30', style);
+        finger = game.add.sprite(150,250, 'finger');   
+        left = game.add.sprite(30,70, 'left');  
+        right = game.add.sprite(250,70, 'right'); 
     },
 //游戏每一帧会调用update函数，每秒60帧，实现监听、碰撞检测等
     update: function() {
@@ -38,10 +44,16 @@ var main_state = {
         if (cursors.left.isDown)
         {
             cat.body.velocity.x = -300;
+            finger.kill();
+            left.kill();
+            right.kill();
         }
         else if (cursors.right.isDown)
         {
             cat.body.velocity.x = 300;
+            finger.kill();
+            left.kill();
+            right.kill();
         }
         //碰撞检测
         game.physics.overlap(cat,money,this.collectMoney,null,this);
@@ -61,6 +73,7 @@ var main_state = {
         } else {
             // 计时停止时，让游戏也结束
             this.game.state.end('main');
+            
         }
     },
     addMoney:function(){
