@@ -5,6 +5,7 @@ var main_state = {
         game.load.image('field', 'assets/bg.png');
         game.load.image('cat','assets/cat.png');
         game.load.image('money','assets/money.png');
+        game.load.audio('getmoney', 'assets/getmoney.wav');
     },
 //创建对象
     create: function() { 
@@ -20,6 +21,7 @@ var main_state = {
         this.score=0;
         var style={font:'30px Arial',fill:'#ffffff'};
         this.scoreText=game.add.text(10,10,'分数：0',style);
+        getmoney = game.add.audio('getmoney');
     },
 //游戏每一帧会调用update函数，每秒60帧，实现监听、碰撞检测等
     update: function() {
@@ -40,6 +42,7 @@ var main_state = {
         money.kill();
         this.score+=1;
         this.scoreText.content='分数：'+this.score;
+        getmoney.play();
     },
     
     addMoney:function(){
