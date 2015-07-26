@@ -5,9 +5,6 @@ var main_state = {
         game.load.image('field', 'assets/bg.png');
         game.load.image('cat','assets/cat.png');
         game.load.image('money','assets/money.png');
-        game.load.image('finger','assets/finger.png');
-        game.load.image('right','assets/right.png');
-        game.load.image('left','assets/left.png');
         game.load.audio('getmoney', 'assets/getmoney.wav');
     },
 //创建对象
@@ -20,21 +17,22 @@ var main_state = {
 		this.scale.setScreenSize(true);
         field=game.add.sprite(0,0,'field');
         cat=game.add.sprite(100,800,'cat');
+        //拖动小猫
+        cat.inputEnabled=true;
+        cat.input.enableDrag(false,true);
+        cat.input.allowVerticalDrag=false;
         money= game.add.group();
         money.enableBody=true;
         //实现每600毫秒掉落元宝一枚
         this.game.time.events.loop(600,this.addMoney,this);
-        //l利用定时器调用倒计时函数，实现每秒减计数
+        //利用定时器调用倒计时函数，实现每秒减计数
         this.game.time.events.loop(1000, this.subTime, this);
         //添加键盘监视对象
         cursors = game.input.keyboard.createCursorKeys();
         //添加分数显示
         this.score=0;
         var style={font:'30px Arial',fill:'#ffffff'};
-        this.scoreText=this.add.text(10,10,'分数：0',style);
-   
-        
-        
+        this.scoreText=this.add.text(10,10,'分数：0',style); 
         getmoney = game.add.audio('getmoney');
         //添加倒计时功能
         this.time = 30;
@@ -43,9 +41,6 @@ var main_state = {
             fill: '#ffffff'
         };
         this.timeText = game.add.text(350, 10, '时间：30', style);
-        finger = game.add.sprite(150,250, 'finger');   
-        left = game.add.sprite(30,70, 'left');  
-        right = game.add.sprite(250,70, 'right'); 
     },
 //游戏每一帧会调用update函数，每秒60帧，实现监听、碰撞检测等
     update: function() {
@@ -54,16 +49,10 @@ var main_state = {
         if (cursors.left.isDown)
         {
             cat.body.velocity.x = -300;
-            finger.kill();
-            left.kill();
-            right.kill();
         }
         else if (cursors.right.isDown)
         {
             cat.body.velocity.x = 300;
-            finger.kill();
-            left.kill();
-            right.kill();
         }
         //碰撞检测
         game.physics.arcade.overlap(cat,money,this.collectMoney,null,this);
