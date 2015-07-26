@@ -55,6 +55,9 @@ var main_state = {
             cat.body.velocity.x = 300;
         }
         //碰撞检测
+        if (cat.body.sprite.x<0) {cat.body.velocity.x+=300;}
+        else if(cat.body.sprite.x>560) {cat.body.velocity.x-=300;}
+        //限制活动范围
         game.physics.arcade.overlap(cat,money,this.collectMoney,null,this);
     } ,
     
