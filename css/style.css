@@ -487,28 +487,22 @@ a {
 #header a:hover {
   color: #333;
 }
-#header .profilepic {
-  text-align: center;
-  display: block;
-  border: 5px solid #fff;
-  -webkit-border-radius: 300px;
-  border-radius: 300px;
-  width: 128px;
-  height: 128px;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-  background: #88acdb;
-  -webkit-transition: all 0.2s ease-in;
-  display: -webkit-box;
-  -webkit-box-orient: horizontal;
-  -webkit-box-pack: center;
-  -webkit-box-align: center;
-  text-align: center;
+@-webkit-keyframes ripple-animation {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(137,173,217,0.8);
+    -webkit-box-shadow: 0 0 0 0 rgba(137,173,217,0.8);
+    box-shadow: 0 0 0 0 rgba(137,173,217,0.8);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 10px rgba(228,34,77,0);
+    -webkit-box-shadow: 0 0 0 10px rgba(228,34,77,0);
+    box-shadow: 0 0 0 10px rgba(228,34,77,0);
+  }
 }
 #header .profilepic img {
   width: 20%;
   height: 20%;
+  -webkit-border-radius: 300px;
   -webkit-border-radius: 300px;
   border-radius: 300px;
   opacity: 0;
@@ -519,7 +513,41 @@ a {
   height: 100%;
   opacity: 1;
 }
-#header .header-subtitle {
+#header .profilepic {
+  text-align: center;
+  display: block;
+  border: 5px solid #fff;
+  -webkit-border-radius: 300px;
+  -webkit-border-radius: 300px;
+  border-radius: 300px;
+  width: 128px;
+  height: 128px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  background: #4d4d4d;
+  -webkit-transition: all 0.2s ease-in;
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  text-align: center;
+}
+#header .profilepic:hover {
+  background-color: #4d4d4d;
+  -webkit-box-shadow: 1px 1px 1px #4d4d4d;
+  -webkit-box-shadow: 1px 1px 1px #4d4d4d;
+  box-shadow: 1px 1px 1px #4d4d4d;
+  -webkit-animation: ripple-animation 0.5s ease-in-out;
+  -moz-animation: ripple-animation 0.5s ease-in-out;
+  -ms-animation: ripple-animation 0.5s ease-in-out;
+  -webkit-animation: ripple-animation 0.5s ease-in-out;
+  -moz-animation: ripple-animation 0.5s ease-in-out;
+  -ms-animation: ripple-animation 0.5s ease-in-out;
+  animation: ripple-animation 0.5s ease-in-out;
+  -webkit-animation: ripple-animation 0.5s ease-in-out;
+}
+#header.header-subtitle {
   text-align: center;
   color: #999;
   font-size: 14px;
@@ -530,7 +558,7 @@ a {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-#header .header-menu {
+.header-menu {
   font-weight: 300;
   line-height: 31px;
   cursor: pointer;
@@ -544,34 +572,34 @@ a {
   -webkit-box-pack: center;
   -webkit-box-align: center;
 }
-#header .header-menu li {
+.header-menu li {
   cursor: default;
 }
-#header .header-menu li a {
+.header-menu li a {
   font-size: 14px;
   min-width: 300px;
 }
-#header .switch-area {
+.switch-area {
   position: relative;
   width: 100%;
   overflow: hidden;
   min-height: 500px;
   font-size: 14px;
 }
-#header .switch-area .switch-wrap {
+.switch-area .switch-wrap {
   -webkit-transition: -webkit-transform 0.3s ease-in;
   -moz-transition: -moz-transform 0.3s ease-in;
   -ms-transition: -ms-transform 0.3s ease-in;
   transition: transform 0.3s ease-in;
   position: relative;
 }
-#header .turn-left {
+.turn-left {
   -webkit-transform: translate(-100%, 0);
   -moz-transform: translate(-100%, 0);
   -ms-transform: translate(-100%, 0);
   transform: translate(-100%, 0);
 }
-#header .header-nav {
+.header-nav {
   width: 100%;
   position: absolute;
   -webkit-transition: -webkit-transform 0.3s ease-in;
@@ -579,12 +607,12 @@ a {
   -ms-transition: -ms-transform 0.3s ease-in;
   transition: transform 0.3s ease-in;
 }
-#header .header-nav .social {
+.header-nav .social {
   margin-right: 15px;
   margin-top: 10px;
   text-align: center;
 }
-#header .header-nav .social a {
+.header-nav .social a {
   -webkit-border-radius: 50%;
   border-radius: 50%;
   display: -moz-inline-stack;
@@ -603,111 +631,111 @@ a {
   -ms-transition: 0.3s;
   transition: 0.3s;
 }
-#header .header-nav .social a:hover {
+.header-nav .social a:hover {
   opacity: 1;
 }
-#header .header-nav .social a:last-of-type {
+.header-nav .social a:last-of-type {
   margin-right: 0;
 }
-#header .header-nav .social a.weibo {
+.header-nav .social a.weibo {
   background: url("/img/weibo.png") center no-repeat #aaf;
   border: 1px solid #aaf;
 }
-#header .header-nav .social a.weibo:hover {
+.header-nav .social a.weibo:hover {
   border: 1px solid #aaf;
 }
-#header .header-nav .social a.rss {
+.header-nav .social a.rss {
   background: url("/img/rss.png") center no-repeat #ef7522;
   border: 1px solid #ef7522;
 }
-#header .header-nav .social a.rss:hover {
+.header-nav .social a.rss:hover {
   border: 1px solid #cf5d0f;
 }
-#header .header-nav .social a.github {
+.header-nav .social a.github {
   background: url("/img/github.png") center no-repeat #afb6ca;
   border: 1px solid #afb6ca;
 }
-#header .header-nav .social a.github:hover {
+.header-nav .social a.github:hover {
   border: 1px solid #909ab6;
 }
-#header .header-nav .social a.facebook {
+.header-nav .social a.facebook {
   background: url("/img/facebook.png") center no-repeat #3b5998;
   border: 1px solid #3b5998;
 }
-#header .header-nav .social a.facebook:hover {
+.header-nav .social a.facebook:hover {
   border: 1px solid #2d4373;
 }
-#header .header-nav .social a.google {
+.header-nav .social a.google {
   background: url("/img/google.png") center no-repeat #c83d20;
   border: 1px solid #c83d20;
 }
-#header .header-nav .social a.google:hover {
+.header-nav .social a.google:hover {
   border: 1px solid #9c3019;
 }
-#header .header-nav .social a.twitter {
+.header-nav .social a.twitter {
   background: url("/img/twitter.png") center no-repeat #55cff8;
   border: 1px solid #55cff8;
 }
-#header .header-nav .social a.twitter:hover {
+.header-nav .social a.twitter:hover {
   border: 1px solid #24c1f6;
 }
-#header .header-nav .social a.linkedin {
+.header-nav .social a.linkedin {
   background: url("/img/linkedin.png") center no-repeat #005a87;
   border: 1px solid #005a87;
 }
-#header .header-nav .social a.linkedin:hover {
+.header-nav .social a.linkedin:hover {
   border: 1px solid #006b98;
 }
-#header .header-nav .social a.zhihu {
+.header-nav .social a.zhihu {
   background: url("/img/zhihu.png") center no-repeat #0078d8;
   border: 1px solid #0078d8;
 }
-#header .header-nav .social a.zhihu:hover {
+.header-nav .social a.zhihu:hover {
   border: 1px solid #0078d8;
 }
-#header .header-nav .social a.douban {
+.header-nav .social a.douban {
   background: url("/img/douban.png") center no-repeat #06c611;
   border: 1px solid #06c611;
 }
-#header .header-nav .social a.douban:hover {
+.header-nav .social a.douban:hover {
   border: 1px solid #06c611;
 }
-#header .header-nav .social a.mail {
+.header-nav .social a.mail {
   background: url("/img/mail.png") center no-repeat #005a87;
   border: 1px solid #005a87;
 }
-#header .header-nav .social a.mail:hover {
+.header-nav .social a.mail:hover {
   border: 1px solid #006b98;
 }
-#header .switch-part {
+.switch-part {
   width: 100%;
   position: absolute;
 }
-#header .switch-part1 {
+.switch-part1 {
   left: 0;
 }
-#header .switch-part2 {
+.switch-part2 {
   left: 100%;
   top: 20px;
   overlay-x: hidden;
   overflow-y: auto;
   max-height: 200px;
 }
-#header .switch-part3 {
+.switch-part3 {
   left: 200%;
   line-height: 30px;
 }
-#header .switch-part3 .switch-friends-link {
+.switch-part3 .switch-friends-link {
   margin-right: 9px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   padding: 5px;
 }
-#header .switch-part3 .switch-friends-link:hover {
+.switch-part3 .switch-friends-link:hover {
   background: #88acdb;
   color: #fff;
 }
-#header .switch-part4 {
+.switch-part4 {
   left: 300%;
   text-align: left;
   line-height: 30px;
@@ -859,6 +887,7 @@ a {
   position: relative;
   border: 1px solid #ddd;
   background: #fff;
+  color: #444;
   -webkit-transition: all 0.2s ease-in;
 }
 .article.show {
@@ -940,7 +969,7 @@ a {
   transition: color 0.3s;
 }
 .article-title:hover {
-  color: #b0a0aa;
+  color: #000;
 }
 .article-inner {
   position: relative;
@@ -1029,7 +1058,7 @@ a {
 .article-entry h2 {
   margin-top: 20px;
   font-weight: 300;
-  color: #574c4c;
+  color: #333;
   padding-bottom: 5px;
   border-bottom: 1px solid #ddd;
 }
@@ -1039,7 +1068,7 @@ a {
 .article-entry h6 {
   margin-top: 20px;
   font-weight: 300;
-  color: #574c4c;
+  color: #333;
   padding-bottom: 5px;
   border-bottom: 1px solid #ddd;
 }
