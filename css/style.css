@@ -480,6 +480,9 @@ a {
 }
 #header {
   width: 100%;
+/*此处控制头像的光晕的变化效果，光带颜色和宽度，
+根据不同浏览器适配*/
+/*此处控制头像的光晕动态效果，动画时间和出现方式*/
 }
 #header a {
   color: #696969;
@@ -487,37 +490,10 @@ a {
 #header a:hover {
   color: #333;
 }
-@-webkit-keyframes ripple-animation {
-  0% {
-    -webkit-box-shadow: 0 0 0 0 rgba(137,173,217,0.8);
-    -webkit-box-shadow: 0 0 0 0 rgba(137,173,217,0.8);
-    box-shadow: 0 0 0 0 rgba(137,173,217,0.8);
-  }
-  100% {
-    -webkit-box-shadow: 0 0 0 10px rgba(228,34,77,0);
-    -webkit-box-shadow: 0 0 0 10px rgba(228,34,77,0);
-    box-shadow: 0 0 0 10px rgba(228,34,77,0);
-  }
-}
-#header .profilepic img {
-  width: 20%;
-  height: 20%;
-  -webkit-border-radius: 300px;
-  -webkit-border-radius: 300px;
-  border-radius: 300px;
-  opacity: 0;
-  -webkit-transition: all 0.2s ease-in;
-}
-#header .profilepic img.show {
-  width: 100%;
-  height: 100%;
-  opacity: 1;
-}
 #header .profilepic {
   text-align: center;
   display: block;
   border: 5px solid #fff;
-  -webkit-border-radius: 300px;
   -webkit-border-radius: 300px;
   border-radius: 300px;
   width: 128px;
@@ -527,27 +503,67 @@ a {
   overflow: hidden;
   background: #4d4d4d;
   -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
   display: -webkit-box;
   -webkit-box-orient: horizontal;
   -webkit-box-pack: center;
   -webkit-box-align: center;
   text-align: center;
 }
-#header .profilepic:hover {
-  background-color: #4d4d4d;
-  -webkit-box-shadow: 1px 1px 1px #4d4d4d;
-  -webkit-box-shadow: 1px 1px 1px #4d4d4d;
-  box-shadow: 1px 1px 1px #4d4d4d;
-  -webkit-animation: ripple-animation 0.5s ease-in-out;
-  -moz-animation: ripple-animation 0.5s ease-in-out;
-  -ms-animation: ripple-animation 0.5s ease-in-out;
-  -webkit-animation: ripple-animation 0.5s ease-in-out;
-  -moz-animation: ripple-animation 0.5s ease-in-out;
-  -ms-animation: ripple-animation 0.5s ease-in-out;
-  animation: ripple-animation 0.5s ease-in-out;
-  -webkit-animation: ripple-animation 0.5s ease-in-out;
+#header .profilepic img {
+  width: 20%;
+  height: 20%;
+  -webkit-border-radius: 300px;
+  -webkit-border-radius: 300px;
+  border-radius: 300px;
+  opacity: 0;
+/*控制头像出现时的动画效果*/
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
 }
-#header.header-subtitle {
+#header .profilepic img.show {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+@-webkit-keyframes ripple-animation {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(137,173,217,0.8);
+    -webkit-box-shadow: 0 0 0 0 rgba(137,173,217,0.8);
+    box-shadow: 0 0 0 0 rgba(137,173,217,0.8);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 15px rgba(228,34,77,0);
+    -webkit-box-shadow: 0 0 0 15px rgba(228,34,77,0);
+    box-shadow: 0 0 0 15px rgba(228,34,77,0);
+  }
+}
+@-moz-keyframes ripple-animation {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(137,173,217,0.8);
+    -webkit-box-shadow: 0 0 0 0 rgba(137,173,217,0.8);
+    box-shadow: 0 0 0 0 rgba(137,173,217,0.8);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 15px rgba(228,34,77,0);
+    -webkit-box-shadow: 0 0 0 15px rgba(228,34,77,0);
+    box-shadow: 0 0 0 15px rgba(228,34,77,0);
+  }
+}
+#header .profilepic:hover {
+  background-color: #89add9;
+  -webkit-box-shadow: 1px 1px 1px #89add9;
+  -webkit-box-shadow: 1px 1px 1px #89add9;
+  box-shadow: 1px 1px 1px #89add9;
+  -webkit-animation: ripple-animation 1.2s ease-in-out;
+  -moz-animation: ripple-animation 1.2s ease-in-out;
+  -ms-animation: ripple-animation 1.2s ease-in-out;
+  -webkit-animation: ripple-animation 1.2s ease-in-out;
+  -moz-animation: ripple-animation 1.2s ease-in-out;
+  -ms-animation: ripple-animation 1.2s ease-in-out;
+  animation: ripple-animation 1.2s ease-in-out;
+}
+#header .header-subtitle {
   text-align: center;
   color: #999;
   font-size: 14px;
@@ -558,7 +574,7 @@ a {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-.header-menu {
+#header .header-menu {
   font-weight: 300;
   line-height: 31px;
   cursor: pointer;
@@ -572,34 +588,34 @@ a {
   -webkit-box-pack: center;
   -webkit-box-align: center;
 }
-.header-menu li {
+#header .header-menu li {
   cursor: default;
 }
-.header-menu li a {
+#header .header-menu li a {
   font-size: 14px;
   min-width: 300px;
 }
-.switch-area {
+#header .switch-area {
   position: relative;
   width: 100%;
   overflow: hidden;
   min-height: 500px;
   font-size: 14px;
 }
-.switch-area .switch-wrap {
+#header .switch-area .switch-wrap {
   -webkit-transition: -webkit-transform 0.3s ease-in;
   -moz-transition: -moz-transform 0.3s ease-in;
   -ms-transition: -ms-transform 0.3s ease-in;
   transition: transform 0.3s ease-in;
   position: relative;
 }
-.turn-left {
+#header .turn-left {
   -webkit-transform: translate(-100%, 0);
   -moz-transform: translate(-100%, 0);
   -ms-transform: translate(-100%, 0);
   transform: translate(-100%, 0);
 }
-.header-nav {
+#header .header-nav {
   width: 100%;
   position: absolute;
   -webkit-transition: -webkit-transform 0.3s ease-in;
@@ -607,12 +623,12 @@ a {
   -ms-transition: -ms-transform 0.3s ease-in;
   transition: transform 0.3s ease-in;
 }
-.header-nav .social {
+#header .header-nav .social {
   margin-right: 15px;
   margin-top: 10px;
   text-align: center;
 }
-.header-nav .social a {
+#header .header-nav .social a {
   -webkit-border-radius: 50%;
   border-radius: 50%;
   display: -moz-inline-stack;
@@ -631,111 +647,111 @@ a {
   -ms-transition: 0.3s;
   transition: 0.3s;
 }
-.header-nav .social a:hover {
+#header .header-nav .social a:hover {
   opacity: 1;
 }
-.header-nav .social a:last-of-type {
+#header .header-nav .social a:last-of-type {
   margin-right: 0;
 }
-.header-nav .social a.weibo {
+#header .header-nav .social a.weibo {
   background: url("/img/weibo.png") center no-repeat #aaf;
   border: 1px solid #aaf;
 }
-.header-nav .social a.weibo:hover {
+#header .header-nav .social a.weibo:hover {
   border: 1px solid #aaf;
 }
-.header-nav .social a.rss {
+#header .header-nav .social a.rss {
   background: url("/img/rss.png") center no-repeat #ef7522;
   border: 1px solid #ef7522;
 }
-.header-nav .social a.rss:hover {
+#header .header-nav .social a.rss:hover {
   border: 1px solid #cf5d0f;
 }
-.header-nav .social a.github {
+#header .header-nav .social a.github {
   background: url("/img/github.png") center no-repeat #afb6ca;
   border: 1px solid #afb6ca;
 }
-.header-nav .social a.github:hover {
+#header .header-nav .social a.github:hover {
   border: 1px solid #909ab6;
 }
-.header-nav .social a.facebook {
+#header .header-nav .social a.facebook {
   background: url("/img/facebook.png") center no-repeat #3b5998;
   border: 1px solid #3b5998;
 }
-.header-nav .social a.facebook:hover {
+#header .header-nav .social a.facebook:hover {
   border: 1px solid #2d4373;
 }
-.header-nav .social a.google {
+#header .header-nav .social a.google {
   background: url("/img/google.png") center no-repeat #c83d20;
   border: 1px solid #c83d20;
 }
-.header-nav .social a.google:hover {
+#header .header-nav .social a.google:hover {
   border: 1px solid #9c3019;
 }
-.header-nav .social a.twitter {
+#header .header-nav .social a.twitter {
   background: url("/img/twitter.png") center no-repeat #55cff8;
   border: 1px solid #55cff8;
 }
-.header-nav .social a.twitter:hover {
+#header .header-nav .social a.twitter:hover {
   border: 1px solid #24c1f6;
 }
-.header-nav .social a.linkedin {
+#header .header-nav .social a.linkedin {
   background: url("/img/linkedin.png") center no-repeat #005a87;
   border: 1px solid #005a87;
 }
-.header-nav .social a.linkedin:hover {
+#header .header-nav .social a.linkedin:hover {
   border: 1px solid #006b98;
 }
-.header-nav .social a.zhihu {
+#header .header-nav .social a.zhihu {
   background: url("/img/zhihu.png") center no-repeat #0078d8;
   border: 1px solid #0078d8;
 }
-.header-nav .social a.zhihu:hover {
+#header .header-nav .social a.zhihu:hover {
   border: 1px solid #0078d8;
 }
-.header-nav .social a.douban {
+#header .header-nav .social a.douban {
   background: url("/img/douban.png") center no-repeat #06c611;
   border: 1px solid #06c611;
 }
-.header-nav .social a.douban:hover {
+#header .header-nav .social a.douban:hover {
   border: 1px solid #06c611;
 }
-.header-nav .social a.mail {
+#header .header-nav .social a.mail {
   background: url("/img/mail.png") center no-repeat #005a87;
   border: 1px solid #005a87;
 }
-.header-nav .social a.mail:hover {
+#header .header-nav .social a.mail:hover {
   border: 1px solid #006b98;
 }
-.switch-part {
+#header .switch-part {
   width: 100%;
   position: absolute;
 }
-.switch-part1 {
+#header .switch-part1 {
   left: 0;
 }
-.switch-part2 {
+#header .switch-part2 {
   left: 100%;
   top: 20px;
   overlay-x: hidden;
   overflow-y: auto;
   max-height: 200px;
 }
-.switch-part3 {
+#header .switch-part3 {
   left: 200%;
   line-height: 30px;
 }
-.switch-part3 .switch-friends-link {
+#header .switch-part3 .switch-friends-link {
   margin-right: 9px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   padding: 5px;
 }
-.switch-part3 .switch-friends-link:hover {
+#header .switch-part3 .switch-friends-link:hover {
   background: #88acdb;
   color: #fff;
 }
-.switch-part4 {
+#header .switch-part4 {
   left: 300%;
   text-align: left;
   line-height: 30px;
