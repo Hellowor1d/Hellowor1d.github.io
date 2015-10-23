@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript 面向对象 | 犀利一下下的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="content{:toc}
+
+本文为慕课网 JavaScript深入浅出 笔记。
+概念
+面向对象程序设计（Object-oriented programming，OOP）是一种程序设计范型，同时也是一种程序开发的方法。对象指的是类的实例。它将对象作为程序的基本单元，将程序和数据封装其中，以提高软件的重用性、灵活性和扩展性。
+——维基百科
+
+一般面向对象包含：继承，封装，多态，抽象
+
+基于原型的继承">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 面向对象">
+<meta property="og:url" content="http://hellowor1d.github.io/2015/06/15/2015-06-15-JavaScript-Object-Oriented/index.html">
+<meta property="og:site_name" content="犀利一下下的博客">
+<meta property="og:description" content="content{:toc}
+
+本文为慕课网 JavaScript深入浅出 笔记。
+概念
+面向对象程序设计（Object-oriented programming，OOP）是一种程序设计范型，同时也是一种程序开发的方法。对象指的是类的实例。它将对象作为程序的基本单元，将程序和数据封装其中，以提高软件的重用性、灵活性和扩展性。
+——维基百科
+
+一般面向对象包含：继承，封装，多态，抽象
+
+基于原型的继承">
+<meta property="og:image" content="http://7q5cdt.com1.z0.glb.clouddn.com/blog-prototype.png">
+<meta property="og:image" content="http://7q5cdt.com1.z0.glb.clouddn.com/blog-oop-gao.png">
+<meta property="og:image" content="http://7q5cdt.com1.z0.glb.clouddn.com/blog-原型链.png">
+<meta property="og:image" content="http://7q5cdt.com1.z0.glb.clouddn.com/blog-new prototype.png">
+<meta property="og:updated_time" content="2015-10-23T05:18:07.969Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 面向对象">
+<meta name="twitter:description" content="content{:toc}
+
+本文为慕课网 JavaScript深入浅出 笔记。
+概念
+面向对象程序设计（Object-oriented programming，OOP）是一种程序设计范型，同时也是一种程序开发的方法。对象指的是类的实例。它将对象作为程序的基本单元，将程序和数据封装其中，以提高软件的重用性、灵活性和扩展性。
+——维基百科
+
+一般面向对象包含：继承，封装，多态，抽象
+
+基于原型的继承">
+  
+    <link rel="alternative" href="/atom.xml" title="犀利一下下的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/jilaiye.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+   
+<!-- Baidu Analytics -->
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?8d393b7b03a85328717992b6e2517904";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/jilaiye.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hellowor1d</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱前端，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/前端">前端</a></li>
+				        
+							<li><a href="/tags/随笔">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Hellowor1d" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/Hellowor1d" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/xi-li-yixia-xia" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/导图/" style="font-size: 10px;">导图</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/慕课网/" style="font-size: 10px;">慕课网</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">前端码猴儿，正在向着前端程序猿进化~</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hellowor1d</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/jilaiye.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hellowor1d</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱前端，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/前端">前端</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Hellowor1d" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/Hellowor1d" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/xi-li-yixia-xia" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2015-06-15-JavaScript-Object-Oriented" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/15/2015-06-15-JavaScript-Object-Oriented/" class="article-date">
+  	<time datetime="2015-06-15T06:06:05.000Z" itemprop="datePublished">2015-06-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript 面向对象
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>content<br>{:toc}</li>
+</ul>
+<p>本文为慕课网 <a href="http://www.imooc.com/learn/277" target="_blank" rel="external">JavaScript深入浅出</a> 笔记。</p>
+<h2 id="概念">概念</h2><blockquote>
+<p>面向对象程序设计（Object-oriented programming，OOP）是一种程序设计范型，同时也是一种程序开发的方法。对象指的是类的实例。它将对象作为程序的基本单元，将程序和数据封装其中，以提高软件的重用性、灵活性和扩展性。</p>
+<p>——维基百科</p>
+</blockquote>
+<p>一般面向对象包含：继承，封装，多态，抽象</p>
+<hr>
+<h2 id="基于原型的继承">基于原型的继承</h2><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>{
+    <span class="keyword">this</span>.y = <span class="number">2</span>;
+}
+<span class="built_in">console</span>.log(<span class="keyword">typeof</span> Foo.prototype); <span class="comment">//object</span>
+
+Foo.prototype.x = <span class="number">1</span>;
+<span class="keyword">var</span> obj3 = <span class="keyword">new</span> Foo();
+
+<span class="built_in">console</span>.log(obj3.y); <span class="comment">//2</span>
+<span class="built_in">console</span>.log(obj3.x); <span class="comment">//1</span>
+</code></pre><p>创建函数 <code>Foo</code> 的时候，就会有一个内置的 <code>Foo.prototype</code> 属性，并且这个属性是对象。<br><a id="more"></a><br>在使用 <code>new Foo();</code> 创建对象实例时。<code>this</code> 会指向一个对象，并且这个对象的原型会指向 <code>Foo.prototype</code> 属性。<code>this.y = 2</code> 给这个对象赋值，并把这个对象返回。把这个对象赋值给 <code>obj3</code>。</p>
+<p><code>y</code> 是 <code>obj3</code> 上的，<code>x</code> 是 <code>obj3</code> 的原型 <code>Foo.prototype</code> 上的。</p>
+<p><img src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-prototype.png" alt="prototype"></p>
+<hr>
+<h3 id="prototype_属性与原型">prototype 属性与原型</h3><p>prototype 是函数对象上预设的对象属性。</p>
+<p>原型是对象上的原型，通常是构造器的 prototype 属性。</p>
+<hr>
+<h4 id="例">例</h4><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>{
+    <span class="keyword">this</span>.name = name;
+    <span class="keyword">this</span>.age = age;
+}
+
+Person.prototype.LEGS_NUM = <span class="number">2</span>;
+Person.prototype.ARMS_NUM = <span class="number">2</span>;
+
+Person.prototype.hi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(<span class="string">'Hi, my name is '</span> + <span class="keyword">this</span>.name + <span class="string">". I'm "</span> + <span class="keyword">this</span>.age + <span class="string">' years old now'</span>);
+};
+
+Person.prototype.walking = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">' is walking...'</span>);
+};
+
+<span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name, age, className</span>) </span>{
+    Person.call(<span class="keyword">this</span>, name, age); <span class="comment">//使 Person 中的 this 指向 Student</span>
+    <span class="keyword">this</span>.className = className;
+}
+
+Student.prototype = <span class="built_in">Object</span>.create(Person.prototype);
+Student.prototype.constructor = Student;
+
+Student.prototype.hi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(<span class="string">'Hi, my name is '</span> + <span class="keyword">this</span>.name + <span class="string">". I'm "</span> + <span class="keyword">this</span>.age + <span class="string">' years old now, and from '</span> + <span class="keyword">this</span>.className + <span class="string">"."</span>);
+};
+
+Student.prototype.learn = <span class="function"><span class="keyword">function</span>(<span class="params">subject</span>) </span>{
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">' is learning '</span> + subject + <span class="string">' at '</span> + <span class="keyword">this</span>.className + <span class="string">'.'</span>);
+}
+
+<span class="comment">//test</span>
+<span class="keyword">var</span> gao = <span class="keyword">new</span> Student(<span class="string">'Gao'</span>, <span class="string">'24'</span>, <span class="string">'Class 3123'</span>);
+<span class="built_in">console</span>.log(gao); <span class="comment">// 这个对象的具体内容见下图</span>
+gao.hi(); <span class="comment">//Hi, my name is Gao. I'm 24 years old now, and from Class 3123.</span>
+gao.LEGS_NUM; <span class="comment">//2</span>
+gao.walking(); <span class="comment">//Gao is walking...</span>
+gao.learn(<span class="string">'JavaScript'</span>); <span class="comment">//Gao is learning JavaScript at Class 3123.</span>
+</code></pre><ul>
+<li><code>Object.create(arg)</code> 创建一个空对象，并且这个对象的原型指向参数 <code>arg</code>。</li>
+<li><code>Student.prototype.constructor = Student</code> 为了保证一致性，否则 constructor 指向 Person。</li>
+</ul>
+<hr>
+<h3 id="原型链">原型链</h3><p>gao 对象的原型链：</p>
+<p><img src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-oop-gao.png" alt="Object"></p>
+<p>下面通过图形展示原型链：</p>
+<p><img src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-原型链.png" alt="原型链"></p>
+<hr>
+<h4 id="Object-create(null)_&amp;_-bind(null)"><code>Object.create(null)</code> &amp; <code>.bind(null)</code></h4><p>这两种算是特例。</p>
+<p><code>Object.create(null)</code> 和 <code>.bind(null)</code> 这两种方式创建出来的对象是没有 <code>prototype</code> 属性的，为 <code>undefined</code>。</p>
+<hr>
+<h2 id="prototype_属性">prototype 属性</h2><h3 id="改变_prototype">改变 prototype</h3><p>JavaScript 中的 prototype 是对象，在运行的时候可以修改。</p>
+<p>给 prototype 添加或删除一些属性，是会影响到已经创建好的实例对象的。</p>
+<p>但是，直接修改 prototype 属性，是不会影响到已经创建好的实例对象的。但是会影响到新的实例对象。如下代码：</p>
+<pre><code><span class="comment">// 上接上面的代码</span>
+
+<span class="comment">// 给 prototype 添加或删除一些属性</span>
+Student.prototype.x = <span class="number">101</span>;
+<span class="built_in">console</span>.log(gao.x); <span class="comment">//101</span>
+
+<span class="comment">// 直接修改 prototype 属性</span>
+Student.prototype = {
+    y: <span class="number">2</span>
+};
+
+<span class="comment">// 不会影响到已创建好的实例对象</span>
+<span class="built_in">console</span>.log(gao.x); <span class="comment">//101</span>
+<span class="built_in">console</span>.log(gao.y); <span class="comment">//undefined</span>
+
+<span class="comment">// 会影响到新创建的实例对象</span>
+<span class="keyword">var</span> ying = <span class="keyword">new</span> Student(<span class="string">'Ying'</span>, <span class="number">24</span>, <span class="string">'UI'</span>);
+<span class="built_in">console</span>.log(ying.x); <span class="comment">//undefined</span>
+<span class="built_in">console</span>.log(ying.y); <span class="comment">//2</span>
+</code></pre><hr>
+<h3 id="内置构造器的_prototype_属性">内置构造器的 <code>prototype</code> 属性</h3><p>修改内置构造器的 <code>prototype</code> 属性后，在实例化这个对象后，枚举其属性时，会把修改的内置构造器的 <code>prototype</code> 属性也枚举出来，有时候这是要避免的。可用 <code>defineProperty</code> 方法解决。如下代码：</p>
+<pre><code><span class="type">Object</span>.prototype.x = <span class="number">1</span>;
+<span class="keyword">var</span> obj = {};
+console.log(obj.x); //<span class="number">1</span>
+console.log(obj);
+
+<span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> obj) {
+    console.log('<span class="literal">result</span>---&gt;' + k);
+}
+// <span class="literal">result</span>---&gt;x
+</code></pre><p>使用 <code>defineProperty</code> 后：</p>
+<pre><code><span class="built_in">Object</span>.defineProperty(<span class="built_in">Object</span>.prototype, <span class="string">'x'</span>, {
+    writable: <span class="literal">true</span>,
+    value: <span class="number">1</span>
+});
+<span class="keyword">var</span> obj = {};
+<span class="built_in">console</span>.log(obj.x);<span class="comment">//1</span>
+<span class="built_in">console</span>.log(obj);
+<span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> obj) {
+    <span class="built_in">console</span>.log(<span class="string">'result---&gt;'</span> + k);
+}
+<span class="comment">// nothing output here</span>
+</code></pre><p>其实也可以这样枚举，使用 <code>hasOwnProperty</code> 方法：</p>
+<pre><code><span class="keyword">for</span> (var <span class="variable">key</span> in obj) {
+    <span class="keyword">if</span> (obj.hasOwnProperty(<span class="variable">key</span>)) {
+        console.<span class="built_in">log</span>(<span class="string">"result---&gt;"</span> + <span class="variable">key</span>);
+    }
+}
+</code></pre><hr>
+<h3 id="创建对象-new/原型链">创建对象-new/原型链</h3><p><img src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-new prototype.png" alt="prototype"></p>
+<hr>
+<h2 id="instanceof">instanceof</h2><pre><code><span class="built_in">console</span>.log([<span class="number">1</span>, <span class="number">2</span>] <span class="keyword">instanceof</span> <span class="built_in">Array</span>); <span class="comment">//true</span>
+<span class="built_in">console</span>.log([<span class="number">1</span>, <span class="number">2</span>] <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">//true</span>
+<span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Object</span>() <span class="keyword">instanceof</span> <span class="built_in">Array</span>); <span class="comment">//false</span>
+</code></pre><p>左边要求是对象，右边要求是构造器或函数。它会判断：<strong>右边的构造器中的 <code>prototype</code> 属性是否出现在左边的对象的原型链上。</strong></p>
+<ul>
+<li><strong>注意：</strong>不同的 window 或 iframe 间的对象类型检测<strong>不能</strong>使用 <code>instanceof</code>！</li>
+</ul>
+<hr>
+<h2 id="实现继承的方式">实现继承的方式</h2><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>{}
+
+<span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params"></span>) </span>{}
+
+Student.prototype = Person.prototype; <span class="comment">//1</span>
+
+Student.prototype = <span class="keyword">new</span> Person(); <span class="comment">//2</span>
+
+Student.prototype = <span class="built_in">Object</span>.create(Person.prototype); <span class="comment">//3</span>
+
+Student.prototype.constructor = Student;
+</code></pre><p>注释中：</p>
+<p>1 是错误的。如果改变了 Student 就会改变 Person</p>
+<p>2 可以实现继承，但是其调用了构造函数，若父类构造函数中有形参，那么传值就会比较奇怪。</p>
+<p>3 是最好的方法。创建了一个空对象，并且对象的原型指向参数 Person.prototype。这样便实现了继承。同时原型链写，不向上查找。但是 <code>Object.create</code> 是ES5 中的方法，所以可以使用下列代码做兼容：</p>
+<pre><code><span class="keyword">if</span> (!<span class="built_in">Object</span>.create) {
+    <span class="built_in">Object</span>.create = <span class="function"><span class="keyword">function</span>(<span class="params">proto</span>) </span>{
+        <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>{}
+        F.prototype = proto;
+        <span class="keyword">return</span> <span class="keyword">new</span> F;
+    };
+}
+</code></pre><hr>
+<h2 id="模拟重载">模拟重载</h2><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>{
+    <span class="keyword">var</span> args = <span class="built_in">arguments</span>;
+    <span class="keyword">if</span> (<span class="keyword">typeof</span> args[<span class="number">0</span>] === <span class="string">'object'</span> &amp;&amp; args[<span class="number">0</span>]) {
+        <span class="keyword">if</span> (args[<span class="number">0</span>].name) {
+            <span class="keyword">this</span>.name = args[<span class="number">0</span>].name;
+        }
+        <span class="keyword">if</span>(args[<span class="number">0</span>].age){
+            <span class="keyword">this</span>.age = args[<span class="number">0</span>].age;
+        }
+    } <span class="keyword">else</span> {
+        <span class="keyword">if</span> (args[<span class="number">0</span>]) {
+            <span class="keyword">this</span>.name = args[<span class="number">0</span>];
+        }
+        <span class="keyword">if</span> (args[<span class="number">1</span>]) {
+            <span class="keyword">this</span>.age = args[<span class="number">1</span>];
+        }
+    }
+}
+
+<span class="comment">//重写 toString 方法</span>
+Person.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(<span class="string">'name='</span>+<span class="keyword">this</span>.name+<span class="string">', age='</span>+<span class="keyword">this</span>.age);
+};
+
+<span class="keyword">var</span> gao = <span class="keyword">new</span> Person({name:<span class="string">'Gao'</span>,age:<span class="number">24</span>});
+gao.toString(); <span class="comment">// name=Gao, age=24</span>
+
+<span class="keyword">var</span> ying = <span class="keyword">new</span> Person(<span class="string">'Ying'</span>,<span class="number">25</span>);
+ying.toString(); <span class="comment">// name=Ying, age=25</span>
+</code></pre><p>对参数进行判断，模拟实现重载。</p>
+<hr>
+<h2 id="调用子类方法">调用子类方法</h2><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>{
+    <span class="keyword">this</span>.name = name;
+}
+
+<span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name, className</span>) </span>{
+    <span class="keyword">this</span>.className = className;
+    Person.call(<span class="keyword">this</span>, name); <span class="comment">// 调用基类的构造器</span>
+}
+
+<span class="keyword">var</span> gao = <span class="keyword">new</span> Student(<span class="string">'Gao'</span>, <span class="string">'3123'</span>);
+<span class="built_in">console</span>.log(gao); <span class="comment">// Student {className: "3123", name: "Gao"}</span>
+
+Person.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{};
+
+Student.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="comment">// do sth...</span>
+    Person.prototype.init.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>); <span class="comment">// 同时也想调用父类被覆盖的方法</span>
+};
+</code></pre><p>主要是两种：调用父类的构造器，调用原型链上父类被覆盖的方法。</p>
+<hr>
+<h2 id="链式调用">链式调用</h2><pre><code><span class="function"><span class="keyword">function</span> <span class="title">ClassManager</span>(<span class="params"></span>) </span>{}
+ClassManager.prototype.addClass = <span class="function"><span class="keyword">function</span>(<span class="params">str</span>) </span>{
+    <span class="built_in">console</span>.log(<span class="string">'Class: '</span> + str + <span class="string">' added'</span>);
+    <span class="keyword">return</span> <span class="keyword">this</span>;
+};
+
+<span class="keyword">var</span> manager = <span class="keyword">new</span> ClassManager();
+manager.addClass(<span class="string">'classA'</span>).addClass(<span class="string">'classB'</span>).addClass(<span class="string">'classC'</span>);
+<span class="comment">// Class: classA added</span>
+<span class="comment">// Class: classB added</span>
+<span class="comment">// Class: classC added</span>
+</code></pre><p>重点在于 return this。返回这个 ClassManager 的实例。这样这个实例又可以继续调用方法。</p>
+<hr>
+<h2 id="抽象类">抽象类</h2><p>在构造器中 <code>throw new Error(&#39;&#39;);</code> 抛异常。这样防止这个类被直接调用。</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">DetectorBase</span>(<span class="params"></span>) </span>{
+    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Abstract class can not be invoked directly!'</span>);
+}
+
+DetectorBase.detect = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(<span class="string">'Detection starting...'</span>);
+}
+DetectorBase.stop = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(<span class="string">'Detection stopped.'</span>);
+};
+DetectorBase.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Error'</span>);
+}
+
+<span class="keyword">var</span> d = <span class="keyword">new</span> DetectorBase();<span class="comment">// Uncaught Error: Abstract class can not be invoked directly!</span>
+
+<span class="function"><span class="keyword">function</span> <span class="title">LinkDetector</span>(<span class="params"></span>) </span>{}
+LinkDetector.prototype = <span class="built_in">Object</span>.create(DetectorBase.prototype);
+LinkDetector.prototype.constructor = LinkDetector;
+
+<span class="keyword">var</span> l = <span class="keyword">new</span> LinkDetector();
+<span class="built_in">console</span>.log(l); <span class="comment">//LinkDetector {}__proto__: LinkDetector</span>
+l.detect(); <span class="comment">//Uncaught TypeError: l.detect is not a function</span>
+l.init(); <span class="comment">//Uncaught TypeError: l.init is not a function</span>
+</code></pre><p><code>var d = new DetectorBase();</code> 是不能实例化的，会报错</p>
+<p><code>l.detect();</code> 但是这个为什么报错我就不知道了。</p>
+<p>已经在原课程下提问了，期待老师的讲解。 <a href="http://www.imooc.com/qadetail/82732" target="_blank" rel="external">抽象类中子类为什么不能调用父类的非抽象方法？</a></p>
+<p>问题已经解决了，应该是老师当时的课件写错了，应该再基类中将这两个方法写在其原型 prototype 上。如下：</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">DetectorBase</span>(<span class="params"></span>) </span>{
+    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Abstract class can not be invoked directly!'</span>);
+}
+
+DetectorBase.prototype.detect = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(<span class="string">'Detection starting...'</span>);
+};
+DetectorBase.prototype.stop = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(<span class="string">'Detection stopped.'</span>);
+};
+DetectorBase.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Error'</span>);
+};
+
+<span class="comment">// var d = new DetectorBase();// Uncaught Error: Abstract class can not be invoked directly!</span>
+
+<span class="function"><span class="keyword">function</span> <span class="title">LinkDetector</span>(<span class="params"></span>) </span>{}
+LinkDetector.prototype = <span class="built_in">Object</span>.create(DetectorBase.prototype);
+LinkDetector.prototype.constructor = LinkDetector;
+
+<span class="keyword">var</span> l = <span class="keyword">new</span> LinkDetector();
+<span class="built_in">console</span>.log(l); <span class="comment">//LinkDetector {}__proto__: LinkDetector</span>
+l.detect(); <span class="comment">//Detection starting...</span>
+l.init(); <span class="comment">//Uncaught Error: Error</span>
+</code></pre><hr>
+<h2 id="模块化">模块化</h2><pre><code><span class="keyword">var</span> moduleA;
+moduleA = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{
+    <span class="keyword">var</span> prop = <span class="number">1</span>;
+
+    <span class="function"><span class="keyword">function</span> <span class="title">func</span><span class="params">()</span> </span>{}
+
+    <span class="keyword">return</span> {
+        func: func,
+        prop: prop
+    };
+}(); <span class="comment">// 立即执行匿名函数</span>
+</code></pre><p>prop，func 不会被泄露到全局作用域。</p>
+<p>或者另一种写法，使用 new</p>
+<pre><code>moduleA = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{
+    <span class="keyword">var</span> prop = <span class="number">1</span>;
+
+    <span class="function"><span class="keyword">function</span> <span class="title">func</span><span class="params">()</span> </span>{}
+
+    <span class="keyword">this</span>.func = func;
+    <span class="keyword">this</span>.prop = prop;
+}
+</code></pre><p>更复杂的可以使用 Sea.js Kissy Require.js 模块化工具。</p>
+<hr>
+<p>最后补充一点设计模式相关的资料，我还没有来得及看的：</p>
+<ul>
+<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns" target="_blank" rel="external">学用 JavaScript 设计模式</a></li>
+<li><a href="http://blog.jobbole.com/29454/" target="_blank" rel="external">常用的Javascript设计模式</a></li>
+<li><a href="http://developer.51cto.com/art/201109/288650_all.htm" target="_blank" rel="external">JavaScript设计模式深入分析</a></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/06/15/2015-04-15-baidu-ife-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          百度Web前端技术学院(1)-HTML, CSS基础
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/06/14/2015-06-14-JavaScript-closure/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript 中的闭包</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015-06-15-JavaScript-Object-Oriented" data-title="JavaScript 面向对象" data-url="http://hellowor1d.github.io/2015/06/15/2015-06-15-JavaScript-Object-Oriented/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"hellowor1d"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Hellowor1d
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+  </div>
+</body>
+</html>

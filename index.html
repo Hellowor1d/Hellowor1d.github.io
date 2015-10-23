@@ -128,7 +128,7 @@ var _hmt = _hmt || [];
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/导图/" style="font-size: 10px;">导图</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/导图/" style="font-size: 10px;">导图</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/慕课网/" style="font-size: 10px;">慕课网</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
 					</div>
 				</section>
 				
@@ -211,60 +211,6 @@ var _hmt = _hmt || [];
 	</div>
 </nav>
       <div class="body-wrap">
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/20/hello-world/" class="article-date">
-  	<time datetime="2015-10-20T04:06:32.283Z" itemprop="datePublished">2015-10-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/20/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="http://hexo.io/">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/10/20/hello-world/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
   
     <article id="post-2015-06-11-JavaScript-function" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -563,6 +509,88 @@ foo(<span class="number">1</span>, <span class="number">2</span>); <span class="
 
 
   
+    <article id="post-2015-06-15-JavaScript-Object-Oriented" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/15/2015-06-15-JavaScript-Object-Oriented/" class="article-date">
+  	<time datetime="2015-06-15T06:06:05.000Z" itemprop="datePublished">2015-06-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/15/2015-06-15-JavaScript-Object-Oriented/">JavaScript 面向对象</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>content<br>{:toc}</li>
+</ul>
+<p>本文为慕课网 <a href="http://www.imooc.com/learn/277">JavaScript深入浅出</a> 笔记。</p>
+<h2 id="概念">概念</h2><blockquote>
+<p>面向对象程序设计（Object-oriented programming，OOP）是一种程序设计范型，同时也是一种程序开发的方法。对象指的是类的实例。它将对象作为程序的基本单元，将程序和数据封装其中，以提高软件的重用性、灵活性和扩展性。</p>
+<p>——维基百科</p>
+</blockquote>
+<p>一般面向对象包含：继承，封装，多态，抽象</p>
+<hr>
+<h2 id="基于原型的继承">基于原型的继承</h2><pre><code><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>{
+    <span class="keyword">this</span>.y = <span class="number">2</span>;
+}
+<span class="built_in">console</span>.log(<span class="keyword">typeof</span> Foo.prototype); <span class="comment">//object</span>
+
+Foo.prototype.x = <span class="number">1</span>;
+<span class="keyword">var</span> obj3 = <span class="keyword">new</span> Foo();
+
+<span class="built_in">console</span>.log(obj3.y); <span class="comment">//2</span>
+<span class="built_in">console</span>.log(obj3.x); <span class="comment">//1</span>
+</code></pre><p>创建函数 <code>Foo</code> 的时候，就会有一个内置的 <code>Foo.prototype</code> 属性，并且这个属性是对象。<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/06/15/2015-06-15-JavaScript-Object-Oriented/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-2015-06-14-JavaScript-closure" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -627,6 +655,167 @@ foo(<span class="number">1</span>, <span class="number">2</span>); <span class="
       
         <p class="article-more-link">
           <a  href="/2015/06/14/2015-06-14-JavaScript-closure/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-2015-06-12-JavaScript-this" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/12/2015-06-12-JavaScript-this/" class="article-date">
+  	<time datetime="2015-06-12T06:06:05.000Z" itemprop="datePublished">2015-06-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/12/2015-06-12-JavaScript-this/">JavaScript 中的 This</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文为慕课网 <a href="http://www.imooc.com/learn/277">JavaScript深入浅出</a> 笔记。</p>
+<h2 id="全局的_this">全局的 this</h2><p>全局 this 一般指向全局对象，浏览器中的全局对象就是 <code>window</code>。</p>
+<p>例如：</p>
+<pre><code><span class="built_in">console</span>.log(<span class="keyword">this</span>.<span class="built_in">document</span> === <span class="built_in">document</span>); <span class="regexp">//</span><span class="literal">true</span>
+<span class="built_in">console</span>.log(<span class="keyword">this</span> === <span class="built_in">window</span>); <span class="regexp">//</span><span class="literal">true</span>
+
+<span class="keyword">this</span>.a = <span class="number">91</span>;
+<span class="built_in">console</span>.log(<span class="built_in">window</span>.a); <span class="regexp">//</span><span class="number">91</span>
+</code></pre><hr>
+<h2 id="一般函数的_this">一般函数的 this</h2><pre><code><span class="function"><span class="keyword">function</span> <span class="title">f1</span> (<span class="params"></span>) </span>{
+    <span class="keyword">return</span> <span class="keyword">this</span>;
+}
+<span class="built_in">console</span>.log(f1() === <span class="built_in">window</span>);<span class="comment">//true, global object</span>
+</code></pre><p>可以看到一般函数的 this 也指向 window，在 nodeJS 中为 global object</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">f2</span> (<span class="params"></span>) </span>{
+<span class="pi">    "use strict"</span>;<span class="comment">//使用严格模式</span>
+    <span class="keyword">return</span> <span class="keyword">this</span>;
+}
+<span class="built_in">console</span>.log(f1() === <span class="literal">undefined</span>);<span class="comment">//true</span>
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/06/12/2015-06-12-JavaScript-this/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-作用域和作用域链" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/05/20/作用域和作用域链/" class="article-date">
+  	<time datetime="2015-05-20T06:06:05.000Z" itemprop="datePublished">2015-05-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/20/作用域和作用域链/">JavaScript 作用域和作用域链</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JavaScript_作用域">JavaScript 作用域</h2><p>作用域就是变量与函数的可访问范围。在JavaScript中，变量的作用域有全局作用域和局部作用域两种。</p>
+<hr>
+<h3 id="全局作用域(Global_Scope)">全局作用域(Global Scope)</h3><p>在代码中任何地方都能访问到的对象拥有全局作用域，一般来说以下 3 种情形拥有全局作用域。</p>
+<ol>
+<li><p>最外层函数和在最外层函数外面定义的变量拥有全局作用域</p>
+<pre><code><span class="keyword">var</span> outVariable = <span class="string">"我是最外层变量"</span>; <span class="comment">//最外层变量</span>
+<span class="function"><span class="keyword">function</span> <span class="title">outFun</span>(<span class="params"></span>) </span>{ <span class="comment">//最外层函数</span>
+    <span class="keyword">var</span> inVariable = <span class="string">"内层变量"</span>;
+    <span class="function"><span class="keyword">function</span> <span class="title">innerFun</span>(<span class="params"></span>) </span>{ <span class="comment">//内层函数</span>
+        <span class="built_in">console</span>.log(inVariable);
+    }
+    innerFun();
+}
+<span class="built_in">console</span>.log(outVariable); <span class="comment">//我是最外层变量</span>
+outFun(); <span class="comment">//内层变量</span>
+<span class="built_in">console</span>.log(inVariable); <span class="comment">//inVariable is not defined</span>
+innerFun(); <span class="comment">//innerFun is not defined</span>
+</code></pre></li>
+</ol>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端JavaScript/">前端JavaScript</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/05/20/作用域和作用域链/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -717,6 +906,102 @@ foo(<span class="number">1</span>, <span class="number">2</span>); <span class="
 
 
   
+    <article id="post-判断两个数组是否相似" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/04/06/判断两个数组是否相似/" class="article-date">
+  	<time datetime="2015-04-06T07:14:54.000Z" itemprop="datePublished">2015-04-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/06/判断两个数组是否相似/">判断两个数组是否相似 (arraysSimilar)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目">题目</h2><p>题目来自 <a href="http://imooc.com/code/5760">慕课网 JavaScript 深入浅出 1-6 编程练习</a>    </p>
+<p>请在 index.html 文件中，编写 arraysSimilar 函数，实现判断传入的两个数组是否相似。具体需求：    </p>
+<ol>
+<li>数组中的成员类型相同，顺序可以不同。例如 [1, true] 与 [false, 2] 是相似的。</li>
+<li>数组的长度一致。</li>
+<li>类型的判断范围，需要区分: String, Boolean, Number, undefined, null, 函数, 日期, window.</li>
+</ol>
+<p>当以上全部满足，则返回<strong>“判定结果:通过”</strong>，否则返回<strong>“判定结果:不通过”</strong>。    </p>
+<p>题目给出了 index.html 如下：</p>
+<pre><code><span class="doctype">&lt;!DOCTYPE HTML&gt;</span>
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=gb18030"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">title</span>&gt;</span>Untitled Document<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="actionscript">   
+        <span class="comment">/*
+         * param1 Array 
+         * param2 Array
+         * return true or false
+         */</span>
+        <span class="function"><span class="keyword">function</span> <span class="title">arraysSimilar</span><span class="params">(arr1, arr2)</span></span>{
+
+        }
+    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"testData.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/慕课网/">慕课网</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/04/06/判断两个数组是否相似/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">

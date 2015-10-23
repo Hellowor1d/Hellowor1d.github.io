@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>判断两个数组是否相似 (arraysSimilar) | 犀利一下下的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题目题目来自 慕课网 JavaScript 深入浅出 1-6 编程练习    
+请在 index.html 文件中，编写 arraysSimilar 函数，实现判断传入的两个数组是否相似。具体需求：    
+
+数组中的成员类型相同，顺序可以不同。例如 [1, true] 与 [false, 2] 是相似的。
+数组的长度一致。
+类型的判断范围，需要区分: String, Boolean, Numbe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="判断两个数组是否相似 (arraysSimilar)">
+<meta property="og:url" content="http://hellowor1d.github.io/2015/04/06/判断两个数组是否相似/index.html">
+<meta property="og:site_name" content="犀利一下下的博客">
+<meta property="og:description" content="题目题目来自 慕课网 JavaScript 深入浅出 1-6 编程练习    
+请在 index.html 文件中，编写 arraysSimilar 函数，实现判断传入的两个数组是否相似。具体需求：    
+
+数组中的成员类型相同，顺序可以不同。例如 [1, true] 与 [false, 2] 是相似的。
+数组的长度一致。
+类型的判断范围，需要区分: String, Boolean, Numbe">
+<meta property="og:updated_time" content="2015-10-23T05:14:27.104Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="判断两个数组是否相似 (arraysSimilar)">
+<meta name="twitter:description" content="题目题目来自 慕课网 JavaScript 深入浅出 1-6 编程练习    
+请在 index.html 文件中，编写 arraysSimilar 函数，实现判断传入的两个数组是否相似。具体需求：    
+
+数组中的成员类型相同，顺序可以不同。例如 [1, true] 与 [false, 2] 是相似的。
+数组的长度一致。
+类型的判断范围，需要区分: String, Boolean, Numbe">
+  
+    <link rel="alternative" href="/atom.xml" title="犀利一下下的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/jilaiye.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+   
+<!-- Baidu Analytics -->
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?8d393b7b03a85328717992b6e2517904";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/jilaiye.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Hellowor1d</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">爱前端，爱生活</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/前端">前端</a></li>
+				        
+							<li><a href="/tags/随笔">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Hellowor1d" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/Hellowor1d" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/xi-li-yixia-xia" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/导图/" style="font-size: 10px;">导图</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/慕课网/" style="font-size: 10px;">慕课网</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">前端码猴儿，正在向着前端程序猿进化~</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Hellowor1d</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/jilaiye.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Hellowor1d</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">爱前端，爱生活</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/前端">前端</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Hellowor1d" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/Hellowor1d" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/xi-li-yixia-xia" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-判断两个数组是否相似" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/04/06/判断两个数组是否相似/" class="article-date">
+  	<time datetime="2015-04-06T07:14:54.000Z" itemprop="datePublished">2015-04-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      判断两个数组是否相似 (arraysSimilar)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/慕课网/">慕课网</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目">题目</h2><p>题目来自 <a href="http://imooc.com/code/5760" target="_blank" rel="external">慕课网 JavaScript 深入浅出 1-6 编程练习</a>    </p>
+<p>请在 index.html 文件中，编写 arraysSimilar 函数，实现判断传入的两个数组是否相似。具体需求：    </p>
+<ol>
+<li>数组中的成员类型相同，顺序可以不同。例如 [1, true] 与 [false, 2] 是相似的。</li>
+<li>数组的长度一致。</li>
+<li>类型的判断范围，需要区分: String, Boolean, Number, undefined, null, 函数, 日期, window.</li>
+</ol>
+<p>当以上全部满足，则返回<strong>“判定结果:通过”</strong>，否则返回<strong>“判定结果:不通过”</strong>。    </p>
+<p>题目给出了 index.html 如下：</p>
+<pre><code><span class="doctype">&lt;!DOCTYPE HTML&gt;</span>
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=gb18030"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">title</span>&gt;</span>Untitled Document<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="actionscript">   
+        <span class="comment">/*
+         * param1 Array 
+         * param2 Array
+         * return true or false
+         */</span>
+        <span class="function"><span class="keyword">function</span> <span class="title">arraysSimilar</span><span class="params">(arr1, arr2)</span></span>{
+
+        }
+    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"testData.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><a id="more"></a>
+<p>其中 testData.js 是测试用例，代码如下</p>
+<pre><code><span class="keyword">var</span> result = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="comment">//以下为多组测试数据</span>
+    <span class="keyword">var</span> cases = [{
+        arr1: [<span class="number">1</span>, <span class="literal">true</span>, <span class="literal">null</span>],
+        arr2: [<span class="literal">null</span>, <span class="literal">false</span>, <span class="number">100</span>],
+        expect: <span class="literal">true</span>
+    }, {
+        arr1: [
+            <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{},
+            <span class="number">100</span>
+        ],
+        arr2: [<span class="number">100</span>, {}],
+        expect: <span class="literal">false</span>
+    }, {
+        arr1: [<span class="literal">null</span>, <span class="number">999</span>],
+        arr2: [{},
+            <span class="number">444</span>
+        ],
+        expect: <span class="literal">false</span>
+    }, {
+        arr1: [<span class="built_in">window</span>, <span class="number">1</span>, <span class="literal">true</span>, <span class="keyword">new</span> <span class="built_in">Date</span>(), <span class="string">"hahaha"</span>, (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{}), <span class="literal">undefined</span>],
+        arr2: [<span class="literal">undefined</span>, (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{}), <span class="string">"okokok"</span>, <span class="keyword">new</span> <span class="built_in">Date</span>(), <span class="literal">false</span>, <span class="number">2</span>, <span class="built_in">window</span>],
+        expect: <span class="literal">true</span>
+    }, {
+        arr1: [<span class="keyword">new</span> <span class="built_in">Date</span>()],
+        arr2: [{}],
+        expect: <span class="literal">false</span>
+    }, {
+        arr1: [<span class="built_in">window</span>],
+        arr2: [{}],
+        expect: <span class="literal">false</span>
+    }, {
+        arr1: [<span class="literal">undefined</span>, <span class="number">1</span>],
+        arr2: [<span class="literal">null</span>, <span class="number">2</span>],
+        expect: <span class="literal">false</span>
+    }, {
+        arr1: [<span class="keyword">new</span> <span class="built_in">Object</span>, <span class="keyword">new</span> <span class="built_in">Object</span>, <span class="keyword">new</span> <span class="built_in">Object</span>],
+        arr2: [{}, {},
+            <span class="literal">null</span>
+        ],
+        expect: <span class="literal">false</span>
+    }, {
+        arr1: <span class="literal">null</span>,
+        arr2: <span class="literal">null</span>,
+        expect: <span class="literal">false</span>
+    }, {
+        arr1: [],
+        arr2: <span class="literal">undefined</span>,
+        expect: <span class="literal">false</span>
+    }, {
+        arr1: <span class="string">"abc"</span>,
+        arr2: <span class="string">"cba"</span>,
+        expect: <span class="literal">false</span>
+    }];
+
+    <span class="comment">//使用for循环, 通过arraysSimilar函数验证以上数据是否相似，如相似显示“通过”,否则"不通过",所以大家要完成arraysSimilar函数,具体要求，详见任务要求。    </span>
+    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; cases.length; i++) {
+        <span class="keyword">if</span> (arraysSimilar(cases[i].arr1, cases[i].arr2) !== cases[i].expect) {
+            <span class="built_in">document</span>.write(<span class="string">"不通过！case"</span> + (i + <span class="number">1</span>) + <span class="string">"不正确！arr1="</span> + <span class="built_in">JSON</span>.stringify(cases[i].arr1) + <span class="string">", arr2="</span> + <span class="built_in">JSON</span>.stringify(cases[i].arr2) + <span class="string">" 的判断结果不是"</span> + cases[i].expect);
+            <span class="keyword">return</span> <span class="literal">false</span>;
+        }
+    }
+    <span class="keyword">return</span> <span class="literal">true</span>;
+
+}();
+<span class="built_in">document</span>.write(<span class="string">"判定结果:"</span> + (result ? <span class="string">"通过"</span> : <span class="string">"不通过"</span>));
+</code></pre><hr>
+<h2 id="解答">解答</h2><p>各位读者在看解答前也可以自己考虑一下，看看咱们的想法是否一致，期待您在本文的留言。</p>
+<hr>
+<h3 id="思路">思路</h3><p>通过观察测试用例，可以发现，最后三个用例有不是数组的。所以我们可以先判断传入的参数是否是数组。<br>又因为题目中要求数组长度必须一致，这也是第二个限制条件。<br>最后再区分具体的类型。   </p>
+<p>理清思路我们可以分为以下步骤：   </p>
+<ol>
+<li>判断传入的参数是否为数组 (使用 <code>instanceof</code> 方法)</li>
+<li>检查两个数组长度是否一致</li>
+<li>分别判断数组内元素的基本数据类型 (使用 <code>typeof</code> 方法)</li>
+<li>因为 <code>typeof</code> 只能检查基本数据类型，对于 <code>null</code>, <code>Date</code>, <code>window</code> 返回的都是 <code>object</code>，所以使用 <code>Object.prototype.toString.apply()</code> 来检查这些对象类型，其返回值为：<code>&#39;[object Null]&#39;</code>, <code>&#39;[object Date]&#39;</code>, <code>&#39;[object global]&#39;</code></li>
+<li>分别比较每个数组内元素的各种类型的个数，如果都相等，那么这两个数组是相似的。</li>
+</ol>
+<hr>
+<h3 id="具体实现代码">具体实现代码</h3><p>JavaScript代码如下</p>
+<pre><code><span class="comment">/**
+ * =====================================================
+ * 请在index.html文件中，编写arraysSimilar函数，实现判断传入的两个数组是否相似。具体需求：
+ * 1. 数组中的成员类型相同，顺序可以不同。例如[1, true] 与 [false, 2]是相似的。
+ * 2. 数组的长度一致。
+ * 3. 类型的判断范围，需要区分:String, Boolean, Number, undefined, null, 函数，日期, window.
+ *
+ * 当以上全部满足，则返回"判定结果:通过"，否则返回"判定结果:不通过"。
+ * ===================================================== 
+ */</span>
+
+<span class="comment">/*
+* param1 Array
+* param2 Array
+* return true or false
+*/</span>
+<span class="function"><span class="keyword">function</span> <span class="title">arraysSimilar</span>(<span class="params">arr1, arr2</span>)</span>{
+    <span class="keyword">if</span> (arr1 <span class="keyword">instanceof</span> <span class="built_in">Array</span> &amp;&amp; arr2 <span class="keyword">instanceof</span> <span class="built_in">Array</span> ) {    <span class="comment">//先判断传入的是否是数组</span>
+        <span class="keyword">if</span> (arr1.length == arr2.length) {                    <span class="comment">//判断数组长度</span>
+            <span class="built_in">console</span>.log(<span class="string">"same-length"</span>);
+            <span class="built_in">console</span>.log(arr1);
+            <span class="built_in">console</span>.log(arr2);
+            <span class="comment">//开始判断数组内部是否相似</span>
+            <span class="keyword">return</span> sameLengthArraysSimilar(arr1, arr2);
+        } <span class="keyword">else</span>{
+            <span class="comment">//两个数组长度不同返回false</span>
+            <span class="keyword">return</span> <span class="literal">false</span>;
+        }
+    } <span class="keyword">else</span> {
+        <span class="comment">//传入的参数不是数组返回false</span>
+        <span class="keyword">return</span> <span class="literal">false</span>;
+    }
+}
+
+<span class="comment">/**
+ * 判断两个等长的数组内部是否相似
+ * 遍历数组
+ * arr1中元素各种类型出现的个数是否和arr2中元素各种类型出现的个数相同
+ * @param  {Array} arr1 数组1
+ * @param  {Array} arr2 数组2
+ * @return {true,false}
+ */</span>
+<span class="function"><span class="keyword">function</span> <span class="title">sameLengthArraysSimilar</span>(<span class="params">arr1,arr2</span>) </span>{
+    <span class="keyword">var</span> numInArr1 = <span class="number">0</span>;
+    <span class="keyword">var</span> numInArr2 = <span class="number">0</span>;
+    <span class="keyword">var</span> booleanInArr1 = <span class="number">0</span>;
+    <span class="keyword">var</span> booleanInArr2 = <span class="number">0</span>;
+    <span class="keyword">var</span> funInArr1 = <span class="number">0</span>;
+    <span class="keyword">var</span> funInArr2 = <span class="number">0</span>;
+    <span class="keyword">var</span> undefinedInArr1 = <span class="number">0</span>;
+    <span class="keyword">var</span> undefinedInArr2 = <span class="number">0</span>;
+    <span class="keyword">var</span> stringInArr1 = <span class="number">0</span>;
+    <span class="keyword">var</span> stringInArr2 = <span class="number">0</span>;
+    <span class="keyword">var</span> nullInArr1 = <span class="number">0</span>;
+    <span class="keyword">var</span> nullInArr2 = <span class="number">0</span>;
+    <span class="keyword">var</span> dateInArr1 = <span class="number">0</span>;
+    <span class="keyword">var</span> dateInArr2 = <span class="number">0</span>;
+    <span class="keyword">var</span> windowInArr1 = <span class="number">0</span>;
+    <span class="keyword">var</span> windowInArr2 = <span class="number">0</span>;
+
+    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr1.length; i++) {
+        <span class="keyword">if</span>(<span class="keyword">typeof</span> arr1[i] === <span class="string">'number'</span> ){
+            numInArr1 ++;
+        } <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> arr1[i] === <span class="string">'boolean'</span>){
+            booleanInArr1 ++;
+        } <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> arr1[i] === <span class="string">'function'</span>){
+            funInArr1 ++;
+        } <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> arr1[i] === <span class="string">'undefined'</span>){
+            undefinedInArr1 ++;
+        } <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> arr1[i] === <span class="string">'string'</span>){
+            stringInArr1 ++;
+        } <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> arr1[i] ===<span class="string">'object'</span>){
+            <span class="keyword">if</span>(<span class="built_in">Object</span>.prototype.toString.apply(arr1[i]) === <span class="string">'[object Null]'</span>){
+                nullInArr1 ++;
+            } <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">Object</span>.prototype.toString.apply(arr1[i]) === <span class="string">'[object Date]'</span>){
+                dateInArr1 ++;
+            } <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">Object</span>.prototype.toString.apply(arr1[i]) === <span class="string">'[object global]'</span>){
+                windowInArr1 ++;
+            }
+        }
+
+        <span class="keyword">if</span>(<span class="keyword">typeof</span> arr2[i] === <span class="string">'number'</span>){
+            numInArr2 ++;
+        } <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> arr2[i] === <span class="string">'boolean'</span>){
+            booleanInArr2 ++;
+        } <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> arr2[i] === <span class="string">'function'</span>){
+            funInArr2 ++;
+        } <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> arr2[i] === <span class="string">'undefined'</span>){
+            undefinedInArr2 ++;
+        } <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> arr2[i] === <span class="string">'string'</span>){
+            stringInArr2 ++;
+        } <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> arr2[i] ===<span class="string">'object'</span>){
+            <span class="keyword">if</span>(<span class="built_in">Object</span>.prototype.toString.apply(arr2[i]) === <span class="string">'[object Null]'</span>){
+                nullInArr2 ++;
+            } <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">Object</span>.prototype.toString.apply(arr2[i]) === <span class="string">'[object Date]'</span>){
+                dateInArr2 ++;
+            } <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">Object</span>.prototype.toString.apply(arr2[i]) === <span class="string">'[object global]'</span>){
+                windowInArr2 ++;
+            }
+        }
+    }
+
+    <span class="built_in">console</span>.log(<span class="string">"num---"</span>+numInArr1);
+    <span class="built_in">console</span>.log(<span class="string">"num---"</span>+numInArr2);
+    <span class="built_in">console</span>.log(<span class="string">"boo---"</span>+booleanInArr1);
+    <span class="built_in">console</span>.log(<span class="string">"boo---"</span>+booleanInArr2);
+    <span class="built_in">console</span>.log(<span class="string">"null---"</span>+nullInArr1);
+    <span class="built_in">console</span>.log(<span class="string">"null---"</span>+nullInArr2);
+    <span class="built_in">console</span>.log(<span class="string">"window---"</span>+windowInArr1);
+    <span class="built_in">console</span>.log(<span class="string">"window---"</span>+windowInArr2);
+    <span class="built_in">console</span>.log(<span class="string">"date---"</span>+dateInArr1);
+    <span class="built_in">console</span>.log(<span class="string">"date---"</span>+dateInArr2);
+    <span class="built_in">console</span>.log(<span class="string">"string---"</span>+stringInArr1);
+    <span class="built_in">console</span>.log(<span class="string">"string---"</span>+stringInArr2);
+    <span class="built_in">console</span>.log(<span class="string">"fun---"</span>+funInArr1);
+    <span class="built_in">console</span>.log(<span class="string">"fun---"</span>+funInArr2);
+    <span class="built_in">console</span>.log(<span class="string">"undefined---"</span>+undefinedInArr1);
+    <span class="built_in">console</span>.log(<span class="string">"undefined---"</span>+undefinedInArr2);
+
+    <span class="keyword">if</span>(numInArr1 == numInArr2 &amp;&amp; booleanInArr1==booleanInArr2 &amp;&amp; funInArr1==funInArr2 &amp;&amp; undefinedInArr1==undefinedInArr2 &amp;&amp; stringInArr1==stringInArr2 &amp;&amp; nullInArr1==nullInArr2 &amp;&amp; dateInArr1==dateInArr2 &amp;&amp; windowInArr1==windowInArr2){
+        <span class="built_in">console</span>.log(<span class="string">'================================true'</span>);
+        <span class="keyword">return</span> <span class="literal">true</span>;
+    }<span class="keyword">else</span>{
+        <span class="built_in">console</span>.log(<span class="string">'================================false'</span>);
+        <span class="keyword">return</span> <span class="literal">false</span>;
+    }
+}
+</code></pre><hr>
+<h2 id="总结">总结</h2><ul>
+<li>上述代码完美的跑完所有的测试用例，读者 <a href="http://gaohaoyang.github.io/javascript-test/arraysSimilar/" target="_blank" rel="external">点击这里查看结果</a>，并且可以按 <code>f12</code> 看 Console 信息， 里面有代码的执行过程。  </li>
+<li>当然你也可以复制本文的 JavaScript 代码，在 <a href="http://imooc.com/code/5760" target="_blank" rel="external">慕课网的习题</a> 下跑一下，也可以看到 <code>判定结果:通过</code> 的结果   </li>
+<li>其实我的代码逻辑并不复杂，有点<strong>空间换时间</strong>的感觉，执行效率应该是较高的。没有用 JavaScript 封装的任何函数，完全是自己写的。其实代码除去 <code>console.log()</code> 也并没有多少行。</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/05/18/2015-05-18-front-end-tools/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          前端的一些资料和工具
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/04/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="判断两个数组是否相似" data-title="判断两个数组是否相似 (arraysSimilar)" data-url="http://hellowor1d.github.io/2015/04/06/判断两个数组是否相似/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"hellowor1d"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Hellowor1d
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+  </div>
+</body>
+</html>
