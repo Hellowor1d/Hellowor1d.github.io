@@ -130,7 +130,7 @@ var _hmt = _hmt || [];
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Web-App/" style="font-size: 10px;">Web App</a> <a href="/tags/前端工具/" style="font-size: 10px;">前端工具</a> <a href="/tags/导图/" style="font-size: 10px;">导图</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/慕课网/" style="font-size: 10px;">慕课网</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+						<a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Web-App/" style="font-size: 10px;">Web App</a> <a href="/tags/前端工具/" style="font-size: 10px;">前端工具</a> <a href="/tags/导图/" style="font-size: 10px;">导图</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/慕课网/" style="font-size: 10px;">慕课网</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
 					</div>
 				</section>
 				
@@ -215,6 +215,86 @@ var _hmt = _hmt || [];
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-作用域和作用域链" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/05/20/作用域和作用域链/" class="article-date">
+  	<time datetime="2015-05-20T06:06:05.000Z" itemprop="datePublished">2015-05-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/20/作用域和作用域链/">JavaScript 作用域和作用域链</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JavaScript_作用域">JavaScript 作用域</h2><p>作用域就是变量与函数的可访问范围。在JavaScript中，变量的作用域有全局作用域和局部作用域两种。</p>
+<hr>
+<h3 id="全局作用域(Global_Scope)">全局作用域(Global Scope)</h3><p>在代码中任何地方都能访问到的对象拥有全局作用域，一般来说以下 3 种情形拥有全局作用域。</p>
+<ol>
+<li><p>最外层函数和在最外层函数外面定义的变量拥有全局作用域</p>
+<pre><code><span class="keyword">var</span> outVariable = <span class="string">"我是最外层变量"</span>; <span class="comment">//最外层变量</span>
+<span class="function"><span class="keyword">function</span> <span class="title">outFun</span>(<span class="params"></span>) </span>{ <span class="comment">//最外层函数</span>
+    <span class="keyword">var</span> inVariable = <span class="string">"内层变量"</span>;
+    <span class="function"><span class="keyword">function</span> <span class="title">innerFun</span>(<span class="params"></span>) </span>{ <span class="comment">//内层函数</span>
+        <span class="built_in">console</span>.log(inVariable);
+    }
+    innerFun();
+}
+<span class="built_in">console</span>.log(outVariable); <span class="comment">//我是最外层变量</span>
+outFun(); <span class="comment">//内层变量</span>
+<span class="built_in">console</span>.log(inVariable); <span class="comment">//inVariable is not defined</span>
+innerFun(); <span class="comment">//innerFun is not defined</span>
+</code></pre></li>
+</ol>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/前端/">前端</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/05/20/作用域和作用域链/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-2015-05-18-front-end-tools" class="article article-type-post" itemscope itemprop="blogPost">
   
