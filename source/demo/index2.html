@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<title>浮动与两侧自适应的流体布局</title>
+<style rel="stylesheet" type="text/css">
+
+body {
+	font-size:14px;
+	background-color: #DDF3F7;
+	color: #333;
+}
+a{color: #0082CB; text-decoration: none;}
+p{margin: 0;line-height: 22px; padding-bottom: 6px; font-size: 14px;}
+
+.main {
+	width:680px;
+	margin:0 auto;
+	border:1px solid black;
+}
+.main-content-resize{
+	width:680px;
+	overflow: auto;
+	resize: both;
+	margin-bottom: 10px;
+	background-color: #fff; 
+
+}
+.main-content {
+	padding: 20px;
+}
+.weibo {
+	display: table-cell;
+	background-color: white;
+}
+
+.v { display: inline-block; width: 11px; height: 10px; margin-left: 1px; background: url(data:image/gif;base64,R0lGODlhCwAKAJEDAPyZCveDBuJmBP///yH5BAEAAAMALAAAAAALAAoAAAIdhD1zopgTXgMpsBdylVCPK2UCKI0j95hoRa0NVwAAOw==);} 
+.header{
+	float: left;
+	margin-right: 10px;
+}
+.bottom {
+	margin-bottom: 10px; 
+}
+.bottom-content-box {
+	width: 640px;
+	padding: 20px;
+	background-color: white;
+	line-height: 22px;	
+}
+#select_width{
+	width: 80px; padding: 5px; font-size: 100%; 
+}
+</style>
+</head>
+
+<body>
+<div class="main">
+<div class="main-content-resize">
+<div class="main-content">
+<a class="header" href="http://t.sina.com.cn/xuruoxuan">
+	<img id="header_img" src="http://img.mukewang.com/53e2e9470001dfd200500050.jgp" alt="徐若瑄VIVIAN" title="徐若瑄VIVIAN" />
+</a>
+  
+    <div class="weibo">
+      <p>
+	<a href="http://hellowor1d.github.io/Demo/project/loginDrag/" title="徐若瑄">徐若瑄VIVIAN<i class="v" title="新浪认证"></i></a>：
+	一个人的晚餐，茶泡饭！饭、饭、饭...今日不减肥，先把病治好再说！我认真吃完这，烧就会退了吧？开动啦~~~~~~~~~~~~~你好吗？
+      </p>
+      <div class="food">
+	<img src="http://img.mukewang.com/53e2e9b10001948000890120.jpg">
+      </div>
+    </div>
+    </div>
+</div>
+
+<div class="bottom">
+<div class="bottom-content-box">
+	<p class="bottom-content">选择头像的宽度：
+	<select id="select_width">
+		<option value="50px">50px</option>
+		<option value="70px">70px</option>
+		<option value="90px">90px</option>
+		<option value="110px">110px</option>
+	</select>
+	</p>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+var  selectwidth = document.getElementById("select_width"),
+headerimg = document.getElementById("header_img");
+
+if (selectwidth && headerimg) {
+	selectwidth.onchange=function(){
+		headerimg.style.width = this.value;
+	};
+}
+</script>
+</body>
+</html>
