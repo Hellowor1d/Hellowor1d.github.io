@@ -1,0 +1,49 @@
+# Site settings
+SEOTitle: 犀利一下下的博客 | HelloWor1d's Blog
+header-img: img/night.jpg
+email: 1034597776@qq.com
+description: "前段码猴儿，正在向着程序员进化，跟着一个自称三流程序员的老大努力干着二流程序员的活儿，奔着一流程序员的方向使劲儿"
+keyword: "javascript,blog,front-end"
+
+menu: #導航欄連接
+  Home: /
+  Archives: /archives #歸檔頁面URL
+  about: /about
+  tags: /tags #rss地址 默認即可
+
+# SNS settings
+# RSS: false
+github_username: Hellowor1d
+weibo_username: Hellowor1d
+zhihu_username: xi-li-yixia-xia
+#twitter_username:   Demonbane_x
+#facebook_username:  demonbane.cn
+#linkedin_username:  kaijun-chen-42089354
+
+
+highlighter: rouge
+# Sidebar settings
+sidebar: true                           # whether or not using Sidebar.
+sidebar-about-description: "千山磊落收云气，四海光明耀日化"
+sidebar-avatar: img/jilaiye.png      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+# Featured Tags
+featured-tags: true                     # whether or not using Feature-Tags
+featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+
+#你的头像url
+avatar: /img/jilaiye.png
+favicon: /img/jilaiye.ico
+
+
+# Friends
+#friends: [
+    # {
+        #title: "Foo Blog",
+        #href: "http://foo.github.io/"
+    #},
+    # {
+        #title: "Bar Blog",
+        #href: "http://bar.github.io"
+    #}
+#]
