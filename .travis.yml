@@ -11,7 +11,7 @@ cache:
   - node_modules
 before_install:
 - openssl aes-256-cbc -K $encrypted_95990c81bb7b_key -iv $encrypted_95990c81bb7b_iv
--in id_rsa_ci.enc -out ~\/.ssh/id_rsa_ci -d
+- in id_rsa_ci.enc -out ~\/.ssh/id_rsa_ci -d
 - eval $(ssh-agent)
 - ssh-add ~/.ssh/id_rsa_ci
 - cp .travis/ssh_config ~/.ssh/config
