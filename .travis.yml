@@ -1,32 +1,27 @@
 language: node_js
 node_js: "6"
 
-
-before_install:
-  - git config --global user.name "hellowor1d"
-  - git config --global user.email "1034597776@qq.com"
-  - npm install -g hexo-cli
-
 # S: Build Lifecycle
 install:
   - npm install
 
-# Travis-CI Caching
-cache:
-  directories:
-    - node_modules
 
 #before_script:
   - npm install -g hexo-cli
+  - npm install hexo-deployer-git -g
 
 script:
+  - hexo clean
   - hexo generate
+  - hexo deploy
 
 after_script:
   - cd ./public
   - git init
+  - git config user.name "hellowor1d"
+  - git config user.email "1034597776@qq.com"
   - git add .
-  - git commit -m "Update Blog"
+  - git commit -m "Update blog"
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
 # E: Build LifeCycle
 
