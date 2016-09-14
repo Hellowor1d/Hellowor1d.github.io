@@ -1,0 +1,11 @@
+Host github.com
+    User git
+    StrictHostKeyChecking no
+    IdentityFile ~/.ssh/id_rsa_ci
+    IdentitiesOnly yes
+
+Host git.coding.net
+    User git
+    StrictHostKeyChecking no
+    IdentityFile ~/.ssh/id_rsa_ci
+    IdentitiesOnly yes

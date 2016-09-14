@@ -1,37 +1,26 @@
 language: node_js
-node_js: "6"
-
-
+node_js: '6'
 branches:
   only:
-    - source
+  - source
 env:
- global:
-   - GH_REF: github.com/hellowor1d/hellowor1d.github.io.git
-
-
+  global:
+  - GH_REF: github.com/hellowor1d/hellowor1d.github.io.git
 cache:
   directories:
-    - node_modules
-
-# S: Build Lifecycle
+  - node_modules
+before_install:
+- openssl aes-256-cbc -K $encrypted_95990c81bb7b_key -iv $encrypted_95990c81bb7b_iv
+-in id_rsa_ci.enc -out ~\/.ssh/id_rsa_ci -d
+- eval $(ssh-agent)
+- ssh-add ~/.ssh/id_rsa_ci
+- cp .travis/ssh_config ~/.ssh/config
+- git config --global user.name 'Hellowor1d'
+- git config --global user.email "1034597776@qq.com"
 install:
-  - npm install -g hexo-cli
-  - npm install hexo-deployer-git
-  - npm install
-
-#before_script:
-#  - npm install -g hexo-cli
-
+- npm install -g hexo-cli
+- npm install hexo-deployer-git
+- npm install
 script:
-  - hexo generate
-  - hexo deploy
-# after_script:
-#   - cd public
-#   - git init
-#   - git config user.name "hellowor1d"
-#   - git config user.email "1034597776@qq.com"
-#   - git add .
-#   - git commit -m "Update blog"
-#   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
-# E: Build LifeCycle
+- hexo generate
+- hexo deploy
