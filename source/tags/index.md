@@ -1,6 +1,6 @@
 ---
-title: Tags
-date: 2016-07-26 14:39:14
-layout: tags
+layout: "tags"
+title: "Tags"
+description: "Hey, this is Tags."
+header-img: "img/tag-bg.jpg"
 ---
-## tags

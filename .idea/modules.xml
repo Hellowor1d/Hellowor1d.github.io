@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/hexo-blog.iml" filepath="$PROJECT_DIR$/.idea/hexo-blog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/hexo-theme-huxblog.iml" filepath="$PROJECT_DIR$/.idea/hexo-theme-huxblog.iml" />
     </modules>
   </component>
 </project>

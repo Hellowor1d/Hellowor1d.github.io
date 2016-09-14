@@ -8,7 +8,13 @@ subtitle: 激情来的时候写代码，灵感来的时候写段子
 description: 前端博客 javaScript Nodejs 技术 生活 Todo
 author: 犀利一下下
 language: zh-CN
-timezone: Asia/Shanghai
+timezone: Asia/Beijing
+SEOTitle: 犀利一下下的博客 | Hellowor1d's Blog
+header-img: img/night.jpg
+email: 1034597776@qq.com
+# description:
+# keyword:
+
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -18,33 +24,100 @@ root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
+#Custom Setting Start
+
+# SNS settings
+# RSS: false
+github_username: Hellowor1d
+weibo_username: Hellowor1d
+zhihu_username: xi-li-yixia-xia
+#twitter_username:   Demonbane_x
+#facebook_username:  demonbane.cn
+#linkedin_username:  kaijun-chen-42089354
+
+# Build settings
+anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+
+
+# Disqus settings
+# disqus_username: hexo-theme-huxblog
+
+# Duoshuo settings
+duoshuo_username: hellowor1d
+# Share component is depend on Comment so we can NOT use share only.
+duoshuo_share: true                     # set to false if you want to use Comment without Sharing
+
+
+# Analytics settings
+# Google Analytics
+ba_track_id: '8d393b7b03a85328717992b6e2517904'  #百度统计ID
+ga_track_id: 'UA-81280350-1'           # 你用Google账号去注册一个就会给你一个这样的id
+ga_domain: auto                        # 如果你有自己的域名，在这里替换即可
+
+
+# Sidebar settings
+sidebar: true                           # whether or not using Sidebar.
+sidebar-about-description: "千山磊落收云气，四海光明耀日化"
+sidebar-avatar: img/jilaiye.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+# Featured Tags
+featured-tags: true                     # whether or not using Feature-Tags
+featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+
+
+# Friends
+friends: [
+    {
+        title: "Kaijun's Blog",
+        href: "http://blog.kaijun.rocks"
+    },{
+        title: "Hux Blog",
+        href: "http://huangxuan.me"
+    },{
+        title: "Foo",
+        href: "#"
+    },{
+        title: "Bar",
+        href: "#"
+    },{
+        title: "Example Friends",
+        href: "#"
+    },{
+        title: "It helps SEO",
+        href: "#"
+    }
+]
+
+
+#Custom Setting End
+
+
 # Directory
 source_dir: source
 public_dir: public
 tag_dir: tags
-archive_dir: archives
+archive_dir: i_dont_wanna_use_default_archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :year-:month-:day-:title.md
- # File name of new posts
+new_post_name: :year-:month-:day-:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
+#highlight settings
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
-  ab_replace:
-# highlighter: rouge
+  auto_detect: true
+  tab_replace:
 
 # Category & Tag
 default_category: uncategorized
@@ -63,21 +136,10 @@ time_format: HH:mm:ss
 per_page: 10
 pagination_dir: page
 
-# Comments
-duoshuo_username: hellowor1d
-duoshuo_share: true
-
-
-# Google Analytics
-ba_track_id: '8d393b7b03a85328717992b6e2517904'  #百度统计ID
-ga_track_id: 'UA-81280350-1'           # 你用Google账号去注册一个就会给你一个这样的id
-ga_domain: auto                        # 如果你有自己的域名，在这里替换即可
-
-
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: HuxBlog
+theme: huxblog
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -86,4 +148,4 @@ deploy:
   repository:
     github: git@github.com:Hellowor1d/Hellowor1d.github.io.git
     coding: git@git.coding.net:hellowor1d/hellowor1d.git
-#  branch: master
+ #  branch: master
