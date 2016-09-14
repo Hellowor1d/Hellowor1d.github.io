@@ -3,24 +3,22 @@ node_js: '6'
 branches:
   only:
   - source
-env:
-  global:
-  - GH_REF: github.com/hellowor1d/hellowor1d.github.io.git
 cache:
   directories:
   - node_modules
 before_install:
 - openssl aes-256-cbc -K $encrypted_95990c81bb7b_key -iv $encrypted_95990c81bb7b_iv -in .travis/id_rsa_ci.enc -out ~/.ssh/id_rsa -d
-- chmod 600 ~/.ssh/id_rsa 
+- chmod 600 ~/.ssh/id_rsa
 - eval $(ssh-agent)
 - ssh-add ~/.ssh/id_rsa
 - cp .travis/ssh_config ~/.ssh/config
-- git config --global user.name 'Hellowor1d'
+- git config --global user.name 'hellowor1d'
 - git config --global user.email "1034597776@qq.com"
 install:
-- npm install -g hexo-cli
-- npm install hexo-deployer-git
+- npm install hexo-cli -g
+- npm install hexo-deployer-git -g
 - npm install
 script:
+- hexo clean
 - hexo generate
 - hexo deploy
