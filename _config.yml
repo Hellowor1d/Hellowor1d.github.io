@@ -146,6 +146,6 @@ theme: huxblog
 deploy:
   type: git
   repository:
-    github: git@github.com:Hellowor1d/Hellowor1d.github.io.git
-    coding: git@git.coding.net:hellowor1d/hellowor1d.git
+    github: git@github.com:Hellowor1d/Hellowor1d.github.io.git,master
+    coding: git@git.coding.net:hellowor1d/hellowor1d.git,master
  #  branch: master
