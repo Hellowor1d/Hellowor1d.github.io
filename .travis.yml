@@ -2,6 +2,13 @@ language: node_js
 node_js: "6"
 
 
+branches:
+  only:
+    - source
+env:
+ global:
+   - GH_REF: github.com/hellowor1d/hellowor1d.github.io.git
+
 
 cache:
   directories:
@@ -19,18 +26,11 @@ script:
   - hexo generate
 
 after_script:
-  - cd ./public
+  - cd public
   - git init
   - git config user.name "hellowor1d"
   - git config user.email "1034597776@qq.com"
   - git add .
   - git commit -m "Update blog"
-  - git push --force "https://${GH_TOKEN}@${GH_REF}" master:master
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
 # E: Build LifeCycle
-
-branches:
-  only:
-    - source
-env:
- global:
-   - GH_REF: github.com/hellowor1d/hellowor1d.github.io.git
