@@ -12,12 +12,10 @@ install:
   - npm install -g hexo-cli
   - npm install
 
-
 #before_script:
 #  - npm install -g hexo-cli
 
 script:
-  - hexo clean
   - hexo generate
 
 after_script:
