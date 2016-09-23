@@ -1,21 +1,22 @@
 ---
 title: windows10+linuxMint 双系统中分区合并的操作记录
 date: 2016-09-23 14:48:07
+header-img: 'header-gparted-records.jpg'
 tags:
  - linux 笔记
 ---
-自从笔记本装了双系统开发以来,越发觉得 linuxMint 系统相当顺手,所以开机基本都是默认进入 linuxMint 系统了,躺在 boot 选项里的 Windows10 都快被我遗忘了,还是保留着刚安装完的"纯净"本来面目.本来是计划Windows为主力系统的,但却计划赶不上变化.随着 Linux 使用越来越多,本来在装双系统时给他分配的空间就越来越觉得不够用,尤其是把我的几个主力开发软件搬移到 SSD 中 linux 的分区之后,
+自从笔记本装了双系统开发以来,越发觉得 linuxMint 系统顺手,所以开机基本都是默认进入 linuxMint 系统了,躺在 boot 选项里的 Windows10 都快被我遗忘了,还是保留着刚安装完的"纯净"本来面目.本来是计划Windows为主力系统的,但却计划赶不上变化.随着 Linux 使用越来越多,本来在装双系统时给他分配的空间就越来越觉得不够用,尤其是把我的几个主力开发软件搬移到 SSD 中 linux 的分区之后,
 
 > 大致说下我的分区吧
    两个硬盘: HD(750G)+ SSD(128G),SSD分了两个大区分别安装 Windows10(80G  NTFS) 和 LinuxMint(40G  EXT4),HD 作为数据资料盘
 
-![图片1](/img/GpartedRecords/1.png)
+![图片1](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record1.png)
 
 于是冥思苦想怎么才能把 windows 中的未用空间剥离出来合并到 linux 分区中.之前比较熟悉 Windows 下的分区操作,所以试着在 windows 下重新进行分区,但是大名鼎鼎的 `diskGenius` 还有新晋神器`傲梅分区助手`都没法实现对 EXT4格式的 linux 盘进行合并,只能作罢.
 
 切换到 LinuxMint 之后,分区软件就只知道 `Gparted` 了,研究半天,Windows 分区成功压缩,分离出来了30G的未用空间,但却不知道怎么才能合并到 linux 分区下的最后一个 ext4 分区中. google 查了好几篇文章还有问答网站上的问题和回答都不是很满意.就自己摸索,研究 Gparted 的文档.终于发现,由于分区的关系,未用空间只能由磁盘中物理相邻的位置进行合并,而不支持选中任意两个分区直接进行合并.
 
-反正,最终就是要把未用空间先合并给 linux 分区,叫做 `Extended`(这是linux分区在磁盘中的总称,可以叫"扩展卷/扩展分区"都行),这样未用空间由隔壁相邻的 windows 区合并给了 `Extended` ,进了 linux 的家门,再进行分配就要排队慢慢往后传递,直到给最后一个的 ext4 了 ,然后就可以把最后一个 ext4 跟未用空间合并了,实现对linux系统盘的扩容!
+最终就是要把未用空间先合并给 linux 分区,叫做 `Extended`(这是linux分区在磁盘中的总称,可以叫"扩展卷/扩展分区"都行),这样未用空间由隔壁相邻的 windows 区合并给了 `Extended` ,进了 linux 的家门,再进行分配就要排队慢慢往后传递,直到给最后一个的 ext4 了 ,然后就可以把最后一个 ext4 跟未用空间合并了,实现对linux系统盘的扩容!
 
 说了这么多,我知道你可能没看太懂,所以给你们拍照了,快看看图再回来看看文字,知道这个原理之后,还可以举一反三,给自己的系统空间随意分配,无论是从 windows 到 linux ,还是linux到windows,抑或是给他们下的子分区进行扩容和减容,都可以进行了,但是切记不要改动系统启动文件`boot`盘内的东西,只要你不更改内容和各个子分区的顺序,启动都没问题,但要是动了这块"奶酪",你就要乖乖去修复 grub/grub2 文件了!
 
@@ -40,24 +41,24 @@ the problem is that:
 your unallocated partition is far from your ext4 partition,you shoud move it to the left of the ext4 partition ,then you can merge them.just like me do:
 
 
-![图片swapoff](/img/GpartedRecords/swapoff.png)
-![图片1](/img/GpartedRecords/1.png)
-![图片2](/img/GpartedRecords/2.png)
-![图片3](/img/GpartedRecords/3.png)
-![图片4](/img/GpartedRecords/4.png)
-![图片5](/img/GpartedRecords/5.png)
-![图片6](/img/GpartedRecords/6.png)
-![图片7](/img/GpartedRecords/7.png)
-![图片8](/img/GpartedRecords/8.png)
-![图片9](/img/GpartedRecords/9.png)
-![图片10](/img/GpartedRecords/10.png)
-![图片11](/img/GpartedRecords/11.png)
-![图片12](/img/GpartedRecords/12.png)
-![图片13](/img/GpartedRecords/13.png)
-![图片14](/img/GpartedRecords/14.png)
-![图片15](/img/GpartedRecords/15.png)
-![图片16](/img/GpartedRecords/16.png)
-![图片17](/img/GpartedRecords/17.png)
-![图片18](/img/GpartedRecords/18.png)
-![图片19](/img/GpartedRecords/19.png)
-![图片20](/img/GpartedRecords/20.png)
+![图片swapoff](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-recordswapoff.png)
+![图片1](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record1.png)
+![图片2](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record2.png)
+![图片3](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record3.png)
+![图片4](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record4.png)
+![图片5](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record5.png)
+![图片6](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record6.png)
+![图片7](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record7.png)
+![图片8](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record8.png)
+![图片9](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record9.png)
+![图片10](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record10.png)
+![图片11](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record11.png)
+![图片12](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record12.png)
+![图片13](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record13.png)
+![图片14](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record14.png)
+![图片15](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record15.png)
+![图片16](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record16.png)
+![图片17](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record17.png)
+![图片18](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record18.png)
+![图片19](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record19.png)
+![图片20](http://7xo9xp.com1.z0.glb.clouddn.com/gparted-record20.png)
