@@ -8,6 +8,7 @@ tags:
 
 本来是打算回答 [*Ask Ubuntu*](http://askubuntu.com/questions/269045/how-to-merge-an-unallocated-partition-with-an-extended-partition/828542#828542) 上的一个问题,结果说我声望不够,不能添加太多链接,索性就放到自己博客里吧,折腾双系统的分区着实比较辛苦,还好看了诸多教程加上自己摸索,把本来都准备放弃的事儿解决了!
 哈哈哈~~现在两个系统都放在了 SSD 里,尤其是在 linux 下安装的 Webstorm 体验飞升了不少!
+图片多,打开速度慢,建议国内用户查看我在 coding.net 的博客备份: [HERE](http://hellowor1d.coding.me/2016/09/23/windows10-linuxMint-%E5%8F%8C%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%88%86%E5%8C%BA%E5%90%88%E5%B9%B6%E7%9A%84%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/)
 
 There are some of my operation photos, hope helpful:
 
