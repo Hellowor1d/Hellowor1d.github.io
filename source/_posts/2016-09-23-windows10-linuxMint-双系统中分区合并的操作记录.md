@@ -28,11 +28,11 @@ There are some of my operation photos, hope helpful:
 
 >    **0. BACKUP YOUR DATA  (!!!)**
 
-*   1. use [Gparted Live CD/USB boot](http://gparted.sourceforge.net/livecd.php)
+1.   use [Gparted Live CD/USB boot](http://gparted.sourceforge.net/livecd.php)
 
-*   2. **swap off**
+2.   **swap off**
 
-*   3. just merge unallocated partition with extended partition.
+3.  just merge unallocated partition with extended partition.
 
 
 if you have two main system partition, and still  want to merge unallocated partition (next to/ in windows) to which ext4 partition in extended partition (maybe your linux partition)
