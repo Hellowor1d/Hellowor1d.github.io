@@ -1,6 +1,7 @@
 ---
 title: 切换linuxMint桌面环境到Mate再到Xfce
 date: 2016-10-09 18:08:57
+header-img: 'http://7xo9xp.com1.z0.glb.clouddn.com/xfce_desktop.jpg'
 tags:
   - linux
 ---
@@ -48,6 +49,6 @@ tags:
 
 > sudo apt-get install xfce-theme-manager
 
-这回随安装包附带一个Cario-Dock应用,模仿OSX的那种效果,功能强大,效果很好.
+这会随安装包附带一个Cario-Dock应用,模仿OSX的那种效果,功能强大,效果很好.
 
 至此,我就先把Xfce当做主力桌面进行使用了,希望不再遇到假死的问题.

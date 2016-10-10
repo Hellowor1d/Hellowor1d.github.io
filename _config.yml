@@ -10,7 +10,7 @@ author: 犀利一下下
 language: zh-CN
 timezone: Asia/Shanghai
 SEOTitle: 犀利一下下的博客 | Hellowor1d's Blog
-header-img: img/night.jpg   #文章内标题处也可以进行设置,每篇文章单独的头图
+header-img: 'img/night.jpg'   #文章内标题处也可以进行设置,每篇文章单独的头图
 email: 1034597776@qq.com
 # description:
 # keyword:
@@ -110,7 +110,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: true   #执行 hexo new 命令时是否新建标题同名文件夹
+post_asset_folder: false   #执行 hexo new 命令时是否新建标题同名文件夹
 relative_link: false
 future: true
 #highlight settings

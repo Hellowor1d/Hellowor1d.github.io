@@ -22,7 +22,7 @@ layout: layout
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <!-- 归档列表 -->
 
-            <% 
+            <%
                 var years = {};
                 site.posts.sort('date').reverse().forEach(function(post){
                     var year = post.date.year()

@@ -1,7 +1,7 @@
 ---
 title: windows10+linuxMint 双系统中分区合并的操作记录
 date: 2016-09-23 14:48:07
-header-img: 'header-gparted-records.jpg'
+header-img: 'http://7xo9xp.com1.z0.glb.clouddn.com/header-gparted-records.jpg'
 tags:
  - linux 笔记
 ---
