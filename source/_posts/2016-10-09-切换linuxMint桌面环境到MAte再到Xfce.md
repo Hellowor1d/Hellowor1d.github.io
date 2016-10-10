@@ -15,4 +15,39 @@ tags:
 
 ## 在Cinnamon下安装Mate
 其实,LinuxMint官方就是有mate和xfce版本的镜像的,可见官方对于这两种桌面环境的支持度挺高.所以就先从Mate开始体验吧
-1. 软件管理工具直接搜索`mint-meta-mate`可以直接安装,但是注意这种方法安装之后很有可能只实现部分Mate的效果,因为需要获取root权限才能完全修改 
+
+[一个很不错的教程](http://winaero.com/blog/how-to-install-mate-in-linux-mint-cinnamon-edition/)
+
+ 软件管理工具直接搜索`mint-meta-mate`可以直接安装,(直接通过`sudo apt-get install mint-meta-mate`命令也可以安装,卸载的话就得一点点通过软件管理工具搜索mate相关内容逐一卸载了)但是注意这种方法安装之后很有可能只实现部分Mate的效果,因为需要获取root权限才能完全修改,然后注销重新选择用户进行登录前,右上角选择Mate就可以进入新的桌面环境了.(Mate是基于Gnome2的分支创建,没有之前所说的bug问题)
+
+## 安装KDE
+> $ sudo add-apt-repository ppa:kubuntu-ppa/backports
+
+> $ sudo apt-get update && sudo apt-get dist-upgrade
+
+> $ sudo apt-get install kubuntu-desktop
+
+直接按照命令行执行就行了,kde虽然华丽,但是响应速度略有迟滞感,不是我的菜,果断再换
+
+## 安装Xfce
+
+这个安装就和mate一样简单了
+
+[这个教程可以参考](http://linoxide.com/linux-how-to/install-xfce-4-12-mint-arch-linux/)
+
+> sudo apt-get install xfce4
+
+若是注销重登时无法进入xfce桌面,最好是先`su`获得root权限再执行上面的安装命令,然后就可以了
+
+众所周知,Xfce是经典的小巧桌面,占用资源小,响应速度快,但是原生的界面有点windows XP的既视感,所以还是要花点心思调教一番的,由于个人比较喜欢简洁些的桌面,所以也就没有太多的折腾,用了一个桌面管理器,稍微优化一下就完全可用了,既简洁迅速,又美观大方.
+
+安装主题管理器的方法:
+> sudo add-apt-repository ppa:rebuntu16/other-stuff
+
+> sudo apt-get update
+
+> sudo apt-get install xfce-theme-manager
+
+这回随安装包附带一个Cario-Dock应用,模仿OSX的那种效果,功能强大,效果很好.
+
+至此,我就先把Xfce当做主力桌面进行使用了,希望不再遇到假死的问题.
