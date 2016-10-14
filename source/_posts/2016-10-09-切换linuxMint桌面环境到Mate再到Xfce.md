@@ -1,5 +1,6 @@
 ---
 title: 切换linuxMint桌面环境到Mate再到Xfce
+subtitle: Switch desktop enviroment from Cinnamon to Xfce
 date: 2016-10-09 18:08:57
 header-img: 'http://7xo9xp.com1.z0.glb.clouddn.com/xfce_desktop.jpg'
 tags:

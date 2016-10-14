@@ -1,5 +1,6 @@
 ---
 title: windows10+linuxMint 双系统中分区合并的操作记录
+subtitle: Use Gparted to Merge the partition of windows10 to Linux
 date: 2016-09-23 14:48:07
 header-img: 'http://7xo9xp.com1.z0.glb.clouddn.com/header-gparted-records.jpg'
 tags:
