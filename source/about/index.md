@@ -23,7 +23,7 @@ comments: true
 >new week
 > MINA is interesting
 >trump flied~
->couponmagnet:?xt=urn:btih:385A4E53465D3430FB71B2C2638AF6659499EF6D
+>coupon
 >magnet:?xt=urn:btih:385A4E53465D3430FB71B2C2638AF6659499EF6D
 
 
