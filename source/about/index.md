@@ -31,6 +31,7 @@ comments: true
 >ruanyf's two-day jstraining
 >作为一个初级，如何进阶
 >xiaoxu
+>weekend
 
 
 
