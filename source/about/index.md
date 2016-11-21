@@ -31,7 +31,9 @@ comments: true
 >ruanyf's two-day jstraining
 >作为一个初级，如何进阶
 >xiaoxu
->weekend
+>weekend  
+> ts中文网翻译不精准: http://www.tslang.cn/docs/handbook/interfaces.html
+一些对象属性只能在对象刚刚创建的时候修改其值,`刚刚`改为`首次`
 
 
 
