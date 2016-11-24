@@ -35,6 +35,7 @@ comments: true
 > ts中文网翻译不精准: http://www.tslang.cn/docs/handbook/interfaces.html
 一些对象属性只能在对象刚刚创建的时候修改其值,`刚刚`改为`首次`
 >今天提了离职给龙哥
+>想学的东西有好多，nodejs （koa2）、golang、python、TypeScript、angualr2、vue2
 
 
 
