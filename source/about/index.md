@@ -38,6 +38,7 @@ comments: true
 >想学的东西有好多，nodejs （koa2）、golang、python、TypeScript、angualr2、vue2
 >node.js入门  是本好书
 >node.js 版本管理n 更好的安装方式 n-install
+>办理名称，联系了平凡调薪
 
 
 
