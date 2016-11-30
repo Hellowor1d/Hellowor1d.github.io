@@ -39,6 +39,7 @@ comments: true
 >node.js入门  是本好书
 >node.js 版本管理n 更好的安装方式 n-install
 >办理名称，联系了平凡调薪
+>调薪事情无果，已经提交正式离职申请
 
 
 
