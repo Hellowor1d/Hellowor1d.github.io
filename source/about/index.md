@@ -43,6 +43,7 @@ comments: true
 >带着劳动合同来辞职，组长把事情提给了李丽。。。hansome
 >跟13班同学一起聚餐，哈哈
 >完成nodejsBeiginner,但是还有一部分知识点没有明白，比如：tmp/test.png文件的实际存储位置跟show访问的关系
+>杰仔说了Singpore的工作事情
 
 
 
