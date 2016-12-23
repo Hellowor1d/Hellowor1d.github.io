@@ -36,6 +36,10 @@ eg:  docker run ubuntu -t -i /bin/bash   通过镜像运行新的容器
 
 -v [host path]:[absolut container path] ,如果参数指定的不是路径,[Volume](https://docs.docker.com/engine/tutorials/dockervolumes/#/mount-a-host-directory-as-a-data-volume)参数,可以挂载外部文件到容器下
 
+    docker pull <imageName>
+
+eg: docker pull  jenkins  拉取一个远程 `jenkins` 镜像到本地，或者更新`jenkins`镜像
+
     docker ps
 
 eg:  docker ps 列出容器(-a 全部, -l 上一个)    docker rm  删除容器  doceker start/restart  启动容器   docker stop 停止容器
