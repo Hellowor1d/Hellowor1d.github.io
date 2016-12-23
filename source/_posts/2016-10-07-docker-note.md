@@ -15,6 +15,10 @@ date: 2016-10-07 23:16:33
     docker run
 
 eg:  docker run ubuntu -t -i /bin/bash   通过镜像运行新的容器
+```
+    docker run -t -i -p 3000:8080 docker-fe /bin/sh
+    host 3000端口绑定 容器中 8080,可通过host 3000访问8080内容
+```
 
 -t 运行一个终端
 
@@ -54,10 +58,15 @@ eg: docker push hellowor1d/docker-fe 发布镜像到  docker hub
     docker rmi
 
 eg: docker rmi ubuntu 删除镜像
-```
-    docker run -t -i -p 3000:8080 docker-fe /bin/sh
-    host 3000端口绑定 容器中 8080,可通过host 3000访问8080内容
-```
+
 docker start 容器之后,继续通过 docker attach 把后台运行的容器挂载到前台展现
+
+    docker start  启动一个/多个停止运行了的容器
+
+    docker restart  重启一个正在运行中的容器
+
+    docker stop 正常停止一个/多个运行中的容器
+     
+    docker kill 中止一个/多个正在运行中的容器
 
     docker top 查看容器中的进程
