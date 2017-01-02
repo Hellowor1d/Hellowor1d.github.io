@@ -60,4 +60,5 @@ comments: true
 >今天学习调用了一次 $q.defer()  延时调用的 promise 方法，解决了需要校验完手机号码再提交表单的异步 问题
 >喀什之行前一天，老爸也要去上海，大家都好好努力
 >实验楼（web ide是基于codebox，虚拟Linux桌面/在线虚拟机是docker+guacamole [叶向宇的分析 ](https://www.zhihu.com/people/xi-li-yixia-xia/activities)）, coding, 牛客网, 计蒜客 中的技术运用都比较新颖
->喀什之行结束，到家了
+>喀什之行结束，到家了.
+>各种办证的过程真是痛苦
