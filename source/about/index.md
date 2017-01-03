@@ -62,3 +62,4 @@ comments: true
 >实验楼（web ide是基于codebox，虚拟Linux桌面/在线虚拟机是docker+guacamole [叶向宇的分析 ](https://www.zhihu.com/people/xi-li-yixia-xia/activities)）, coding, 牛客网, 计蒜客 中的技术运用都比较新颖
 >喀什之行结束，到家了.
 >各种办证的过程真是痛苦
+>2017上班第一天
