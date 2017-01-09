@@ -65,4 +65,6 @@ comments: true
 >2017上班第一天
 >离职审批终于动了一格
 >办理居住证的一天，转了一天；体验了一下rmbp 13 15的重量
+>2007.1.9 iPhone came ! 2017.1.9 mini program came!
+
 
