@@ -69,4 +69,5 @@ comments: true
 >假期第一天，税务局
 >大扫除，学习
 >happy birthday tomorrow nn
+>new study plan for ng2
 
