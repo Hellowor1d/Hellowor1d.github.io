@@ -75,3 +75,5 @@ comments: true
 > Spring Festival
 > 念NN，初一
 > 出游一趟，回来已经初十一了
+> 了解学习Rxjs，可以作为Promise的工具库进行使用，数据流思想。webcomponents是一种对于浏览器提出的规范。Polymer是一个针对元素级别的框架，跟angular2
+> 有交集，但是并不冲突。函数柯里化很有用，正在学习，然后准备看新的面试题以及使用ES6练习代码
