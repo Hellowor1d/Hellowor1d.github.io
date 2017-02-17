@@ -77,3 +77,5 @@ comments: true
 > 出游一趟，回来已经初十一了
 > 了解学习Rxjs，可以作为Promise的工具库进行使用，数据流思想。webcomponents是一种对于浏览器提出的规范。Polymer是一个针对元素级别的框架，跟angular2
 > 有交集，但是并不冲突。函数柯里化很有用，正在学习，然后准备看新的面试题以及使用ES6练习代码
+> 学习Python3，数据类型：list tuple dict set 条件判断 for循环 while循环 递归函数  灵活的参数写法 以及一些高级特性 切片 迭代 生成器geneator(原来ES6新加的
+> 东西，python早就有了)可以被next()函数调用并不断返回下一个值的对象称为迭代器：Iterator。可以直接作用于for循环的对象统称为可迭代对象：Iterable。
