@@ -62,31 +62,31 @@ sidebar-avatar: img/jilaiye.jpg      # use absolute URL, seeing it's used in bot
 
 # Featured Tags
 featured-tags: true                     # whether or not using Feature-Tags
-featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+featured-condition-size: 0              # A tag will be featured if the size of it is more than this condition value
 
 
 # Friends
-friends: [
-    {
-        title: "Kaijun's Blog",
-        href: "http://blog.kaijun.rocks"
-    },{
-        title: "Hux Blog",
-        href: "http://huangxuan.me"
-    },{
-        title: "Foo",
-        href: "#"
-    },{
-        title: "Bar",
-        href: "#"
-    },{
-        title: "Example Friends",
-        href: "#"
-    },{
-        title: "It helps SEO",
-        href: "#"
-    }
-]
+# friends: [
+#     {
+#         title: "Kaijun's Blog",
+#         href: "http://blog.kaijun.rocks"
+#     },{
+#         title: "Hux Blog",
+#         href: "http://huangxuan.me"
+#     },{
+#         title: "Foo",
+#         href: "#"
+#     },{
+#         title: "Bar",
+#         href: "#"
+#     },{
+#         title: "Example Friends",
+#         href: "#"
+#     },{
+#         title: "It helps SEO",
+#         href: "#"
+#     }
+# ]
 
 
 #Custom Setting End
