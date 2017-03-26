@@ -88,3 +88,4 @@ comments: true
 > absolute 是最棘手的position值。 absolute 与 fixed 的表现类似，但是它不是相对于视窗而是相对于最近的“positioned”祖先元素。如果绝对定位（position属性的值为absolute）的元素没有“positioned”祖先元素，那么它是相对于文档的 body 元素，并且它会随着页面滚动而移动。记住一个“positioned”元素是指 position 值不是 static 的元素。
 >想要和优秀的人做朋友，做同事，那就只能努力变得比他们更优秀！
 >JavaScript高级程序设计阅读
+>Ajax,正则表达式，HTTP请求头，响应头,jQuery复习
