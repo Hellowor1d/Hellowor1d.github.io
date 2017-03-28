@@ -92,7 +92,7 @@ a img:focus {
   cursor: zoom-in;
 }
 article {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 blockquote {
   /*hux原有配色*/
