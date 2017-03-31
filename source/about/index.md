@@ -90,3 +90,4 @@ comments: true
 >JavaScript高级程序设计阅读
 >Ajax,正则表达式，HTTP请求头，响应头,jQuery复习
 >中级js，迈向高级
+>学习搭配使用已经了解过的工具综合构建新项目！angular4 + ts + webpack2 + (gulp) + koa2 + vue2 + vue* + element-ui + pug + mongodb 构建一个模仿项目
