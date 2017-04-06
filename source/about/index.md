@@ -92,3 +92,4 @@ comments: true
 >中级js，迈向高级
 >学习搭配使用已经了解过的工具综合构建新项目！angular4 + ts + webpack2 + (gulp) + koa2 + vue2 + vue* + element-ui + pug + mongodb 构建一个模仿项目
 >项目多开：1.N-blog-study.学习常规的nodejs使用，以及express框架的一些用法（体会mongoglass的优势）；2.通过jianshu-stduy项目继续巩固angualr4,vue2的用法，以及webpack配置，express,并在后期更换为koa2,并且vue2 angular4前后端交换实现，mongodb作为数据库3.每学到新知识点做好记录
+>监控方案拟定
