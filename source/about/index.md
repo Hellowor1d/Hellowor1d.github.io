@@ -94,3 +94,4 @@ comments: true
 >项目多开：1.N-blog-study.学习常规的nodejs使用，以及express框架的一些用法（体会mongoglass的优势）；2.通过jianshu-stduy项目继续巩固angualr4,vue2的用法，以及webpack配置，express,并在后期更换为koa2,并且vue2 angular4前后端交换实现，mongodb作为数据库3.每学到新知识点做好记录
 >监控方案拟定
 > nodejs踩坑：相对路径的写法，比如`./`和`../`在 require() 中使用是跟 __dirname 的效果相同，不会因为启动脚本的目录不一样而改变，在其他情况下（比如fs.readFile()中）跟 process.cwd() 效果相同，是相对于启动脚本所在目录的路径。一定要注意区分，注意在上面说的其他情况下使用绝对路径写法
+> kov-blog is really wonderful
