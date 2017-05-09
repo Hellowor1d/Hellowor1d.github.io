@@ -101,3 +101,4 @@ comments: true
 > 研究:n个数的和为m的算法实现，解析时、空间复杂度
 > 连续赋值问题中，a.x=a={n:2}中，"."操作符优先级高
 > 忙碌的一天，开项目第一天，夜深方归
+> 敏捷开发模式；revealjs / slides.com / 准备form 分享内容 / expres , koa2 / vue2
