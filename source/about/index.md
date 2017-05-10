@@ -102,3 +102,4 @@ comments: true
 > 连续赋值问题中，a.x=a={n:2}中，"."操作符优先级高
 > 忙碌的一天，开项目第一天，夜深方归
 > 敏捷开发模式；revealjs / slides.com / 准备form 分享内容 / expres , koa2 / vue2
+> 2.1.4 开发完毕，明天开始PPT优化
