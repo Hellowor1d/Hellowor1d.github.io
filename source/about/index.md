@@ -1,10 +1,11 @@
 ---
-layout: "about"
-title: "About"
-date: 2016-04-21 04:48:33
-description: "Hey, this is Hellowor1d."
-header-img: "/img/about-bg.jpg"
+layout: about
+title: About
+date: {}
+description: 'Hey, this is Hellowor1d.'
+header-img: /img/about-bg.jpg
 comments: true
+published: true
 ---
 
 
@@ -103,3 +104,4 @@ comments: true
 > 忙碌的一天，开项目第一天，夜深方归
 > 敏捷开发模式；revealjs / slides.com / 准备form 分享内容 / expres , koa2 / vue2
 > 2.1.4 开发完毕，明天开始PPT优化
+> 开始搭建属于自己的阿里云服务器，哈哈哈
