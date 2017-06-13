@@ -105,3 +105,7 @@ published: true
 > 敏捷开发模式；revealjs / slides.com / 准备form 分享内容 / expres , koa2 / vue2
 > 2.1.4 开发完毕，明天开始PPT优化
 > 开始搭建属于自己的阿里云服务器，哈哈哈
+***
+有点新想法：解决工作中平时出现的重复性较多的情景任务，
+1. 添加gitlab机器人，解决开发时仓库更新代码还要在群里通知的重复劳动
+2. 正在尝试解决`git push` 之前都要进行`git pull`的操作，目前思路：git hooks - pre-push 深度方案：学习shell脚本，并考察通过python脚本来完成此事情的可能性
