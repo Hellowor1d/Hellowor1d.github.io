@@ -121,3 +121,4 @@ published: true
 写移动端适配的页面
 sewise播放器，研究SDK
 tal-player 修改数据上报内容，跨域实现数据上报
+上线至深夜，开发web-sdk 的播放器，改来改去做兼容，预备做flash提示优化
