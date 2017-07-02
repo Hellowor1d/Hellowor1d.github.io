@@ -124,3 +124,4 @@ tal-player 修改数据上报内容，跨域实现数据上报
 上线至深夜，开发web-sdk 的播放器，改来改去做兼容，预备做flash提示优化
 配置dev-ts工作环境，typings已经不推荐使用，通过 `npm install @types/jquery -g`  `npm install @types/node`等安装所需类型，`npm i typescript -g `安装的是ts 的编译工具，这个不是vscode 集成的，集成的只有语法检查功能。tsconfig.json 中module设置为‘es2015’，解决模块打包不匹配的问题。为了同时精简命令启动项目，在package,json中配置了， "start": "cd webroot-dev && concurrent --kill-others \"npm run tsc:w\" \"node app\" \"node bs\"",然后可以快速启动项目，并且执行bs.js,以及tsc -w ， 还在gitignore中设置相关项目忽略，以免对dev分支产生影响。这之后就可以用ES6语法来写代码了。
 搞定logs冲突问题
+nodemon 安装，发现一个小问题，当nodemon 在package.json中的scripts中想要执行app文件时，需要填写完整的文件名：`nodemon app.js`
