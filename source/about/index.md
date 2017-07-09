@@ -126,3 +126,4 @@ tal-player 修改数据上报内容，跨域实现数据上报
 搞定logs冲突问题
 nodemon 安装，发现一个小问题，当nodemon 在package.json中的scripts中想要执行app文件时，需要填写完整的文件名：`nodemon app.js`
 CSS调试，积累经验中...
+做了一盘八爪一锅鲜，新菜品，然而牙疼。。。
