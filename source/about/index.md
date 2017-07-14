@@ -137,3 +137,4 @@ CSS调试，积累经验中...
 做了一盘八爪一锅鲜，新菜品，然而牙疼。。。
 css 做官网~(⊙o⊙)哦
 add earth animation , practice css 
+lalala~ 折腾框架写个表格vue axios created(){getData()} 
