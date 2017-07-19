@@ -139,3 +139,4 @@ css 做官网~(⊙o⊙)哦
 add earth animation , practice css 
 lalala~ 折腾框架写个表格vue axios created(){getData()} 
 最近考虑的事情：baidu:lavas pwa;vue2 : vue-music eslint (standard airbnb);table:vue2 elemetn-ui vue-axios bootstrap-vue ; angular2 primeng/primeface 
+官网修改，赫赫~🙃
