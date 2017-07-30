@@ -141,3 +141,4 @@ lalala~ 折腾框架写个表格vue axios created(){getData()}
 最近考虑的事情：baidu:lavas pwa;vue2 : vue-music eslint (standard airbnb);table:vue2 elemetn-ui vue-axios bootstrap-vue ; angular2 primeng/primeface 
 官网修改，赫赫~🙃
 削肉割骨，骨肉分离--形容的就是拔智齿啊！比预想的要惨烈多了
+新的一周，新的开始，努力！
