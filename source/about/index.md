@@ -145,3 +145,4 @@ lalala~ 折腾框架写个表格vue axios created(){getData()}
 新官网终于完成了，踩了很多坑，积累了很多经验；然后，繁重而猛烈的148又开始了，排期，拆分，实在好忙~都没时间搞自己项目了
 今天一定能搞定 webengine 替换的主要流程
 pdf调试忙如何出一份能给学生留下印象的校招面试题，是我今天在思考的事情
+Fetch is a better method than Ajax
