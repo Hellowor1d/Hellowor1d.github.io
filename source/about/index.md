@@ -147,3 +147,4 @@ lalala~ 折腾框架写个表格vue axios created(){getData()}
 pdf调试忙如何出一份能给学生留下印象的校招面试题，是我今天在思考的事情
 Fetch is a better method than Ajax
 fighting for the Nova and my FE engineer career
+nova beginning
