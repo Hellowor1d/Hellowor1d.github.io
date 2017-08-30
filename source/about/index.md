@@ -150,3 +150,4 @@ fighting for the Nova and my FE engineer career
 nova beginning
 coding at home , work for company
 necklace for her
+test cherry-pick feature, but failed
