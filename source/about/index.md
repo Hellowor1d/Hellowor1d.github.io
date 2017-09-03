@@ -151,3 +151,4 @@ nova beginning
 coding at home , work for company
 necklace for her
 test cherry-pick feature, but failed
+三天两夜，青苗集训，^_^
