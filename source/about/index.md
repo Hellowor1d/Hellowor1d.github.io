@@ -155,3 +155,4 @@ test cherry-pick feature, but failed
 nova 封版,夜已深
 一如前端深似海，从此明月化斜阳
 browser-sync 比想象得更强大，weinre 功能很实用
+nova上线之夜
