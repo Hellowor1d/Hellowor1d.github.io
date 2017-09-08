@@ -153,3 +153,5 @@ necklace for her
 test cherry-pick feature, but failed
 三天两夜，青苗集训，^_^
 nova 封版,夜已深
+一如前端深似海，从此明月化斜阳
+browser-sync 比想象得更强大，weinre 功能很实用
