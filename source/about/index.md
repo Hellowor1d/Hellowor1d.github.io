@@ -165,4 +165,4 @@ gly鱼儿耍~
 真的要学会说不啊，唉，累的都是自己
 感觉放假了，久违的感觉
 久违的轻松周末，学习一下nuxt
-practicp for prose.io
+practice for prose.io
