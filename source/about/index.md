@@ -203,3 +203,4 @@ exciting pointer-events
 staty at night 
 new pc classroom get local and remote video stream successfully
 websocket socket socket.io
+cut finger
