@@ -213,3 +213,4 @@ prose.io is a good tool for github
 
 原来今天万圣节
 Thanksgiving Day
+del tampermonkey extension from chrome
