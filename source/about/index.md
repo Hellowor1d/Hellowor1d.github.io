@@ -220,3 +220,4 @@ canvas path2d
 how to dive into your job always ?
 798
 add new feature for 51 plan
+reset clock, when to reset career?
