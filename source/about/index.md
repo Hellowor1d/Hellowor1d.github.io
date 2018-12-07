@@ -221,3 +221,4 @@ how to dive into your job always ?
 798
 add new feature for 51 plan
 reset clock, when to reset career?
+read juejin : meta, async, promise, process.nextTick, setiTiemout, setInterval , EventLoop, EventQueue. js run order
