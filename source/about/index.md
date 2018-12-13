@@ -222,4 +222,5 @@ how to dive into your job always ?
 add new feature for 51 plan
 reset clock, when to reset career?
 read juejin : meta, async, promise, process.nextTick, setiTiemout, setInterval , EventLoop, EventQueue. js run order
-MVVM 双向绑定， Object.defineProperty   Proxy 
+MVVM 双向绑定， Object.defineProperty   Proxy
+ashamed error : JSON.stringify    &&  
