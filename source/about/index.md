@@ -225,3 +225,4 @@ read juejin : meta, async, promise, process.nextTick, setiTiemout, setInterval ,
 MVVM 双向绑定， Object.defineProperty   Proxy
 ashamed error : JSON.stringify    &&  
 Dingding RPC ts Rxjs NW.js cef C++
+save yourself by hard working
