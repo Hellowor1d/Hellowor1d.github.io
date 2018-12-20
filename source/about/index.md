@@ -226,4 +226,5 @@ MVVM 双向绑定， Object.defineProperty   Proxy
 ashamed error : JSON.stringify    &&  
 Dingding RPC ts Rxjs NW.js cef C++
 save yourself by hard working
-lear nest.js typescript angular react rxjs mvvm mvc 
+lear nest.js typescript angular react rxjs mvvm mvc
+51 xes decorator class (target)  class property (target name descriptor)
