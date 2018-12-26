@@ -229,3 +229,4 @@ save yourself by hard working
 lear nest.js typescript angular react rxjs mvvm mvc
 51 xes decorator class (target)  class property (target name descriptor)
 代桥·~
+whether it's right all in work? how about split some of daytime to personal growth？
