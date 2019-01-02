@@ -230,3 +230,4 @@ lear nest.js typescript angular react rxjs mvvm mvc
 51 xes decorator class (target)  class property (target name descriptor)
 代桥·~
 whether it's right all in work? how about split some of daytime to personal growth？
+非京籍留京升学，提前思考了一下，确实好辛苦
