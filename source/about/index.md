@@ -234,3 +234,4 @@ whether it's right all in work? how about split some of daytime to personal grow
 到底该怎样度过这一生，诸多磨难，两难选择。
 try coding web IDE alias Cloud Studio base on monaco editor
 量子力学，量子纠缠，量子叠加，薛定谔的猫，黑体辐射，紫外灾难，迈克尔逊实验，平行空间，纠缠态坍塌，光的波粒二象性的本质
+sunday ： have a try for clodu studio designed by coding
