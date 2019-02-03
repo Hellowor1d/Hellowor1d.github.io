@@ -240,3 +240,4 @@ learn-nest , nest.js is spring style nodejs
 wonderful reocrd and replay library for web : rrweb
 FRONTENDARMORY
 have a try for deepfake、 faceswap， docker nvida gui
+train faceswap for 4 hours 
