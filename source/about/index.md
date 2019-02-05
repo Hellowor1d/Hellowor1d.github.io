@@ -242,3 +242,4 @@ FRONTENDARMORY
 have a try for deepfake、 faceswap， docker nvida gui
 train faceswap for 4 hours 
 mac screen capture : command + shift + 3 , command + shift + 4
+beginning of the new year 
