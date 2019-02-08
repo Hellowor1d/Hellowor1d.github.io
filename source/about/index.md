@@ -244,3 +244,4 @@ train faceswap for 4 hours
 mac screen capture : command + shift + 3 , command + shift + 4
 beginning of the new year 
 first snow storm in 2019
+2.8 值班
