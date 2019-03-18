@@ -251,3 +251,4 @@ vuepress doc for zby-live-sdk repo
 eslint vetur prettier
 意图 Algorithm
 typescript algorithms
+察言观色，待人接物
