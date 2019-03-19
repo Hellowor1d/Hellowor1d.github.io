@@ -252,3 +252,4 @@ eslint vetur prettier
 意图 Algorithm
 typescript algorithms
 察言观色，待人接物
+真实自我，坦然面对
