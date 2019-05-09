@@ -265,3 +265,4 @@ dotfiles
 liwei wedding
 golang ts rust
 jupyter colab google golang
+notion wonderful new record tool
