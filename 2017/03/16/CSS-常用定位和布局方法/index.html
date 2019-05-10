@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="前端博客 javaScript Nodejs 技术 生活 Todo">
+    <meta name="keyword" content="undefined">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          CSS 常用定位和布局方法 - 犀利一下下的博客 | Hellowor1d&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://hellowor1d.github.io/2017/03/16/CSS-常用定位和布局方法/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hellowor1d&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://hellowor1d.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('http://7xo9xp.com1.z0.glb.clouddn.com/image/bg/desktop.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#CSS" title="CSS">CSS</a>
+                        
+                    </div>
+                    <h1>CSS 常用定位和布局方法</h1>
+                    <h2 class="subheading">CSS position &amp; Layout</h2>
+                    <span class="meta">
+                        Posted by 犀利一下下 on
+                        2017-03-16
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="CSS-Layout"><a href="#CSS-Layout" class="headerlink" title="CSS-Layout"></a>CSS-Layout</h1><p>旨在打造详尽的前端布局代码学习库（自从用了框架开发，CSS生疏了不少，所以开这个库练练手）</p>
+<h2 id="常见定位方法"><a href="#常见定位方法" class="headerlink" title="常见定位方法"></a>常见定位方法</h2><h3 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h3><p>子元素为行内元素还是块状元素，宽度一定还是宽度未定，采取的布局方案不同。</p>
+<p>方案选择基本思路：<br>子元素为</p>
+<blockquote>
+<ul>
+<li>行内元素：对父元素设置<code>text-align:center</code>;</li>
+<li>定宽块状元素: 设置左右<code>margin</code>值为<code>auto</code>;</li>
+<li>不定宽块状元素: 设置子元素为<code>display:inline</code>,然后在父元素上设置<code>text-align:center</code>;</li>
+<li>通用方案: flex布局，对父元素设置<code>display:flex;justify-content:center</code>;</li>
+</ul>
+</blockquote>
+<p>常用方法举例：</p>
+<blockquote>
+<p><strong>NOTE</strong>:为了统一展示效果，在以下实例代码中对父子元素设置了固定宽高，实际可以不设置，由子元素内容来控制其宽度</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>方法一：<a href="https://hellowor1d.github.io/cssLayout/app/居中布局/居中布局-水平居中（text-align%20%2B%20inline-block）.html">text-align + inline-block</a></li>
+</ol>
+</blockquote>
+<p><strong>设置</strong>：对父元素设置<code>text-align:center</code>(将会对行内元素起作用)，子元素设置<code>display:inline-block</code>（兼容IE6、7 时，替换为<code>display:inline;zoom:1;</code>）;</p>
+<p><strong>优点</strong>：兼容性良好</p>
+<p><strong>缺点</strong>： 需要额外代码修复因继承父元素的<code>text-align:center</code>对子元素内容排列造成的影响，如需要添加<code>.child{text-align:left}</code></p>
+<blockquote>
+<ol start="2">
+<li>方法二：<a href="https://hellowor1d.github.io/cssLayout/app/居中布局/居中布局-水平居中（table%20%2B%20margin）.html">table + margiin</a></li>
+</ol>
+</blockquote>
+<p><strong>设置</strong>：对子元素设置<code>display:table</code>(此元素会作为块级表格来显示，元素表现类似block，但是宽度跟随内容宽度)（兼容IE6、7 时，替换<code>div</code>结构为<code>table</code>结构即可）;</p>
+<p><strong>优点</strong>： 只需要对子元素进行设置</p>
+<p><strong>缺点</strong>： 向下兼容IE6、7时，需要更改html结构</p>
+<blockquote>
+<ol start="3">
+<li>方法三：<a href="https://hellowor1d.github.io/cssLayout/app/居中布局/居中布局-水平居中（absolute%20%2B%20transform）.html">absolute + transform</a></li>
+</ol>
+</blockquote>
+<p><strong>设置</strong>：对父元素设置<code>position:realatve</code>(使其作为参照物)，对子元素设置<code>position:absolute;left:50%</code>(绝对定位元素的宽度也随内容而定)，然后对子元素设置<code>transform:translateX(-50%)</code>（兼容IE6、7 时，替换<code>div</code>结构为<code>table</code>结构即可）;</p>
+<p><strong>优点</strong>： 居中元素不会对其他元素造成影响</p>
+<p><strong>缺点</strong>：<code>transform</code>不兼容低版本IE</p>
+<blockquote>
+<ol start="4">
+<li>方法四：<a href="https://hellowor1d.github.io/cssLayout/app/居中布局/居中布局-水平居中（flex%20%2B%20justify-content）.html">flex + justify-content</a></li>
+</ol>
+</blockquote>
+<p><strong>设置</strong>：对父元素设置<code>display:flex;justify-content:center</code>(这样其内部的元素会变为<code>align-items</code>)，<code>align-items</code>的宽度默认为<code>auto</code>，所以跟随内容宽度变化，继而<code>justify-content:center</code>属性会使子元素居中</p>
+<p><strong>优点</strong>：只需要对父元素进行设置</p>
+<p><strong>缺点</strong>：<code>flex</code>不兼容低版本IE</p>
+<h3 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h3><p>垂直居中对于子元素是单行内联文本、多行内联文本以及块状元素采用的方案是不同的。</p>
+<blockquote>
+<ul>
+<li>父元素一定，子元素为单行内联文本：设置父元素的<code>height</code>等于行高<code>line-height</code></li>
+<li>父元素一定，子元素为多行内联文本：设置父元素的<code>display:table-cell</code>或<code>inline-block</code>，再设置<code>vertical-align:middle</code>;</li>
+<li>块状元素:设置子元素<code>position:absolute</code> 并设置<code>top、bottom</code>为0，父元素要设置定位为static以外的值，<code>margin:auto</code>;</li>
+<li>通用方案: flex布局，给父元素设置<code>{display:flex; align-items:center;}</code></li>
+</ul>
+</blockquote>
+<h2 id="常用方法举例："><a href="#常用方法举例：" class="headerlink" title="常用方法举例："></a>常用方法举例：</h2><blockquote>
+<ol>
+<li>方法一：<a href="https://hellowor1d.github.io/cssLayout/app/居中布局/居中布局-垂直居中（table-cell%20%2B%20vertical-align）.html">table-cell + vertical-align</a></li>
+</ol>
+</blockquote>
+<p><strong>设置</strong>：子容器高度不固定，对父元素设置<code>display:table-cell</code>(parent变为单元格，)，继续设置<code>vertical-align:center</code>（使inline元素垂直居中）;</p>
+<p><strong>优点</strong>：兼容性好（支持 IE 8）</p>
+<p><strong>缺点</strong>：IE 8 以下版本需要调整页面结构至 table</p>
+<blockquote>
+<ol start="2">
+<li>方法二：<a href="https://hellowor1d.github.io/cssLayout/app/居中布局/居中布局-垂直居中（absolute%20%2B%20transform）.html">absolute + transform</a></li>
+</ol>
+</blockquote>
+<p><strong>设置</strong>：对父元素设置<code>position:realatve</code>(使其作为参照物)，对子元素设置<code>position:absolute;left:50%</code>(绝对定位元素的宽度也随内容而定)，然后对子元素设置<code>transform:translateY(-50%)</code>（兼容IE6、7 时，替换<code>div</code>结构为<code>table</code>结构即可）;</p>
+<p><strong>优点</strong>： 居中元素不会对其他元素造成影响</p>
+<p><strong>缺点</strong>：<code>transform</code>不兼容低版本IE</p>
+<blockquote>
+<ol start="3">
+<li>方法三：<a href="https://hellowor1d.github.io/cssLayout/app/居中布局/居中布局-垂直居中（flex%20%2B%20align-items）.html">flex + align-items</a></li>
+</ol>
+</blockquote>
+<p><strong>设置</strong>：对父元素设置<code>display:flex</code>(align-items默认属性为stretch),继而设置<code>align-items:center</code>即可;</p>
+<p><strong>优点</strong>： 只需要对父元素进行设置</p>
+<p><strong>缺点</strong>：<code>flex align-items</code>不兼容低版本IE</p>
+<h2 id="水平居中且垂直居中"><a href="#水平居中且垂直居中" class="headerlink" title="水平居中且垂直居中"></a>水平居中且垂直居中</h2><p>结合以上介绍到的水平和垂直居中方法进行设置</p>
+<blockquote>
+<ol>
+<li>方法一：<a href="https://hellowor1d.github.io/cssLayout/app/居中布局/居中布局-完全居中（text-align%20%2B%20inline-block%20%2B%20table-cell%20%2B%20vertical-align）.html">text-align + inline-block + table-cell + vertical-align</a></li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>方法二：<a href="https://hellowor1d.github.io/cssLayout/app/居中布局/居中布局-完全居中（absolute%20%2B%20transform）.html">absolute + transform</a></li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>方法三：<a href="https://hellowor1d.github.io/cssLayout/app/居中布局/居中布局-完全居中（flex%20%2B%20justify-content%20%2B%20align-items）.html">flex + justify-content + align-items</a></li>
+</ol>
+</blockquote>
+<h2 id="多列布局"><a href="#多列布局" class="headerlink" title="多列布局"></a>多列布局</h2><p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/CSSLayout/float+margin-csslayout.jpg" alt="效果图"></p>
+<h3 id="一列定宽，一列自适应宽度"><a href="#一列定宽，一列自适应宽度" class="headerlink" title="一列定宽，一列自适应宽度"></a>一列定宽，一列自适应宽度</h3><p>1.一列定宽，一列自适应宽度（float+margin）</p>
+<p><a href="https://hellowor1d.github.io/cssLayout/app/多列布局/一列定宽一列自适应（%20float%20%2B%20margin%20）.html">预览</a>   <a href="https://github.com/Hellowor1d/cssLayout/blob/gh-pages/app/%E5%A4%9A%E5%88%97%E5%B8%83%E5%B1%80/%E4%B8%80%E5%88%97%E5%AE%9A%E5%AE%BD%E4%B8%80%E5%88%97%E8%87%AA%E9%80%82%E5%BA%94fix%EF%BC%88float%20%2B%20margin%20%EF%BC%89.html" target="_blank" rel="noopener">源码</a></p>
+<p>2.<strong>一列定宽，一列自适应宽度（float+margin）fix 改良版</strong></p>
+<p><a href="https://hellowor1d.github.io/cssLayout//app/多列布局/一列定宽一列自适应fix（float%20%2B%20margin%20）.html">预览</a>    <a href="https://github.com/Hellowor1d/cssLayout/blob/gh-pages/app/%E5%A4%9A%E5%88%97%E5%B8%83%E5%B1%80/%E4%B8%80%E5%88%97%E5%AE%9A%E5%AE%BD%E4%B8%80%E5%88%97%E8%87%AA%E9%80%82%E5%BA%94fix%EF%BC%88float%20%2B%20margin%20%EF%BC%89.html" target="_blank" rel="noopener">源码</a></p>
+<blockquote>
+<p>NOTE：此方法不会存在 IE 6 中3像素的 BUG，但 .left 不可选择， 需要设置 .left {position: relative} 来提高层级。 此方法可以适用于多版本浏览器（包括 IE6）。缺点是多余的 HTML 文本结构。</p>
+</blockquote>
+<p>3.一列定宽，一列自适应宽度( float + overflow )</p>
+<p><a href="https://hellowor1d.github.io/cssLayout/app/多列布局/一列定宽一列自适应fix（float%20%2B%20margin%20）.html">预览</a>    <a href="https://github.com/Hellowor1d/cssLayout/blob/gh-pages/app/%E5%A4%9A%E5%88%97%E5%B8%83%E5%B1%80/%E4%B8%80%E5%88%97%E5%AE%9A%E5%AE%BD%E4%B8%80%E5%88%97%E8%87%AA%E9%80%82%E5%BA%94%EF%BC%88float%20%2B%20overflow%20%EF%BC%89.html" target="_blank" rel="noopener">源码</a></p>
+<p>4.一列定宽，一列自适应宽度( table + table-cell )</p>
+<p><a href="https://hellowor1d.github.io/cssLayout/app/多列布局/一列定宽一列自适应（%20table%20%2B%20table-cell%20）.html">预览</a>    <a href="https://github.com/Hellowor1d/cssLayout/blob/gh-pages/app/%E5%A4%9A%E5%88%97%E5%B8%83%E5%B1%80/%E4%B8%80%E5%88%97%E5%AE%9A%E5%AE%BD%E4%B8%80%E5%88%97%E8%87%AA%E9%80%82%E5%BA%94%EF%BC%88%20table%20%2B%20table-cell%20%EF%BC%89.html" target="_blank" rel="noopener">源码</a></p>
+<p>5.一列定宽，一列自适应宽度( flex )</p>
+<p><a href="https://hellowor1d.github.io/cssLayout/app/多列布局/一列定宽一列自适应（%20flex%20）.html">预览</a>    <a href="https://github.com/Hellowor1d/cssLayout/blob/gh-pages/app/%E5%A4%9A%E5%88%97%E5%B8%83%E5%B1%80/%E4%B8%80%E5%88%97%E5%AE%9A%E5%AE%BD%E4%B8%80%E5%88%97%E8%87%AA%E9%80%82%E5%BA%94%EF%BC%88%20flex%20%EF%BC%89.html" target="_blank" rel="noopener">源码</a></p>
+<h3 id="多列定宽，一列自适应宽度"><a href="#多列定宽，一列自适应宽度" class="headerlink" title="多列定宽，一列自适应宽度"></a>多列定宽，一列自适应宽度</h3><p>基于上面对于一列定宽一列自适应的需求实现，多列定宽只需要在原有一列定宽的基础上添加新的列即可，最后的列依然会自适应剩余宽度。</p>
+<p>以 flex 的实现为基础可以作如下改造：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>.left<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>左侧定宽<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--添加了一列，CSS与 .left 公用--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"center"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>.center<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>第二列定宽<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>.content<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>flex：1 充满剩余空间，形成自适应效果，不设置的话默认为内容宽度<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.parent</span> &#123;</span></span><br><span class="line"><span class="undefined">        display: flex;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    </span></span><br><span class="line"><span class="css">    <span class="selector-class">.left</span>,<span class="selector-class">.center</span> &#123;</span></span><br><span class="line"><span class="undefined">        width: 300px;</span></span><br><span class="line"><span class="undefined">        height: 500px;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">margin-right</span><span class="selector-pseudo">:10px</span>;</span></span><br><span class="line"><span class="undefined">        background-color: lightblue;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    </span></span><br><span class="line"><span class="css">    <span class="selector-class">.content</span> &#123;</span></span><br><span class="line"><span class="undefined">        flex: 1;</span></span><br><span class="line"><span class="undefined">        height: 500px;</span></span><br><span class="line"><span class="undefined">        background-color: orange;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="多列不定宽，一列自适应宽度"><a href="#多列不定宽，一列自适应宽度" class="headerlink" title="多列不定宽，一列自适应宽度"></a>多列不定宽，一列自适应宽度</h3><p>基于以上一列定宽一列自适应的实现，进行改造，左侧不定宽区域的宽度任意（也可以由内部的内容来决定宽度就可以实现不定宽且自适应），继续增加一列即可变为多列，都很方便实现</p>
+<h2 id="多列等分布局"><a href="#多列等分布局" class="headerlink" title="多列等分布局"></a>多列等分布局</h2><p>1.多列等分布局（float）</p>
+<p><a href="https://hellowor1d.github.io/cssLayout/app/多列布局/多列等分布局（float）.html">预览</a>    <a href="https://github.com/Hellowor1d/cssLayout/blob/gh-pages/app/%E5%A4%9A%E5%88%97%E5%B8%83%E5%B1%80/%E5%A4%9A%E5%88%97%E7%AD%89%E5%88%86%E5%B8%83%E5%B1%80%EF%BC%88float%EF%BC%89.html" target="_blank" rel="noopener">源码</a></p>
+<p>2.多列等分布局（table）</p>
+<p><a href="https://hellowor1d.github.io/cssLayout/app/多列布局/多列等分布局（table）.html">预览</a>    <a href="https://github.com/Hellowor1d/cssLayout/blob/gh-pages/app/%E5%A4%9A%E5%88%97%E5%B8%83%E5%B1%80/%E5%A4%9A%E5%88%97%E7%AD%89%E5%88%86%E5%B8%83%E5%B1%80%EF%BC%88table%EF%BC%89.html" target="_blank" rel="noopener">源码</a></p>
+<p>3.多列等分布局（flex）</p>
+<p><a href="https://hellowor1d.github.io/cssLayout/app/多列布局/多列等分布局（flex）.html">预览</a>    <a href="https://github.com/Hellowor1d/cssLayout/blob/gh-pages/app/%E5%A4%9A%E5%88%97%E5%B8%83%E5%B1%80/%E5%A4%9A%E5%88%97%E7%AD%89%E5%88%86%E5%B8%83%E5%B1%80%EF%BC%88flex%EF%BC%89.html" target="_blank" rel="noopener">源码</a></p>
+<h2 id="多列等高布局"><a href="#多列等高布局" class="headerlink" title="多列等高布局"></a>多列等高布局</h2><p>1.多列等高布局（table）</p>
+<p><a href="https://hellowor1d.github.io/cssLayout/app/多列布局/多列等高布局（table）.html">预览</a>    <a href="https://github.com/Hellowor1d/cssLayout/blob/gh-pages/app/%E5%A4%9A%E5%88%97%E5%B8%83%E5%B1%80/%E5%A4%9A%E5%88%97%E7%AD%89%E9%AB%98%E5%B8%83%E5%B1%80%EF%BC%88table%EF%BC%89.html" target="_blank" rel="noopener">源码</a></p>
+<p>2.多列等高布局（flex）</p>
+<p><a href="https://hellowor1d.github.io/cssLayout/app/多列布局/多列等高布局（flex）.html">预览</a>    <a href="https://github.com/Hellowor1d/cssLayout/blob/gh-pages/app/%E5%A4%9A%E5%88%97%E5%B8%83%E5%B1%80/%E5%A4%9A%E5%88%97%E7%AD%89%E9%AB%98%E5%B8%83%E5%B1%80%EF%BC%88flex%EF%BC%89.html" target="_blank" rel="noopener">源码</a></p>
+<h2 id="全屏布局"><a href="#全屏布局" class="headerlink" title="全屏布局"></a>全屏布局</h2><p>1.弹性全屏布局（position）</p>
+<p><a href="https://hellowor1d.github.io/cssLayout/app/全屏布局/弹性全屏布局（position）.html">预览</a>    <a href="https://github.com/Hellowor1d/cssLayout/blob/gh-pages/app/%E5%85%A8%E5%B1%8F%E5%B8%83%E5%B1%80/%E5%BC%B9%E6%80%A7%E5%85%A8%E5%B1%8F%E5%B8%83%E5%B1%80%EF%BC%88position%EF%BC%89.html" target="_blank" rel="noopener">源码</a></p>
+<p>2.弹性全屏布局（flex）</p>
+<p><a href="https://hellowor1d.github.io/cssLayout/app/全屏布局/弹性全屏布局（flex）.html">预览</a>    <a href="https://github.com/Hellowor1d/cssLayout/blob/gh-pages/app/%E5%85%A8%E5%B1%8F%E5%B8%83%E5%B1%80/%E5%BC%B9%E6%80%A7%E5%85%A8%E5%B1%8F%E5%B8%83%E5%B1%80%EF%BC%88flex%EF%BC%89.html" target="_blank" rel="noopener">源码</a></p>
+<p>3.百分比布局，以上宽度设置更改为百分比即可</p>
+<p>4.根据内容完全自适应，position有限制无法满足，flex可以做到</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2017/05/14/2017-5-14-你好，form/" data-toggle="tooltip" data-placement="top" title="你好，form">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/03/02/常用排序算法的JS实现/" data-toggle="tooltip" data-placement="top" title="常用排序算法的JS实现">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#CSS" title="CSS">CSS</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hellowor1d";
+    var disqus_identifier = "http://hellowor1d.github.io/2017/03/16/CSS-常用定位和布局方法/";
+    var disqus_url = "http://hellowor1d.github.io/2017/03/16/CSS-常用定位和布局方法/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/xi-li-yixia-xia">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy;
+                    <a href="http://hellowor1d.coding.me">Hellowor1d&#39;s Blog </a>
+                    2019
+                 <!--    <br>
+                   Theme by <a href="http://huangxuan.me">Hux</a>
+                   <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                    -->
+
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://hellowor1d.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-81280350-1';
+    var _gaDomain = 'auto';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '8d393b7b03a85328717992b6e2517904';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://hellowor1d.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

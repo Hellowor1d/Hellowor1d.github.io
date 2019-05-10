@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="前端博客 javaScript Nodejs 技术 生活 Todo">
+    <meta name="keyword" content="undefined">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          犀利一下下的博客 | Hellowor1d&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://hellowor1d.github.io/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hellowor1d&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('http://7xo9xp.com1.z0.glb.clouddn.com/image/bg/desktop.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Hellowor1d&#39;s Blog</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading">激情来的时候写代码，灵感来的时候写段子</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+
+                <!-- Main Content -->
+
+
+<div class="post-preview">
+
+    <a href="/2018/03/11/字符串验证包含子串的方法/">
+        <h2 class="post-title">
+            字符串验证包含子串的方法
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            JavaScript（ES6）判断字符串是否包含子字符串的方法ES6 includes
+ES6的字符串新增了includes方法，我们可以用它来判断是否包含子字符串。
+1str.includes(searchString[, position])
+
+searchString：查询的子字符串
+position：可选，开始搜索的位置，默认为0
+
+12'Blue Whale'.includes('......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2018-03-11
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/07/18/Nginx-使用笔记（一）：解决前端跨域问题/">
+        <h2 class="post-title">
+            Nginx使用笔记（一）： 处理前端跨域问题
+        </h2>
+        <h3 class="post-subtitle">
+            Note of Nginx : handle the issue about cross origin
+        </h3>
+        <div class="post-content-preview">
+            Nginx虽然不算新朋友，但也不敢妄称老熟人从第一次接触 Nginx 算起，也是快有两年时间了，之前只是在组长写好的配置下使用它，虽然了解一些它安装和使用，但对于其极其强大且复杂的配置功能项还是有些胆怯的，没有亲自设置过，就没法细细感受它的复杂与强大。一直也想好好学习一下 Nginx 的使用，体会一下它的功能，但都没有比较合适的机会（也许因为自己太懒了，没有主动去开这个坑，看过一些介绍 Ng......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2017-07-18
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/05/14/2017-5-14-你好，form/">
+        <h2 class="post-title">
+            你好，form
+        </h2>
+        <h3 class="post-subtitle">
+            some basic konwledge of form
+        </h3>
+        <div class="post-content-preview">
+            表单操作表单为页面的主要组成部分，其中包含许多的表单控件。用户通过控件提供数据并提交给服务器，服务器则做出相应的处理。而编写一个正常工作的表单需要三个部分：
+
+构建表单
+服务器处理（提供接受数据接口）
+配置表单
+
+构建表单
+
+1234567891011121314151617181920&lt;form&gt;  &lt;p&gt;&lt;label&gt;姓名：&lt;input&gt;&......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2017-05-14
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/03/16/CSS-常用定位和布局方法/">
+        <h2 class="post-title">
+            CSS 常用定位和布局方法
+        </h2>
+        <h3 class="post-subtitle">
+            CSS position & Layout
+        </h3>
+        <div class="post-content-preview">
+            CSS-Layout旨在打造详尽的前端布局代码学习库（自从用了框架开发，CSS生疏了不少，所以开这个库练练手）
+常见定位方法水平居中子元素为行内元素还是块状元素，宽度一定还是宽度未定，采取的布局方案不同。
+方案选择基本思路：子元素为
+
+
+行内元素：对父元素设置text-align:center;
+定宽块状元素: 设置左右margin值为auto;
+不定宽块状元素: 设置子元素为display......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2017-03-16
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/03/02/常用排序算法的JS实现/">
+        <h2 class="post-title">
+            常用排序算法的JS实现
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            作为一个新生代的前端开发工程师，不了解算法怎么行？虽然没有大块儿的时间去读《算法导论》，但是学学常见的一些基本算法还是很有必要的，一来是对自己知识面的小范围扫盲，二来也能更加知道算法的作用，为以后需要深入学习或者使用打好基础。所以，这篇文章用来记录看过的几个算法的简单实现过程还有思路。
+排序算法说明时间复杂度: 一个算法执行所耗费的时间
+空间复杂度: 运行完一个程序所需内存的大小
+假如存在一......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2017-03-02
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/02/28/成为一个有目标的学习者/">
+        <h2 class="post-title">
+            成为一个有目标的学习者
+        </h2>
+        <h3 class="post-subtitle">
+            touch the original intention of study
+        </h3>
+        <div class="post-content-preview">
+            我一个好朋友，他在一家国内较大借贷平台做前端工程师，每天五点起床，早早的到公司，开始读一些经典的前端类的书籍。起的这么早的动力是觉得自己还没能够掌握前端的很多细节，真正在做开发的时候，依然会忘记之前看到过的东西，总是下意识的告诉自己：『可能我还处在入门水平』。
+长此以往，起的越来越早，中午同事休息联机玩儿手游的时候，也不放过时间去看书，压力也随之变大。开始否认自己在转行前端之前的时光，感觉都......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2017-02-28
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/01/05/假如雾霾一直持续/">
+        <h2 class="post-title">
+            假如雾霾一直持续
+        </h2>
+        <h3 class="post-subtitle">
+            Life without if
+        </h3>
+        <div class="post-content-preview">
+            公元2100年10月1日，全国各地纷纷响起防空警报。行人驻足，车辆停驶，人们不约而同地向75年前因雾霾事件影响而丧生的地球同胞沉痛默哀。
+![雾霾成灾][1][1]:https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&amp;quality=100&amp;size=b4000_4000&amp;sec=1483587......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2017-01-05
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/01/04/技术人员的发展之路/">
+        <h2 class="post-title">
+            技术人员的发展之路
+        </h2>
+        <h3 class="post-subtitle">
+            new year's new plan
+        </h3>
+        <div class="post-content-preview">
+            
+摘自左耳朵耗子（陈皓）的酷壳，高屋建瓴，字字珠玑！
+
+2012年的时候写过一篇叫《程序算法与人生选择》的文章，我用算法来类比如何做选择，说白了就是怎么去计算，但是并没有讲程序员可以发展的方向有哪些。 所以，就算是有这些所谓的方法论，我们可能对自己的发展还是会很纠结和无所事从，尤其是人到了30岁，这种彷徨和迷惑越来越重。虽然我之前也写过一篇《编程年龄和编程技能》的文章，但是还是有很多做技术的......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2017-01-04
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/11/30/debugger-method-of-Chrome-Dev-Tools/">
+        <h2 class="post-title">
+            Chrome Dev Tools 中，单步执行调试方法的使用分析
+        </h2>
+        <h3 class="post-subtitle">
+            debugger method of Chrome Dev Tools
+        </h3>
+        <div class="post-content-preview">
+            Chrome Dev Tools 中，单步执行调试方法的使用分析step into就是单步执行，遇到子函数就进入并且继续单步执行；
+step over是在单步执行时，在函数内遇到子函数时不会进入子函数内单步执行，而是将子函数整个执行完再停止，也就是把子函数整个作为一步。
+step out就是但单步执行到子函数内时，用step out就可以执行完子函数余下部分，并返回到上一层函数。
+
+ 　st......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2016-11-30
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/10/13/关于零维空间到多维空间的思考/">
+        <h2 class="post-title">
+            零维空间到多维空间
+        </h2>
+        <h3 class="post-subtitle">
+            Consideration about zero-dimensional space to multidimensional space
+        </h3>
+        <div class="post-content-preview">
+            关于零维空间到多维空间的思考
+一张图弄明白从零维到十维空间今天看了这篇极好的科普文,记录一下自己的想法:
+1.卷曲只是对于所在空间提升维度方法的操作,
+  低纬度空间的卷曲可以表现出部分高一维度空间的特征,
+  并不是自然和长久的规律
+
+
+2.时间维度也可以理解为&quot;可能性维度&quot;,是自然存在的
+说四维空间生物可以看到未来的表述不太准确，四维空间生物只能看到三维空间的过去和现......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2016-10-13
+    </p>
+
+</div>
+<hr>
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+    
+        <li class="next">
+            <a href="/page/2/">Older Posts &rarr;</a>
+        </li>
+    
+</ul>
+
+
+
+                <!-- 如果开启评论功能 -->
+                
+
+            </div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#docker" title="docker" rel="1">docker</a>
+                            
+                        
+                            
+                            <a href="/tags/#HTML" title="HTML" rel="1">HTML</a>
+                            
+                        
+                            
+                            <a href="/tags/#CSS" title="CSS" rel="2">CSS</a>
+                            
+                        
+                            
+                            <a href="/tags/#工具" title="工具" rel="1">工具</a>
+                            
+                        
+                            
+                            <a href="/tags/#随笔" title="随笔" rel="4">随笔</a>
+                            
+                        
+                            
+                            <a href="/tags/#JavaScript" title="JavaScript" rel="9">JavaScript</a>
+                            
+                        
+                            
+                            <a href="/tags/#Web App" title="Web App" rel="1">Web App</a>
+                            
+                        
+                            
+                            <a href="/tags/#导图" title="导图" rel="1">导图</a>
+                            
+                        
+                            
+                            <a href="/tags/#颜色" title="颜色" rel="1">颜色</a>
+                            
+                        
+                            
+                            <a href="/tags/#tag" title="tag" rel="1">tag</a>
+                            
+                        
+                            
+                            <a href="/tags/#linux 笔记" title="linux 笔记" rel="1">linux 笔记</a>
+                            
+                        
+                            
+                            <a href="/tags/#linux" title="linux" rel="1">linux</a>
+                            
+                        
+                            
+                            <a href="/tags/#漫想" title="漫想" rel="1">漫想</a>
+                            
+                        
+                            
+                            <a href="/tags/#调试" title="调试" rel="1">调试</a>
+                            
+                        
+                            
+                            <a href="/tags/#修养" title="修养" rel="1">修养</a>
+                            
+                        
+                            
+                            <a href="/tags/#转载" title="转载" rel="1">转载</a>
+                            
+                        
+                            
+                            <a href="/tags/#Algorithms" title="Algorithms" rel="1">Algorithms</a>
+                            
+                        
+                            
+                            <a href="/tags/#跨域" title="跨域" rel="1">跨域</a>
+                            
+                        
+                            
+                            <a href="/tags/#proxy" title="proxy" rel="1">proxy</a>
+                            
+                        
+                            
+                            <a href="/tags/#nginx" title="nginx" rel="1">nginx</a>
+                            
+                        
+                            
+                            <a href="/tags/#html" title="html" rel="1">html</a>
+                            
+                        
+                            
+                            <a href="/tags/#speech" title="speech" rel="1">speech</a>
+                            
+                        
+                            
+                            <a href="/tags/#慕课网" title="慕课网" rel="1">慕课网</a>
+                            
+                        
+                            
+                            <a href="/tags/#前端工具" title="前端工具" rel="1">前端工具</a>
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+
+                        
+                            <img src="/img/jilaiye.jpg">
+                        
+
+                        
+                            <p>千山磊落收云气，四海光明耀日化</p>
+                        
+
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            
+                            
+                                <li>
+                                    <a target="_blank" href="https://www.zhihu.com/people/xi-li-yixia-xia">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+
+                            
+                                <li>
+                                    <a target="_blank" href="http://weibo.com/Hellowor1d">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+
+                            
+
+                            
+                                <li>
+                                    <a target="_blank" href="https://github.com/Hellowor1d">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+
+
+                            
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Friends Blog -->
+                
+            </div>
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/xi-li-yixia-xia">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy;
+                    <a href="http://hellowor1d.coding.me">Hellowor1d&#39;s Blog </a>
+                    2019
+                 <!--    <br>
+                   Theme by <a href="http://huangxuan.me">Hux</a>
+                   <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                    -->
+
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://hellowor1d.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-81280350-1';
+    var _gaDomain = 'auto';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '8d393b7b03a85328717992b6e2517904';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://hellowor1d.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

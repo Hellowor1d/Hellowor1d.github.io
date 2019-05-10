@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="前端博客 javaScript Nodejs 技术 生活 Todo">
+    <meta name="keyword" content="undefined">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          犀利一下下的博客 | Hellowor1d&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://hellowor1d.github.io/page/2/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hellowor1d&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('http://7xo9xp.com1.z0.glb.clouddn.com/image/bg/desktop.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Hellowor1d&#39;s Blog</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading">激情来的时候写代码，灵感来的时候写段子</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+
+                <!-- Main Content -->
+
+
+<div class="post-preview">
+
+    <a href="/2016/10/10/JavaScript-关于变量和值的小笔记/">
+        <h2 class="post-title">
+            JavaScript 关于变量和值的小笔记
+        </h2>
+        <h3 class="post-subtitle">
+            Interesting konwledge of JavaScript
+        </h3>
+        <div class="post-content-preview">
+            下班路上,在微信群里看到别人讨论的问题，代码如下：
+1234567891011121314151617181920Array.prototype.forEach = function(fn)&#123;    console.log('debugging');    let self = this;    for(let i=0;i&lt;self.length;i++)&#123;    ......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2016-10-10
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/10/09/切换linuxMint桌面环境到Mate再到Xfce/">
+        <h2 class="post-title">
+            切换linuxMint桌面环境到Mate再到Xfce
+        </h2>
+        <h3 class="post-subtitle">
+            Switch desktop enviroment from Cinnamon to Xfce
+        </h3>
+        <div class="post-content-preview">
+            切换linuxMint桌面环境到Mate再到Xfce自从安装linuxmint以来,一直都用着原装的Cinnamon桌面环境,挺顺手的.但是随着最近把linuxmint作为主力开发系统,用得多了也发现一个问题:经常在webstorm和chrome都开了半天左右的时候,发生系统假死的情况,鼠标可以微微移动,但是不能进行其他操作,有时候三五分钟会自己恢复,但是恢复之后也很快又会重新假死,很是费解......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2016-10-09
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/10/07/docker-note/">
+        <h2 class="post-title">
+            Docker--我的地盘我做主
+        </h2>
+        <h3 class="post-subtitle">
+            Notes about the use of Docker
+        </h3>
+        <div class="post-content-preview">
+            docker 学习笔记
+1.常用命令
+docker run
+eg:  docker run ubuntu -t -i /bin/bash   通过镜像运行新的容器12docker run -t -i -p 3000:8080 docker-fe /bin/shhost 3000端口绑定 容器中 8080,可通过host 3000访问8080内容
+-t 运行一个终端
+-i 让容器可交互,与 -......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2016-10-07
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/09/23/windows10-linuxMint-双系统中分区合并的操作记录/">
+        <h2 class="post-title">
+            windows10+linuxMint 双系统中分区合并的操作记录
+        </h2>
+        <h3 class="post-subtitle">
+            Use Gparted to Merge the partition of windows10 to Linux
+        </h3>
+        <div class="post-content-preview">
+            自从笔记本装了双系统开发以来,越发觉得 linuxMint 系统顺手,所以开机基本都是默认进入 linuxMint 系统了,躺在 boot 选项里的 Windows10 都快被我遗忘了,还是保留着刚安装完的”纯净”本来面目.本来是计划Windows为主力系统的,但却计划赶不上变化.随着 Linux 使用越来越多,本来在装双系统时给他分配的空间就越来越觉得不够用,尤其是把我的几个主力开发软件搬......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2016-09-23
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/08/10/color/">
+        <h2 class="post-title">
+            color highlight test
+        </h2>
+        <h3 class="post-subtitle">
+            highlight test
+        </h3>
+        <div class="post-content-preview">
+            code 代码高亮功能测试(请看我在代码注释中描述的内容)1234567891011121314151617181920212223242526272829# Headermenu:  主页: /  所有文章: /archives  # 随笔: /tags/随笔# SubNavsubnav:  github: "https://github.com/litten"  weibo: "http......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2016-08-10
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2015/12/14/在这钢铁城市里，你孤单得像是一条狗/">
+        <h2 class="post-title">
+            在这钢铁城市里，你孤单得像是一条狗
+        </h2>
+        <h3 class="post-subtitle">
+            Lonely lonely lonely
+        </h3>
+        <div class="post-content-preview">
+            接连几天的雾霾笼罩北京全城，帝都沦陷成了雾都。若不是紧急单双号限行，就连五环边儿上的大小马路也会堵得水泄不通。就像你不知道雾霾什么时候再起，你也猜不到公交什么时候会堵。没有方便的地铁，又对早高峰时地铁站的拥堵不堪感到绝望，到公司的直线距离只有短短不到十五公里，堵车的时候却要倒两趟公交，花上一个半小时。大把的时间耗费在路上，翻看手机上的技术文章或者博客成了消磨这段时间的最好方式，多少也能理解那......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2015-12-14
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2015/11/12/前端开发：实时刷新（及时预览）工具总结/">
+        <h2 class="post-title">
+            前端开发：实时刷新（及时预览）工具小汇总，gulp+browser-sync设置方法
+        </h2>
+        <h3 class="post-subtitle">
+            Tools about frontend development
+        </h3>
+        <div class="post-content-preview">
+            开门见山，首先讲明一下本文的定位吧：写这篇文章是因为自己在平时的学习中，一次次试验了很多的前端实时刷新工具，有顺手的，有蹩脚的，有简单的，有麻烦的，安装完又折腾，折腾完又卸载，体验完这些也着实花费了不少时间，就在昨天又刚刚折腾完gulp+browser-sync的方法，估计可以让我消停一阵子了。这篇文章主要介绍和汇总一下我用过和见过的前端页面实时刷新工具（就是ctrl+s之后实现页面刷新的意......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2015-11-12
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2015/07/11/JavaScript-function/">
+        <h2 class="post-title">
+            JavaScript 函数
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            本文为慕课网 JavaScript深入浅出 笔记。
+概念函数是一块JavaScript代码，被定义一次，但可执行和调用多次。
+JS中的函数也是对象，所以JS函数可以像其它对象那样操作和传递。
+所以我们也常叫JS中的函数为函数对象。
+例如：
+function foo(x, y) {
+    if (typeof x === &apos;number&apos; &amp;&amp;
+     ......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2015-07-11
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2015/07/09/JavaScript-Net/">
+        <h2 class="post-title">
+            JavaScript 阶段总结
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            做了一张思维导图。总结这几个月对 JavaScript 的学习吧，也是一个复习。
+
+
+...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2015-07-09
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2015/06/22/baidu-ife-2-javascript/">
+        <h2 class="post-title">
+            百度Web前端技术学院(2)-JavaScript 基础
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            任务掌握JavaScript基础知识，能够使用JavaScript编写一些复杂度不大的交互功能。
+任务： JavaScript基础
+做完任务一的时候深深地感觉到自己的基础非常的薄弱，在这里再次感谢一下百度前端技术学院，做任务的时候深刻理解了自己平时掌握不牢固的内容，比如浮动、BFC、等高布局等。继续加油吧！
+
+像上一篇文章一样，写些东西记录一下。
+
+第一个页面交互按照任务中的代码，在IE8下......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by 犀利一下下 on
+        2015-06-22
+    </p>
+
+</div>
+<hr>
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+        <li class="previous">
+            <a href="/">&larr; Newer Posts</a>
+        </li>
+    
+    
+        <li class="next">
+            <a href="/page/3/">Older Posts &rarr;</a>
+        </li>
+    
+</ul>
+
+
+
+                <!-- 如果开启评论功能 -->
+                
+
+            </div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#docker" title="docker" rel="1">docker</a>
+                            
+                        
+                            
+                            <a href="/tags/#HTML" title="HTML" rel="1">HTML</a>
+                            
+                        
+                            
+                            <a href="/tags/#CSS" title="CSS" rel="2">CSS</a>
+                            
+                        
+                            
+                            <a href="/tags/#工具" title="工具" rel="1">工具</a>
+                            
+                        
+                            
+                            <a href="/tags/#随笔" title="随笔" rel="4">随笔</a>
+                            
+                        
+                            
+                            <a href="/tags/#JavaScript" title="JavaScript" rel="9">JavaScript</a>
+                            
+                        
+                            
+                            <a href="/tags/#Web App" title="Web App" rel="1">Web App</a>
+                            
+                        
+                            
+                            <a href="/tags/#导图" title="导图" rel="1">导图</a>
+                            
+                        
+                            
+                            <a href="/tags/#颜色" title="颜色" rel="1">颜色</a>
+                            
+                        
+                            
+                            <a href="/tags/#tag" title="tag" rel="1">tag</a>
+                            
+                        
+                            
+                            <a href="/tags/#linux 笔记" title="linux 笔记" rel="1">linux 笔记</a>
+                            
+                        
+                            
+                            <a href="/tags/#linux" title="linux" rel="1">linux</a>
+                            
+                        
+                            
+                            <a href="/tags/#漫想" title="漫想" rel="1">漫想</a>
+                            
+                        
+                            
+                            <a href="/tags/#调试" title="调试" rel="1">调试</a>
+                            
+                        
+                            
+                            <a href="/tags/#修养" title="修养" rel="1">修养</a>
+                            
+                        
+                            
+                            <a href="/tags/#转载" title="转载" rel="1">转载</a>
+                            
+                        
+                            
+                            <a href="/tags/#Algorithms" title="Algorithms" rel="1">Algorithms</a>
+                            
+                        
+                            
+                            <a href="/tags/#跨域" title="跨域" rel="1">跨域</a>
+                            
+                        
+                            
+                            <a href="/tags/#proxy" title="proxy" rel="1">proxy</a>
+                            
+                        
+                            
+                            <a href="/tags/#nginx" title="nginx" rel="1">nginx</a>
+                            
+                        
+                            
+                            <a href="/tags/#html" title="html" rel="1">html</a>
+                            
+                        
+                            
+                            <a href="/tags/#speech" title="speech" rel="1">speech</a>
+                            
+                        
+                            
+                            <a href="/tags/#慕课网" title="慕课网" rel="1">慕课网</a>
+                            
+                        
+                            
+                            <a href="/tags/#前端工具" title="前端工具" rel="1">前端工具</a>
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+
+                        
+                            <img src="/img/jilaiye.jpg">
+                        
+
+                        
+                            <p>千山磊落收云气，四海光明耀日化</p>
+                        
+
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            
+                            
+                                <li>
+                                    <a target="_blank" href="https://www.zhihu.com/people/xi-li-yixia-xia">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+
+                            
+                                <li>
+                                    <a target="_blank" href="http://weibo.com/Hellowor1d">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+
+                            
+
+                            
+                                <li>
+                                    <a target="_blank" href="https://github.com/Hellowor1d">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+
+
+                            
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Friends Blog -->
+                
+            </div>
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/xi-li-yixia-xia">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy;
+                    <a href="http://hellowor1d.coding.me">Hellowor1d&#39;s Blog </a>
+                    2019
+                 <!--    <br>
+                   Theme by <a href="http://huangxuan.me">Hux</a>
+                   <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                    -->
+
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://hellowor1d.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-81280350-1';
+    var _gaDomain = 'auto';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '8d393b7b03a85328717992b6e2517904';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://hellowor1d.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

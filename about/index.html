@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="前端博客 javaScript Nodejs 技术 生活 Todo">
+    <meta name="keyword" content="undefined">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          About - 犀利一下下的博客 | Hellowor1d&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://hellowor1d.github.io/about/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hellowor1d&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('/img/about-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>About</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading">Hey, this is Hellowor1d.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+
+                <blockquote>
+<p>写写代码，做做设计，看看产品。<br>世界那么大，多玩玩看看。</p>
+</blockquote>
+<blockquote>
+<p>今天新出了MacBook Pro…<br>忙碌的一天<br>学习TypeScript</p>
+</blockquote>
+<blockquote>
+<p>套餐新加产品和地区,增删适配<br>完成套餐,试试微信小程序<br>木樨园换衣,小朋友捐款<br>明天看小程序<br>keep 1st day<br>new week<br>MINA is interesting<br>trump flied~<br>coupon<br>Tencent big money package<br>加班,车上看you dont konw js<br>优惠券over,开始19个bug征程<br>19 bugs over<br>ruanyf’s two-day jstraining<br>作为一个初级，如何进阶<br>xiaoxu<br>weekend<br>ts中文网翻译不精准: <a href="http://www.tslang.cn/docs/handbook/interfaces.html" target="_blank" rel="noopener">http://www.tslang.cn/docs/handbook/interfaces.html</a><br>一些对象属性只能在对象刚刚创建的时候修改其值,<code>刚刚</code>改为<code>首次</code><br>今天提了离职给龙哥<br>想学的东西有好多，nodejs （koa2）、golang、python、TypeScript、angualr2、vue2<br>node.js入门  是本好书<br>node.js 版本管理n 更好的安装方式 n-install<br>办理名称，联系了平凡调薪<br>调薪事情无果，已经提交正式离职申请<br>带着劳动合同来辞职，组长把事情提给了李丽。。。handsome<br>跟13班同学一起聚餐，哈哈<br>完成nodejsBeiginner,但是还有一部分知识点没有明白，比如：tmp/test.png文件的实际存储位置跟show访问的关系<br>杰仔说了Singpore的工作事情<br>知乎上的收藏夹里添加了关于跨域的文章，并且看了一下typescript中函数类型的部分<br>今天安装了mongodb  mogochef mongobooster 学习,mongodb的基本使用，db.users.insert({})  find({“name”:”wolf”,”gender”:”boy”})  update  remove<br>这些是最基础的增删改查，但是仍然需要练习结合node.js进行增删改查的调用方法<br>在本机上用docker 和 gitlab 搞一套自己的代码仓库<br>在家加班搞需求,然后各种找不到接口，接口文档东西乱飞，烦躁。团队是比较自由，但是自由不代表没有规范，长期下去只会散漫崩溃，领导没有魄力，成员又没有自觉，沟通成本太高<br>new day，今天搞完已有需求<br>开干大表单，拼一天<br>基本完成，剩下参与人<br>大表单搞定，编辑功能暂时阉割<br>gulp+webpack  研究如何加速编译打包时间<br>rebase出错，重新pull远程source到本地<br>学习webpack ing<br>angular2 study continuing<br>今天学习调用了一次 $q.defer()  延时调用的 promise 方法，解决了需要校验完手机号码再提交表单的异步 问题<br>喀什之行前一天，老爸也要去上海，大家都好好努力<br>实验楼（web ide是基于codebox，虚拟Linux桌面/在线虚拟机是docker+guacamole <a href="https://www.zhihu.com/people/xi-li-yixia-xia/activities" target="_blank" rel="noopener">叶向宇的分析 </a>）, coding, 牛客网, 计蒜客 中的技术运用都比较新颖<br>喀什之行结束，到家了.<br>各种办证的过程真是痛苦<br>2017上班第一天<br>离职审批终于动了一格<br>办理居住证的一天，转了一天；体验了一下rmbp 13 15的重量<br>2007.1.9 iPhone came ! 2017.1.9 mini program came!<br>假期第一天，税务局<br>大扫除，学习<br>happy birthday tomorrow nn<br>new study plan for ng2<br>work over for gongsibao<br>亿超配眼镜去<br>Spring Festival<br>念NN，初一<br>出游一趟，回来已经初十一了<br>了解学习Rxjs，可以作为Promise的工具库进行使用，数据流思想。webcomponents是一种对于浏览器提出的规范。Polymer是一个针对元素级别的框架，跟angular2<br>有交集，但是并不冲突。函数柯里化很有用，正在学习，然后准备看新的面试题以及使用ES6练习代码<br>学习Python3，数据类型：list tuple dict set 条件判断 for循环 while循环 递归函数  灵活的参数写法 以及一些高级特性 切片 迭代 生成器geneator(原来ES6新加的<br>东西，python早就有了)可以被next()函数调用并不断返回下一个值的对象称为迭代器：Iterator。可以直接作用于for循环的对象统称为可迭代对象：Iterable。<br>　昨天完成了用　canvas 绘制的五子棋棋局，并添加了 AI 代码，可以实现玩家和电脑对战，还是挺有趣的，分享到了朋友圈，有些人还没下过AI，哈哈哈<br>继续完善简历<br>ife 课程内容不错<br>每天进步一点点:学习 CSS 布局<br>Data Structure  &amp; Algorithms with JavaScript<br>探究原型的各种应用和继承实现<br>absolute 是最棘手的position值。 absolute 与 fixed 的表现类似，但是它不是相对于视窗而是相对于最近的“positioned”祖先元素。如果绝对定位（position属性的值为absolute）的元素没有“positioned”祖先元素，那么它是相对于文档的 body 元素，并且它会随着页面滚动而移动。记住一个“positioned”元素是指 position 值不是 static 的元素。<br>想要和优秀的人做朋友，做同事，那就只能努力变得比他们更优秀！<br>JavaScript高级程序设计阅读<br>Ajax,正则表达式，HTTP请求头，响应头,jQuery复习<br>中级js，迈向高级<br>学习搭配使用已经了解过的工具综合构建新项目！angular4 + ts + webpack2 + (gulp) + koa2 + vue2 + vue* + element-ui + pug + mongodb 构建一个模仿项目<br>项目多开：1.N-blog-study.学习常规的nodejs使用，以及express框架的一些用法（体会mongoglass的优势）；2.通过jianshu-stduy项目继续巩固angualr4,vue2的用法，以及webpack配置，express,并在后期更换为koa2,并且vue2 angular4前后端交换实现，mongodb作为数据库3.每学到新知识点做好记录<br>监控方案拟定<br>nodejs踩坑：相对路径的写法，比如<code>./</code>和<code>../</code>在 require() 中使用是跟 __dirname 的效果相同，不会因为启动脚本的目录不一样而改变，在其他情况下（比如fs.readFile()中）跟 process.cwd() 效果相同，是相对于启动脚本所在目录的路径。一定要注意区分，注意在上面说的其他情况下使用绝对路径写法<br>kov-blog is really wonderful<br>谈到手的offer,突遇变故，也许是运气差，也许是新的机遇。HR连连的道歉，不忍对其说什么，毕竟也不是她能决定的。呼～～调整好心态，继续努力。打铁还需自身硬，能力才是硬道理！更多关注成长，少看眼前得失吧～<br>今天忽然意识到，应该着重了解一下 json 对象与普通js对象的细微区别,现在就着手查资料，攒文章.《JS高级程序设计》中还是潜藏了好多未注意到的知识点。这本书真的是常读常新～<br>事情来了不怕事儿！！！人善也不能任人欺<br>研究:n个数的和为m的算法实现，解析时、空间复杂度<br>连续赋值问题中，a.x=a={n:2}中，”.”操作符优先级高<br>忙碌的一天，开项目第一天，夜深方归<br>敏捷开发模式；revealjs / slides.com / 准备form 分享内容 / expres , koa2 / vue2<br>2.1.4 开发完毕，明天开始PPT优化<br>开始搭建属于自己的阿里云服务器，哈哈哈<br>又加班到这么晚，唉，没办法，bug不改完睡不着觉<br>跟超凡测了一晚上的问题，竟然发现页面用的是线上的资源，怪不得修改本地代码没效果，醉了~~然后写了个长长的周报</p>
+</blockquote>
+<hr>
+<p>可以好好练习markdown写记录了，很多东西都需要笔记，云笔记的支持可谓良心。阿里云出现的设置问题，以及设置 <em>zsh</em> 作为默认shell,ssh 重新连接失效的问题已经修复，并作好记录</p>
+<hr>
+<p>有点新想法：解决工作中平时出现的重复性较多的情景任务，</p>
+<ol>
+<li>添加gitlab机器人，解决开发时仓库更新代码还要在群里通知的重复劳动</li>
+<li>正在尝试解决<code>git push</code> 之前都要进行<code>git pull</code>的操作，目前思路：git hooks - pre-push 深度方案：学习shell脚本，并考察通过python脚本来完成此事情的可能性</li>
+</ol>
+<hr>
+<p>前端也可以在人脸识别和机器学习上做点什么吧</p>
+<p>听了CEO 和 CTO的分享，觉得公司的价值观还是比较正的，然后就奋力把之前感觉很复杂费力的bug给解决了，很有共鸣的一句话是“问题到我这终结”<br>修理光猫，给路由器刷固件，体会到了备份的重要性和方便性啊<br>写移动端适配的页面<br>sewise播放器，研究SDK<br>tal-player 修改数据上报内容，跨域实现数据上报<br>上线至深夜，开发web-sdk 的播放器，改来改去做兼容，预备做flash提示优化<br>配置dev-ts工作环境，typings已经不推荐使用，通过 <code>npm install @types/jquery -g</code>  <code>npm install @types/node</code>等安装所需类型，<code>npm i typescript -g</code>安装的是ts 的编译工具，这个不是vscode 集成的，集成的只有语法检查功能。tsconfig.json 中module设置为‘es2015’，解决模块打包不匹配的问题。为了同时精简命令启动项目，在package,json中配置了， “start”: “cd webroot-dev &amp;&amp; concurrent –kill-others \”npm run tsc:w\” \”node app\” \”node bs\””,然后可以快速启动项目，并且执行bs.js,以及tsc -w ， 还在gitignore中设置相关项目忽略，以免对dev分支产生影响。这之后就可以用ES6语法来写代码了。<br>搞定logs冲突问题<br>nodemon 安装，发现一个小问题，当nodemon 在package.json中的scripts中想要执行app文件时，需要填写完整的文件名：<code>nodemon app.js</code><br>CSS调试，积累经验中…<br>制造冲突：练习解决冲突：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;HEAD</span><br><span class="line">代表本地修改</span><br><span class="line">==========</span><br><span class="line">代表远程修改内容</span><br><span class="line">&gt;&gt;&gt;&gt;commitID</span><br></pre></td></tr></table></figure></p>
+<p>做了一盘八爪一锅鲜，新菜品，然而牙疼。。。<br>css 做官网~(⊙o⊙)哦<br>add earth animation , practice css<br>lalala~ 折腾框架写个表格vue axios created(){getData()}<br>最近考虑的事情：baidu:lavas pwa;vue2 : vue-music eslint (standard airbnb);table:vue2 elemetn-ui vue-axios bootstrap-vue ; angular2 primeng/primeface<br>官网修改，赫赫~🙃<br>削肉割骨，骨肉分离–形容的就是拔智齿啊！比预想的要惨烈多了<br>新的一周，新的开始，努力！<br>新官网终于完成了，踩了很多坑，积累了很多经验；然后，繁重而猛烈的148又开始了，排期，拆分，实在好忙~都没时间搞自己项目了<br>今天一定能搞定 webengine 替换的主要流程<br>pdf调试忙如何出一份能给学生留下印象的校招面试题，是我今天在思考的事情<br>Fetch is a better method than Ajax<br>fighting for the Nova and my FE engineer career<br>nova beginning<br>coding at home , work for company<br>necklace for her<br>test cherry-pick feature, but failed<br>三天两夜，青苗集训，^_^<br>nova 封版,夜已深<br>一如前端深似海，从此明月化斜阳<br>browser-sync 比想象得更强大，weinre 功能很实用<br>nova上线之夜<br>要学的东西还有很多，不能停啊~<br>快速解决问题，节省时间用于自学<br>解决兼容问题，调试问题都是需要经验的啊！<br>临时新需求，又是一夜<br>gly鱼儿耍~<br>1.4.8上线忙<br>真的要学会说不啊，唉，累的都是自己<br>感觉放假了，久违的感觉<br>久违的轻松周末，学习一下nuxt<br>practice for prose.io<br>fix online bug<br>before vocation<br>taste micro editor and find a perfect vue-nuxt-koa2-mongodb-element blog system<br>NATIONAL DAY<br>moon cake<br>work beginning<br>clean cache for weclassroom by url version<br>html wouldnt be cached when routred by path<br>滨水公园<br>bfg note &amp; deployment midnight<br>officaL 2.1<br>offical website 2.1 developed<br>geetest<br>begin to do pdf paint<br>PDF涂鸦滚屏<br>pdfpage upload<br>练习micro 编辑器<br>添加云盘分页<br>try electron<br>PDF page add webpack uglifyjs<br>make sour fish at home<br>happy birthday to myself<br>new w[ee/or]kday<br>freeday<br>new electron project<br>spirit is amazimg awsome<br>new zby start<br>research i18n<br>vim search  /XXX   scp -r  documents<br>sntudy fe technology structure for new client<br>2018 beginning<br>wediing of my sister is comming<br>iframe document<br>exciting pointer-events<br>staty at night<br>new pc classroom get local and remote video stream successfully<br>websocket socket socket.io<br>cut finger<br>move to new work place - yuelai<br>new interview time<br>new week okb<br>find my airpods<br>prose.io is a good tool for github<br>1npm owner == maintainer</p>
+<p>原来今天万圣节<br>Thanksgiving Day<br>del tampermonkey extension from chrome<br>new mobby-classroom system architecture reviewed<br>develop undo-redo whiteboard feature<br>canvas path2d<br>how to dive into your job always ?<br>798<br>add new feature for 51 plan<br>reset clock, when to reset career?<br>read juejin : meta, async, promise, process.nextTick, setiTiemout, setInterval , EventLoop, EventQueue. js run order<br>MVVM 双向绑定， Object.defineProperty   Proxy<br>ashamed error : JSON.stringify    &amp;&amp;<br>Dingding RPC ts Rxjs NW.js cef C++<br>save yourself by hard working<br>lear nest.js typescript angular react rxjs mvvm mvc<br>51 xes decorator class (target)  class property (target name descriptor)<br>代桥·~<br>whether it’s right all in work? how about split some of daytime to personal growth？<br>非京籍留京升学，提前思考了一下，确实好辛苦<br>到底该怎样度过这一生，诸多磨难，两难选择。<br>try coding web IDE alias Cloud Studio base on monaco editor<br>量子力学，量子纠缠，量子叠加，薛定谔的猫，黑体辐射，紫外灾难，迈克尔逊实验，平行空间，纠缠态坍塌，光的波粒二象性的本质<br>sunday ： have a try for clodu studio designed by coding<br>webIDE<br>learn-nest , nest.js is spring style nodejs<br>wonderful reocrd and replay library for web : rrweb<br>FRONTENDARMORY<br>have a try for deepfake、 faceswap， docker nvida gui<br>train faceswap for 4 hours<br>mac screen capture : command + shift + 3 , command + shift + 4<br>beginning of the new year<br>first snow storm in 2019<br>2.8 值班<br>working day is coming<br>vuepress doc for zby-live-sdk repo<br>我不过低配的人生  ——雾满拦江<br>eslint vetur prettier<br>意图 Algorithm<br>typescript algorithms<br>察言观色，待人接物<br>真实自我，坦然面对<br>数据结构与算法之美<br>new day<br>TYPESCRI 3.4<br>yfd zby 30<br>spacevim : have a try<br>Rust<br>golang tour easy and interesting<br>dotfiles<br>新未来，新 5.1<br>liwei wedding<br>golang ts rust<br>jupyter colab google golang<br>notion wonderful new record tool<br>notion practice</p>
+
+
+                <!-- 如果开启评论功能 -->
+                
+                    <hr>
+
+                    
+
+                    
+                    <!-- disqus 评论框 start -->
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                    <!-- disqus 评论框 end -->
+                    
+
+
+                    
+
+                    
+                    <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+                    <script type="text/javascript">
+                        /* * * CONFIGURATION VARIABLES * * */
+                        var disqus_shortname = "hellowor1d";
+                        var disqus_identifier = "http://hellowor1d.github.io/about/index.html";
+                        var disqus_url = "http://hellowor1d.github.io/about/index.html";
+
+                        (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+
+
+                    </script>
+                    <!-- disqus 公共JS代码 end -->
+                    
+
+
+
+                
+
+            </div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#docker" title="docker" rel="1">docker</a>
+                            
+                        
+                            
+                            <a href="/tags/#HTML" title="HTML" rel="1">HTML</a>
+                            
+                        
+                            
+                            <a href="/tags/#CSS" title="CSS" rel="2">CSS</a>
+                            
+                        
+                            
+                            <a href="/tags/#工具" title="工具" rel="1">工具</a>
+                            
+                        
+                            
+                            <a href="/tags/#随笔" title="随笔" rel="4">随笔</a>
+                            
+                        
+                            
+                            <a href="/tags/#JavaScript" title="JavaScript" rel="9">JavaScript</a>
+                            
+                        
+                            
+                            <a href="/tags/#Web App" title="Web App" rel="1">Web App</a>
+                            
+                        
+                            
+                            <a href="/tags/#导图" title="导图" rel="1">导图</a>
+                            
+                        
+                            
+                            <a href="/tags/#颜色" title="颜色" rel="1">颜色</a>
+                            
+                        
+                            
+                            <a href="/tags/#tag" title="tag" rel="1">tag</a>
+                            
+                        
+                            
+                            <a href="/tags/#linux 笔记" title="linux 笔记" rel="1">linux 笔记</a>
+                            
+                        
+                            
+                            <a href="/tags/#linux" title="linux" rel="1">linux</a>
+                            
+                        
+                            
+                            <a href="/tags/#漫想" title="漫想" rel="1">漫想</a>
+                            
+                        
+                            
+                            <a href="/tags/#调试" title="调试" rel="1">调试</a>
+                            
+                        
+                            
+                            <a href="/tags/#修养" title="修养" rel="1">修养</a>
+                            
+                        
+                            
+                            <a href="/tags/#转载" title="转载" rel="1">转载</a>
+                            
+                        
+                            
+                            <a href="/tags/#Algorithms" title="Algorithms" rel="1">Algorithms</a>
+                            
+                        
+                            
+                            <a href="/tags/#跨域" title="跨域" rel="1">跨域</a>
+                            
+                        
+                            
+                            <a href="/tags/#proxy" title="proxy" rel="1">proxy</a>
+                            
+                        
+                            
+                            <a href="/tags/#nginx" title="nginx" rel="1">nginx</a>
+                            
+                        
+                            
+                            <a href="/tags/#html" title="html" rel="1">html</a>
+                            
+                        
+                            
+                            <a href="/tags/#speech" title="speech" rel="1">speech</a>
+                            
+                        
+                            
+                            <a href="/tags/#慕课网" title="慕课网" rel="1">慕课网</a>
+                            
+                        
+                            
+                            <a href="/tags/#前端工具" title="前端工具" rel="1">前端工具</a>
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+
+                        
+                            <img src="/img/jilaiye.jpg">
+                        
+
+                        
+                            <p>千山磊落收云气，四海光明耀日化</p>
+                        
+
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            
+                            
+                                <li>
+                                    <a target="_blank" href="https://www.zhihu.com/people/xi-li-yixia-xia">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa  fa-stack-1x fa-inverse">知</i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+
+                            
+                                <li>
+                                    <a target="_blank" href="http://weibo.com/Hellowor1d">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+
+                            
+
+                            
+                                <li>
+                                    <a target="_blank" href="https://github.com/Hellowor1d">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+
+
+                            
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Friends Blog -->
+                
+            </div>
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/xi-li-yixia-xia">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy;
+                    <a href="http://hellowor1d.coding.me">Hellowor1d&#39;s Blog </a>
+                    2019
+                 <!--    <br>
+                   Theme by <a href="http://huangxuan.me">Hux</a>
+                   <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                    -->
+
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://hellowor1d.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-81280350-1';
+    var _gaDomain = 'auto';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '8d393b7b03a85328717992b6e2517904';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://hellowor1d.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

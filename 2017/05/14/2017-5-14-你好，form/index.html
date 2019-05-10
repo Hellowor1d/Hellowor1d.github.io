@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="前端博客 javaScript Nodejs 技术 生活 Todo">
+    <meta name="keyword" content="undefined">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          你好，form - 犀利一下下的博客 | Hellowor1d&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://hellowor1d.github.io/2017/05/14/2017-5-14-你好，form/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hellowor1d&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://hellowor1d.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('http://7xo9xp.com1.z0.glb.clouddn.com/image/bg/desktop.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#html" title="html">html</a>
+                        
+                          <a class="tag" href="/tags/#speech" title="speech">speech</a>
+                        
+                    </div>
+                    <h1>你好，form</h1>
+                    <h2 class="subheading">some basic konwledge of form</h2>
+                    <span class="meta">
+                        Posted by 犀利一下下 on
+                        2017-05-14
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="表单操作"><a href="#表单操作" class="headerlink" title="表单操作"></a>表单操作</h2><p>表单为页面的主要组成部分，其中包含许多的表单控件。用户通过控件提供数据并提交给服务器，服务器则做出相应的处理。而编写一个正常工作的表单需要三个部分：</p>
+<ol>
+<li>构建表单</li>
+<li>服务器处理（提供接受数据接口）</li>
+<li>配置表单</li>
+</ol>
+<p><strong>构建表单</strong></p>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs/form_sample_form.png" alt></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">label</span>&gt;</span>姓名：<span class="tag">&lt;<span class="name">input</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">label</span>&gt;</span>电话：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"tel"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">label</span>&gt;</span>邮箱：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">legend</span>&gt;</span> 披萨大小 <span class="tag">&lt;/<span class="name">legend</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"size"</span>&gt;</span> 小 <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"size"</span>&gt;</span> 中 <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"size"</span>&gt;</span> 大 <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">legend</span>&gt;</span> 披萨配料 <span class="tag">&lt;/<span class="name">legend</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span> 熏肉 <span class="tag">&lt;/<span class="name">input</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span> 奶酪 <span class="tag">&lt;/<span class="name">input</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span> 洋葱 <span class="tag">&lt;/<span class="name">input</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span> 蘑菇 <span class="tag">&lt;/<span class="name">input</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">label</span>&gt;</span>配送时间：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"time"</span> <span class="attr">min</span>=<span class="string">"11:00"</span> <span class="attr">max</span>=<span class="string">"2100"</span> <span class="attr">step</span>=<span class="string">"900"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">button</span>&gt;</span>提交订单<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>服务器处理</strong></p>
+<p>提供接口地址（例如，<code>https://pizza.example.com/order</code>，数据格式(<code>application/x-www-form-urlencoded</code>)，还是接受的参数信息(custname、custtel、custemail、size、topping、delivery)。</p>
+<p>数据命名需在表单控件中注明。</p>
+<p><strong>配置表单</strong></p>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs//form_data_receive.png" alt></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"https://pizza.example.com/order"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">enctype</span>=<span class="string">"application/x-www-form-urlencoded"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">label</span>&gt;</span>姓名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"custname"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">label</span>&gt;</span>电话：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"tel"</span> <span class="attr">name</span>=<span class="string">"custtel"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">label</span>&gt;</span>邮箱：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">name</span>=<span class="string">"custemail"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">legend</span>&gt;</span> 披萨大小 <span class="tag">&lt;/<span class="name">legend</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"size"</span> <span class="attr">value</span>=<span class="string">"small"</span>&gt;</span> 小 <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"size"</span> <span class="attr">value</span>=<span class="string">"medium"</span>&gt;</span> 中 <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"size"</span> <span class="attr">value</span>=<span class="string">"large"</span>&gt;</span> 大 <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">legend</span>&gt;</span> 披萨配料 <span class="tag">&lt;/<span class="name">legend</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span> 熏肉 <span class="tag">&lt;/<span class="name">input</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span> 奶酪 <span class="tag">&lt;/<span class="name">input</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span> 洋葱 <span class="tag">&lt;/<span class="name">input</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span> 蘑菇 <span class="tag">&lt;/<span class="name">input</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">label</span>&gt;</span>配送时间：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"time"</span> <span class="attr">min</span>=<span class="string">"11:00"</span> <span class="attr">max</span>=<span class="string">"2100"</span> <span class="attr">step</span>=<span class="string">"900"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">button</span>&gt;</span>提交订单<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>用户所有提交的信息需在提交服务器前对其进行验证从而提高用户体验。</p>
+<p>NOTE：<strong>表单验证</strong> 使用 <code>require</code> 来强制用户填写相应的信息。</p>
+<h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><h4 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h4><h5 id="form-元素"><a href="#form-元素" class="headerlink" title="form 元素"></a>form 元素</h5><p><strong>form</strong> 元素为构建表单中最重要的元素。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">novalidate</span> <span class="attr">name</span>=<span class="string">"pizza"</span> <span class="attr">target</span>=<span class="string">"abc"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">autocomplete</span>=<span class="string">"off"</span> <span class="attr">accept-charset</span>=<span class="string">"utf-8"</span> <span class="attr">action</span>=<span class="string">"http://pizza.example.com/order"</span> <span class="attr">enctype</span>=<span class="string">"application/x-www-form-urlencoded"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其对应的信息则可以视为</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>noValidate</td>
+<td>true</td>
+</tr>
+<tr>
+<td>target</td>
+<td>abc</td>
+</tr>
+<tr>
+<td>method</td>
+<td>post</td>
+</tr>
+<tr>
+<td>acceptCharset</td>
+<td>utf-8</td>
+</tr>
+<tr>
+<td>action</td>
+<td><a href="http://pizza.example.com/order" target="_blank" rel="noopener">http://pizza.example.com/order</a></td>
+</tr>
+<tr>
+<td>enctype</td>
+<td>application/x-www-form-urlencoded</td>
+</tr>
+<tr>
+<td>name</td>
+<td>pizza</td>
+</tr>
+<tr>
+<td>autocomplete</td>
+<td>off</td>
+</tr>
+</tbody>
+</table>
+<p>NOTE：前六项为表单提交相关的信息。</p>
+<h6 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h6><ul>
+<li><code>name</code> 属性：可以用于获取表单节点元素。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pizzaForm = <span class="built_in">document</span>.forms.pizza;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>autocomplete</code> 属性：有两个值 <code>on</code> 与 <code>off</code>，在设置为 <code>on</code> 时，可以自动对输入框进行补全（之前提交过的输入值，下图左）。</li>
+</ul>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs//form-auto-complete.png" alt></p>
+<p>NOTE：在已经设置 <code>autocomplete=&quot;off&quot;</code> 时依然出现提示框，大多数情况为浏览器设置的自动补全（可以强制关闭，需要时请搜索对应的解决方案）。</p>
+<ul>
+<li><p><code>elements</code> 属性：为一个<strong>动态节点集合</strong>（更具 DOM 的变化进行变化），其用于归结该表单的子孙表单控件（除图标按钮外 <code>&lt;input type=&quot;image&gt;&quot;</code>）:</p>
+<ul>
+<li>button</li>
+<li>fieldset</li>
+<li>input</li>
+<li>keygen</li>
+<li>object</li>
+<li>output</li>
+<li>select</li>
+<li>textarea</li>
+</ul>
+</li>
+</ul>
+<p>此外还有归属于该表单的空间（依旧图片按键除外）代码如下所示。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"a"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"null"</span> <span class="attr">form</span>=<span class="string">"a"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>length</code> 属性：等价于 <code>elements.length</code> 来用于描述表单内节点集合的个数。</li>
+</ul>
+<h6 id="选取表单空间元素"><a href="#选取表单空间元素" class="headerlink" title="选取表单空间元素"></a>选取表单空间元素</h6><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">"test"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"a"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"b"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>选取 <code>name=&quot;a&quot;</code> 的控件可以使用下面的方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">testForm.elements[<span class="number">0</span>];</span><br><span class="line">testForm.elements[<span class="string">'a'</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 操作 Form 表单的属性</span></span><br><span class="line">testForm[<span class="number">0</span>];</span><br><span class="line">testForm[<span class="string">'a'</span>];</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>form[name]</code> 通过名称作为索引时有如下特点：</p>
+<ul>
+<li>返回 <code>id</code> 或者 <code>name</code> 为指定名称的表单空间（图标按键除外）</li>
+<li>如果结果为空，则返回<code>id</code> 为指定名称的 <code>img</code> 元素（入下面代码所示）</li>
+<li>如果有多个同名元素，则返回的元素为动态节点集合</li>
+<li>一旦用指定名称取过改元素，之后则不论该元素的 <code>id</code> 或者 <code>name</code> 如何变化，只有节点存在则均可使用<strong>原名称</strong>来继续获取改节点。</li>
+</ul>
+</li>
+</ul>
+<p><em>无指定名称索引范例</em></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">"test"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">"a"</span> <span class="attr">src</span>=<span class="string">"sample.png"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">testForm[<span class="string">'a'</span>]; <span class="comment">// 取得的便是 id 为 a 的图片元素</span></span><br></pre></td></tr></table></figure>
+<p><em>更新名称，依然可以获取节点范例</em></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">"test"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"a"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一步</span></span><br><span class="line">testForm[<span class="string">'a'</span>];</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">testForm.elements[<span class="string">'a'</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二步</span></span><br><span class="line">testForm[<span class="string">'a'</span>].name = <span class="string">'b'</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs//form_element.png" alt></p>
+<h6 id="form-接口"><a href="#form-接口" class="headerlink" title="form 接口"></a>form 接口</h6><p><code>form</code> 元素也提供了一些接口便于对其进行操作 <code>reset()</code> <code>submit()</code> <code>checkValidity()</code>。</p>
+<p>可以重置（reset）的元素有下面的几种：</p>
+<ul>
+<li>input</li>
+<li>keygen</li>
+<li>output</li>
+<li>select</li>
+<li>textarea</li>
+</ul>
+<p>当触发表单 <code>reset</code> 事件时可使用阻止该事件的默认行为来取消重置。而且元素重置时将不会再次触发元素上的 <code>change</code> 与 <code>input</code> 事件。</p>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs//form-reset.png" alt></p>
+<h5 id="label-元素"><a href="#label-元素" class="headerlink" title="label 元素"></a>label 元素</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"textId"</span> <span class="attr">form</span>=<span class="string">"formId"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>htmlFor</td>
+<td>textId</td>
+</tr>
+<tr>
+<td>control</td>
+<td>HTMLElement#textId</td>
+</tr>
+<tr>
+<td>form</td>
+<td>HTMLFormElement#formId</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><code>htmlFor</code> 属性：用于关联表单控件的激活行为（可使点击 <code>label</code> 与点击表单控件的行为一致），可关联的元素有下列（<code>hidden</code> 除外）：</p>
+<ul>
+<li>button</li>
+<li>input</li>
+<li>keygen</li>
+<li>meter</li>
+<li>output</li>
+<li>progress</li>
+<li>select</li>
+<li>textarea</li>
+</ul>
+</li>
+</ul>
+<p><em>自定义文件提交控件样式</em></p>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs//form_file_upload.png" alt></p>
+<ul>
+<li><code>control</code> 属性：如果指定了 <code>for</code> 属性则指定该<code>for</code> 属性对于 <code>id</code> 的可关联元素。如果没有指定 <code>for</code> 属性则为第一个可关联的子孙元素。</li>
+</ul>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs/for_label.png" alt></p>
+<p><strong>可关联的元素</strong> （只读属性不可在程序中直接赋值修改）</p>
+<ul>
+<li>button</li>
+<li>fieldset</li>
+<li>input</li>
+<li>keygen</li>
+<li>label</li>
+<li>object</li>
+<li>output</li>
+<li>select</li>
+<li>textarea</li>
+</ul>
+<p>－ <code>form</code> 属性：修改关联元素所归属的表单则可以修改元素的 <code>form</code> 属性为带关联表单Id（元素中对于的<code>for</code>属性也应该做对应的修改）。//这里有一点小问题，更改form属性之后label并不能自动绑定到新表单对应的元素上</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label.setAttribute(<span class="string">'form'</span>, <span class="string">'newFormId'</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="input-元素"><a href="#input-元素" class="headerlink" title="input 元素"></a>input 元素</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>type</code> 属性：可用于控制控件的<em>外观</em>以及<em>数据类型</em>（默认为 <code>text</code>），在不同的浏览器不同数据类型有不同的展示效果。</li>
+</ul>
+<p><em>本地图片预览示例</em></p>
+<p>所需技术点（HTMLInputElement属性）</p>
+<ul>
+<li>onchange</li>
+<li>accept</li>
+<li>multiple</li>
+<li>files</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">accept</span>=<span class="string">"image/*"</span> <span class="attr">multiple</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">file.addEventListener(</span><br><span class="line">  <span class="string">'change'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">var</span> files = <span class="built_in">Array</span>.prototype.slice.call(</span><br><span class="line">        event.target.files, <span class="number">0</span></span><br><span class="line">      );</span><br><span class="line">      files.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">        files2dataurl(item,<span class="function"><span class="keyword">function</span>(<span class="params">url</span>)</span>&#123;</span><br><span class="line">          <span class="keyword">var</span> image = <span class="keyword">new</span> Image();</span><br><span class="line">          parent.appendChild(image);</span><br><span class="line">          image.src = url;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">file2dataurl</span>(<span class="params">file, callback</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!<span class="built_in">window</span>.FileReader) &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="string">'Browser not support File API !'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">	reader.readAsDataURL(file);</span><br><span class="line">	reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">		callback(event.target.result);</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>NOTE：<code>accept</code> 所支持的格式有 <code>audio/*</code> <code>video/*</code> <code>image/*</code> 以及不带<code>;</code>的 MINE Type 类型和 <code>.</code> 开头的文件名后缀的文件。多个文件类型可以使用<code>,</code>分隔。</p>
+<h5 id="select-元素"><a href="#select-元素" class="headerlink" title="select 元素"></a>select 元素</h5><p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs//form_select.png" alt></p>
+<p>指定选项列表中选择需要的选项。</p>
+<p>主要的三个子标签 <code>select</code>、<code>optgroup</code>（用于选项分组）、<code>option</code>。</p>
+<ul>
+<li><p><code>select</code> 具有的属性和方法如下：</p>
+<ul>
+<li>name</li>
+<li>value</li>
+<li>multiple</li>
+<li>options（动态节点集合）</li>
+<li>selectedOptions（动态节点集合）</li>
+<li>selectedIndex</li>
+<li>add(element[, before])（无指定参照物则添加至最末端）</li>
+<li>remove([index])</li>
+</ul>
+</li>
+<li><p><code>optgroup</code> 所具有的属性和方法：</p>
+<ul>
+<li>disabled （分组选项不可选）</li>
+<li>label（分组说明）</li>
+</ul>
+</li>
+<li><p><code>option</code> 所具有的属性和方法：</p>
+<ul>
+<li>disabled</li>
+<li>label（描述信息）</li>
+<li>value（提交表单时的数据信息）</li>
+<li>text（用户看到的文字）</li>
+<li>index</li>
+<li>selected</li>
+<li>defaultSelected</li>
+</ul>
+</li>
+</ul>
+<h6 id="选项操作"><a href="#选项操作" class="headerlink" title="选项操作"></a>选项操作</h6><p><strong>创建选项</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.createElement(<span class="string">'option'</span>)</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">new</span> Option([text[, value[, defaultSelected[, selected]]]])</span><br></pre></td></tr></table></figure>
+<p><strong>添加选项</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> option = <span class="keyword">new</span> Option(<span class="string">'sample'</span>);</span><br><span class="line">opt.insertAdjacentElement(option, <span class="string">'参照元素'</span>);</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">select.add(option, <span class="string">'参照元素'</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>删除选项</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">opt.parentNode.removeChild(option);</span><br><span class="line"><span class="comment">// 或者使用它的索引将其删除</span></span><br><span class="line">select.remove(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<h6 id="级联下列选择器"><a href="#级联下列选择器" class="headerlink" title="级联下列选择器"></a>级联下列选择器</h6><p>所需知识点:</p>
+<ul>
+<li>onchange</li>
+<li>remove</li>
+<li>add</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">"course"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"chapter"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span>&gt;</span>Select0<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"section"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span>&gt;</span>Select1<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> chapters = &#123;</span><br><span class="line">  &#123;<span class="attr">text</span>: <span class="number">1</span>, <span class="attr">value</span>: <span class="number">1</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">text</span>: <span class="number">2</span>, <span class="attr">value</span>: <span class="number">2</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> sections = &#123;</span><br><span class="line">  <span class="number">1</span>: [&#123;</span><br><span class="line">    text:<span class="number">1.1</span>, <span class="attr">value</span>: <span class="number">1.1</span></span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    text:<span class="number">1.2</span>, <span class="attr">value</span>: <span class="number">1.2</span></span><br><span class="line">  &#125;],</span><br><span class="line">  <span class="number">2</span>:[&#123;</span><br><span class="line">    text:<span class="number">2.1</span>, <span class="attr">value</span>:<span class="number">2.1</span>;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fillSelect</span>(<span class="params">select, list</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = select.length; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">    select.remove(i);</span><br><span class="line">  &#125;</span><br><span class="line">  list.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> option = <span class="keyword">new</span> Option(data.text, data.value);</span><br><span class="line">    select.add(option);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fileSelect(chapterSelect, chapters);</span><br><span class="line">chapterSelect.addEventListener(</span><br><span class="line">  <span class="string">'change'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> value = event.target.value,</span><br><span class="line">        list = sections[value] || [];</span><br><span class="line">    fillSelect(sectionSelect, list);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h5 id="textarea-元素"><a href="#textarea-元素" class="headerlink" title="textarea 元素"></a>textarea 元素</h5><p><code>textarea</code> 具有的属性和方法如下：</p>
+<ul>
+<li>name</li>
+<li>value （用户输入信息）</li>
+<li>select() （全选当前输入的内容）</li>
+<li>selectionStart （选中的内容的起始位置，无选中时返回当前光标所在位置）</li>
+<li>selectionEnd （选中内容结束位置，无选中时返回光标位置）</li>
+<li>selectionDirection （选取方向 <code>forward</code> <code>backward</code>）</li>
+<li>setSelectionRange(start, end[, direction]) （使用程序选中内容）</li>
+<li>setRangeText(replacement[, start, end, [mode]]) （设置内容范围）</li>
+</ul>
+<h6 id="selection"><a href="#selection" class="headerlink" title="selection"></a>selection</h6><p>表示选择区域，对于 <code>input</code> 元素同样有效。</p>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs//form_select_start_and_end.png" alt></p>
+<p><code>selectionDirection</code> 主要是用于在使用 SHIFT 键与方向键组合选取时的选取方向。设置为 <code>forward</code> 时选取移动的方向为 <code>selectionEnd</code> 设置为 <code>backward</code> 时移动方向为 <code>selectionStart</code>。</p>
+<p><em>@输入提示示例</em></p>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs//form_textarea_at_symble.png" alt></p>
+<p>所需知识点：</p>
+<ul>
+<li>oninput</li>
+<li>selectionStart</li>
+<li>setRangeText</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">textarea.addEventListener(</span><br><span class="line">  <span class="string">'input'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> target = event.target,</span><br><span class="line">        cursor = target.selectionStart;</span><br><span class="line">    <span class="keyword">if</span>(target.value.charAt(cursor<span class="number">-1</span>) === <span class="string">'@'</span>) &#123;</span><br><span class="line">      doShowAtList(functi=on(name)&#123;</span><br><span class="line">        <span class="keyword">var</span> end = cursor + name.length;</span><br><span class="line">        target.setRangeText(</span><br><span class="line">          name, cursor, end, <span class="string">'end'</span></span><br><span class="line">        );</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h5 id="其他元素"><a href="#其他元素" class="headerlink" title="其他元素"></a>其他元素</h5><ul>
+<li>fieldset</li>
+<li>button</li>
+<li>keygen</li>
+<li>output</li>
+<li>progress</li>
+<li>meter</li>
+</ul>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs//form_supportability.jpg" alt></p>
+<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p>可以被验证的元素如下所示：】</p>
+<ul>
+<li>button</li>
+<li>input</li>
+<li>select</li>
+<li>textarea</li>
+</ul>
+<p>以下情况不可以做验证</p>
+<ul>
+<li>input 元素在类型是 hidden, reset, button 时</li>
+<li>button 元素在类型为 reset, button 时</li>
+<li>input 与 textarea 当属性为 readonly 时</li>
+<li>当元素为 datalist 的子孙节点时</li>
+<li>当元素被禁用时 disabled 的状态</li>
+</ul>
+<h5 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h5><p>验证涉及到以下的以下属性，在每一个可以验证的元素上均可以调用对于的属性或通过接口进行操作：</p>
+<ul>
+<li>willValidate （表明此元素在表单提交时是否会被验证）</li>
+<li>checkValidity() （用于验证元素，返回 true 当验证通过，或者触发 invalid 事件）</li>
+<li>validity （存储验证结果）</li>
+<li>validationMessage （显示验证异常信息）</li>
+<li>setCustomValidity(message) （自定义验证错误信息）</li>
+</ul>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs//form_validity.png" alt></p>
+<p><em>自定义异常范例</em></p>
+<p>涉及到的知识点：</p>
+<ul>
+<li>oninvalid</li>
+<li>setCustomValidity</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"./api"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Name: <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">required</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span>&gt;</span>submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">input.addEventListener(</span><br><span class="line">  <span class="string">'invalid'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> target = event.target;</span><br><span class="line">    <span class="keyword">if</span> (target.validity.valueMissing) &#123;</span><br><span class="line">      target.setCustomValidity(<span class="string">'Name is missing'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><em>禁止验证范例</em></p>
+<p>使用 <code>form</code> 中 <code>novalidate</code> 属性来禁止表单提交的验证。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"./api"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">novalidate</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Mobile: <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"mobile"</span> <span class="attr">type</span>=<span class="string">"number"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span>&gt;</span>submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h4><h5 id="隐式提交"><a href="#隐式提交" class="headerlink" title="隐式提交"></a>隐式提交</h5><p>在操作过程中通过控件的操作来提交表单（敲击回车来提交表单），其需要满足以下的条件：</p>
+<ul>
+<li>表单有非禁用的提交按键</li>
+<li>没有提交按键时，不超过一个类型为 <code>text</code> <code>search</code> <code>url</code> <code>email</code> <code>password</code> <code>date</code> <code>time</code> <code>number</code> 的 <code>input</code> 元素</li>
+</ul>
+<h5 id="提交过程细节"><a href="#提交过程细节" class="headerlink" title="提交过程细节"></a>提交过程细节</h5><p>提交过程分为两个阶段，第一个阶段是更具表单 enctype 指定的值构建要提交的数据，第二个阶段是使用指定的方法（method）发送数据到 <code>action</code> 指定的目标。</p>
+<p><em>构建提交数据</em>，从可提交元素中提取数据组成指定数据结构过程（可提交元素有 <code>button</code> <code>input</code> <code>keygen</code> <code>object</code> <code>select</code> <code>textarea</code>）</p>
+<p><em>编码方式</em>（enctype）所支持的形式：</p>
+<ul>
+<li>application/x-www-form-urlencoded （默认，数据格式为 <code>&amp;</code> 分隔的键值对）</li>
+<li>multipart/form-data （IFC 2388 字节流形式，例如文件上传所使用的数据编码形式）</li>
+<li>text/plain （回车换行符分隔的键值对）</li>
+</ul>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs//form_submit_data_type.png" alt></p>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs//form_submit_data_2.png" alt></p>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs//form_submit_data_type1.png" alt></p>
+<p><em>特殊案例一</em></p>
+<p>当一个表单元素 <code>name=&quot;isindex&quot;</code> 并且 <code>type=&quot;text&quot;</code> 而且满足如下要求时：</p>
+<ul>
+<li>编码格式为 application/x-www-form-urlencoded</li>
+<li>作为表单的第一个元素</li>
+</ul>
+<p>则提交时只发送 value 值，不包含 name。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"./api"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"isindex"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"a"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span>&gt;</span>submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs//form_special_case.png" alt></p>
+<p><em>特殊案例二</em></p>
+<p>当 <code>name=&quot;_charset_&quot;</code> 并且类型为 <code>hidden</code> 时，而且满足如下要求时：</p>
+<ul>
+<li>没有设置 <code>value</code> 值</li>
+</ul>
+<p>则提交时 <code>value</code> 自动使用当前提交的字符集填充。</p>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs//form_speicla_calse2.png" alt></p>
+<h6 id="submit-接口"><a href="#submit-接口" class="headerlink" title="submit 接口"></a>submit 接口</h6><p><code>form.submit()</code> 可以通过调用接口<code>submit()</code>直接提交表单，在提交表单时均会触发一个 <code>onsubmit</code> 表单提交事件，在这个事件中 women 可以做下面的事件：</p>
+<ul>
+<li>提交前的数据验证</li>
+<li>阻止事件的默认行为来取消表单的提交（例如当验证失败时）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">form.addEventListener(</span><br><span class="line">  <span class="string">'submit'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> notValid = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">var</span> elements = event.target.elements;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自定义验证</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (notValid) &#123;</span><br><span class="line">      <span class="comment">// 取消提交</span></span><br><span class="line">      event.preventDefault();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><em>无刷新表单提交范例</em></p>
+<p>常用的方式是通过 AJAX 进行实现，这里我们使用 iframe 来做中介代理实现。</p>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs//form_ifram_submit_data.png" alt></p>
+<p>所需知识点：</p>
+<ul>
+<li>form</li>
+<li>target</li>
+<li>iframe</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">name</span>=<span class="string">"targetFrame"</span> <span class="attr">class</span>=<span class="string">"f-hidden"</span> <span class="attr">style</span>=<span class="string">"display:none"</span> <span class="attr">id</span>=<span class="string">"result"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"./api"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">target</span>=<span class="string">"targetFrame"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"isindex"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"a"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span>&gt;</span>submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> frame = <span class="built_in">document</span>.getElementById(<span class="string">'result'</span>);</span><br><span class="line">frame.addEventListener(</span><br><span class="line">  <span class="string">'load'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">var</span> result = <span class="built_in">JSON</span>.parse(</span><br><span class="line">        frame.contentWindow.document.body.textContent</span><br><span class="line">      );</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 还原登陆按钮状态</span></span><br><span class="line">      disabledSubmit(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 识别登陆结果</span></span><br><span class="line">      <span class="keyword">if</span> (result.code === <span class="number">200</span>) &#123;</span><br><span class="line">        showMessage(<span class="string">'j-suc'</span>, <span class="string">'success'</span>);</span><br><span class="line">        form.reset();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span>(ex) &#123;</span><br><span class="line">      <span class="comment">// 忽略操作</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="表单应用"><a href="#表单应用" class="headerlink" title="表单应用"></a>表单应用</h3><p>首先需要知道服务器端登陆接口的相关信息，如下所示：</p>
+<table>
+<thead>
+<tr>
+<th>描述</th>
+<th>数据信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>请求地址</td>
+<td>/api/login</td>
+</tr>
+<tr>
+<td>请求参数</td>
+<td><code>telephone</code> 手机号码; <code>password</code> 密码 MD5 加密</td>
+</tr>
+<tr>
+<td>返回结果</td>
+<td><code>code</code> 请求状态; <code>result</code> 请求数据结果</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/post-imgs//form_app_code.png" alt></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.forms.loginForm;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> message = <span class="built_in">document</span>.getElementById(<span class="string">'message'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通用逻辑封装</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showMessage</span>(<span class="params">class, message</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!<span class="class"><span class="keyword">class</span>) </span>&#123;</span><br><span class="line">    message.innerHTML = <span class="string">""</span>;</span><br><span class="line">    message.classList.remove(<span class="string">'j-suc'</span>);</span><br><span class="line">    message.classList.remove(<span class="string">'j-err'</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    message.innerHTML = message;</span><br><span class="line">    message.classList.add(<span class="class"><span class="keyword">class</span>)</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">invalidInput</span> (<span class="params">node, message</span>) </span>&#123;</span><br><span class="line">  showMessage(<span class="string">'j-err'</span>, message);</span><br><span class="line">  node.classList.add(<span class="string">'j-err'</span>);</span><br><span class="line">  node.focus();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clearInvalid</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">  showMessage();</span><br><span class="line">  node.classList.remove(<span class="string">'j-err'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">disabledSubmit</span>(<span class="params">disabled</span>) </span>&#123;</span><br><span class="line">  form.loginBtn.disabled = !!disabled;</span><br><span class="line">  <span class="keyword">var</span> method = !disabled ? <span class="string">'remove'</span> : <span class="string">'add'</span>;</span><br><span class="line">  form.loginBtn.classList[method](<span class="string">'j-disabled'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 验证手机号码（系统自带方法）</span></span><br><span class="line">form.telephone.addEventListener(</span><br><span class="line">  <span class="string">'invalid'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    event.preventDefault();</span><br><span class="line">    invalidInput(form.telephone, <span class="string">'invalid mobile number'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 验证密码</span></span><br><span class="line">form.addEventListener(</span><br><span class="line">  <span class="string">'submit'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> input = form.password;</span><br><span class="line">    <span class="keyword">var</span> password = input.value;</span><br><span class="line">    errorMessage = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">if</span> (password.length &lt; <span class="number">6</span>) &#123;</span><br><span class="line">      errorMessage = <span class="string">'password less than 6 char'</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!<span class="regexp">/\d./</span>test(password) || !<span class="regexp">/[a-z]/i</span>.test(password)) &#123;</span><br><span class="line">      errorMessage = <span class="string">'password must contains number and letter'</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!!errorMessage) &#123;</span><br><span class="line">      event.preventDefault();</span><br><span class="line">      invalidInput(input, errorMessage);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 提交表单代码</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 提交表单</span></span><br><span class="line">form.addEventListener(</span><br><span class="line">  <span class="string">'submit'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    input.value = md5(password);</span><br><span class="line">    disabledSubmit(<span class="literal">true</span>);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 状态恢复</span></span><br><span class="line">form.addEventListener(</span><br><span class="line">  <span class="string">'focus'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 错误还原</span></span><br><span class="line">    clearInvalid(event.target);</span><br><span class="line">    <span class="comment">// 还原登陆按钮状态</span></span><br><span class="line">    disabledSubmit(<span class="literal">false</span>);</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2017/07/18/Nginx-使用笔记（一）：解决前端跨域问题/" data-toggle="tooltip" data-placement="top" title="Nginx使用笔记（一）： 处理前端跨域问题">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/03/16/CSS-常用定位和布局方法/" data-toggle="tooltip" data-placement="top" title="CSS 常用定位和布局方法">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#html" title="html">html</a>
+                        
+                          <a class="tag" href="/tags/#speech" title="speech">speech</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hellowor1d";
+    var disqus_identifier = "http://hellowor1d.github.io/2017/05/14/2017-5-14-你好，form/";
+    var disqus_url = "http://hellowor1d.github.io/2017/05/14/2017-5-14-你好，form/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/xi-li-yixia-xia">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy;
+                    <a href="http://hellowor1d.coding.me">Hellowor1d&#39;s Blog </a>
+                    2019
+                 <!--    <br>
+                   Theme by <a href="http://huangxuan.me">Hux</a>
+                   <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                    -->
+
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://hellowor1d.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-81280350-1';
+    var _gaDomain = 'auto';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '8d393b7b03a85328717992b6e2517904';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://hellowor1d.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="前端博客 javaScript Nodejs 技术 生活 Todo">
+    <meta name="keyword" content="undefined">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          在这钢铁城市里，你孤单得像是一条狗 - 犀利一下下的博客 | Hellowor1d&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://hellowor1d.github.io/2015/12/14/在这钢铁城市里，你孤单得像是一条狗/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hellowor1d&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://hellowor1d.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('http://7xo9xp.com1.z0.glb.clouddn.com/image/bg/desktop.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#随笔" title="随笔">随笔</a>
+                        
+                    </div>
+                    <h1>在这钢铁城市里，你孤单得像是一条狗</h1>
+                    <h2 class="subheading">Lonely lonely lonely</h2>
+                    <span class="meta">
+                        Posted by 犀利一下下 on
+                        2015-12-14
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>接连几天的雾霾笼罩北京全城，帝都沦陷成了雾都。若不是紧急单双号限行，就连五环边儿上的大小马路也会堵得水泄不通。就像你不知道雾霾什么时候再起，你也猜不到公交什么时候会堵。没有方便的地铁，又对早高峰时地铁站的拥堵不堪感到绝望，到公司的直线距离只有短短不到十五公里，堵车的时候却要倒两趟公交，花上一个半小时。大把的时间耗费在路上，翻看手机上的技术文章或者博客成了消磨这段时间的最好方式，多少也能理解那些在地铁上还捧书阅读的人了：一方面是对于钱少事儿多离家远的无奈，另一方面又有点儿想靠提升自己来增加摆脱这无奈的筹码吧。</p>
+<a id="more"></a>
+<blockquote>
+<p>吐吐槽</p>
+</blockquote>
+<p>新的工作开始以后，很多新的东西需要学习，业务流程需要熟悉，每天忙得团团转，起个大早赶公交，晚上到家沾床就着，但也感到很充实。终于挨到周末，刷刷QQ和微信群，才看到那些错过了好多天的消息。曾经对于那些不回复消息的行为我深恶痛绝，聊天时碰到半天不回复的，我会问一嘴原因，次数多的就心里把他胖揍一顿再告之，从来无心要求别人什么，只是想表达个态度罢了。想想可笑，现在也干了这样的事情，出于礼貌，也挨个回复解释……因为觉得聊天里无论怎样的嬉笑怒骂、打趣调侃都不是事儿，唯有视若无睹的冷漠才应该主动解释一下避免被误会。</p>
+<p>每天朝九晚六的上班时间总被长长短短的加班毁得面目全非，但好在周边的同事都能乐观对待，你飞一句调侃，我还一嘴笑骂，最后下班在公交站旁分开，作为这一个工作日的结束。一挤上公交，面对一车的陌生人，艰难找个站脚的地儿，能感到熟悉的就只有这拥挤的感觉了，翻出手机划拉划拉新闻，微信里也找不见个可以说话的人，又或者好容易给人发条信息，半天也等不到回复，聊天儿的兴致也一扫而光。想想没毕业的时候，有上下铺的兄弟陪着开卧谈会，也在微信上有人儿可以一起聊至夜深，还是蛮怀念的。也许真的是身份变了，环境变了，连身边的人也跟着一起在变，大家的生活慢慢分散在了不同的维度上，就连单纯的想聚一下吃顿饭、看个电影都很难，有些曾经共同的美好注定只能留在记忆里了。心里能想明白这些，但并不代表可以欣然接受这样逐渐冷漠的现实…</p>
+<blockquote>
+<p>从前车马很慢，小城里头故事多，一生只够爱一个人。现在车马快了，城市大了，可以用尽一生来爱的那个人却找不见了</p>
+</blockquote>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/content/dahuaxiyou1.jpg" alt="仙履奇缘"></p>
+<p>那天正在加班，蛋蛋打来电话聊聊他想追隔壁班女生的宏伟计划，然后演变成两只单身汪互相出谋划策，畅想赢取白富美、过上未来美好生活的一场白日梦，最后一起悲叹：现在找个感觉合适能一起过日子的人，真特么难！祝你未来相亲顺利！（微笑脸/内心摔）</p>
+<p>杰仔也曾在我没想到的时候往邮箱里塞过一封Email，隔天才打开来看竟是一封长信，在这物欲横流，洪荒之力肆虐，微信绞杀短信，广告邮件淹没邮箱的冷漠年代，还能收到一封人工码字的信件着实让我受宠若惊了一番。我也给回了一封不算太正经的邮件，最后一段竟也又把话题拉回到了“找人”上。曾经纯洁如我等，跟女生说个话都脸红的小城镇淳朴男娃儿，现在也都不约而同要在终身大事的问题上花心思了。至于为什么会有这样的转变，我也说不清楚，大概是因为年龄吧~</p>
+<p>十岁到二十岁的日子当时觉得时间很充裕，可一旦过了二十岁，感觉时间就变得像一匹脱缰了的野马，想勒都勒不住，就这样横冲直撞地非要直奔三十而去。年龄增长得太快，总嫌自己成长得太慢，能力与年龄不相匹配的现状确实让人感到深深的担忧，越来越把自己活成这个钢铁城市里的小角色的剧情上演得越真实就越想挣扎，所以拼命地在有空的时候就看看书，工作上有啥活儿多干点儿也没关系，即便反感加班但也不会抱怨怠工，转念想想来学技术，有强悍的老大带着，还能被发工资是件很走运的事儿。有句话那么说着，“努力让自己变得优秀，去配得上更好的未来。” 这么浓的鸡汤味儿，不太是我风格，只想让自己能力强一些，能为家人和那些互相关心的朋友多做些事儿吧。也是在最近，接二连三知道一些熟悉的人或者朋友的亲人患癌的消息，受到挺大的冲击，曾经觉得那么遥远的一个词，绝不可能跟我的生活沾边，可它就的的确确出现了，浑身散发着死亡气息，让人不得不对它重视。要努力工作，也得注意好锻炼身体，工作本来就是为了更好的生活，绝不应该本末倒置~~现在努力工作的理由就是为了将来不工作，同样能过得好~（漂亮话说起来是真的容易，做起来还是得做好脱层皮的准备了）</p>
+<blockquote>
+<p>人生不如意事常八九,可与言者无二三</p>
+</blockquote>
+<p>偌大的一个北京城，高楼大厦林立，公路、立交桥、铁轨纵横四面八方，活脱脱一个钢筋混凝土构筑的钢铁森林，绝不会因为我的几句吐槽而改变什么，雾霾不会褪去，堵车还是照旧，聚不到一起的人依然各自忙碌着，唯一能改变的就只有自己的一些看法和情绪，以及与别人沟通的方式。人生不如意事常八九,可与言者无二三，愤懑的时候发文倾吐或许是最合适的方式，既不打扰别人也能舒缓心中不平之绪。虽然我还将在这座钢铁城市里继续生活，继续孤单，但这只是暂时的，今后所有的努力都将会是为了摆脱这如狗的现状！</p>
+<p><img src="http://7xo9xp.com1.z0.glb.clouddn.com/image/content/dahuaxiyou2.jpg" alt="狗"></p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/08/10/color/" data-toggle="tooltip" data-placement="top" title="color highlight test">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2015/11/12/前端开发：实时刷新（及时预览）工具总结/" data-toggle="tooltip" data-placement="top" title="前端开发：实时刷新（及时预览）工具小汇总，gulp+browser-sync设置方法">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#随笔" title="随笔">随笔</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hellowor1d";
+    var disqus_identifier = "http://hellowor1d.github.io/2015/12/14/在这钢铁城市里，你孤单得像是一条狗/";
+    var disqus_url = "http://hellowor1d.github.io/2015/12/14/在这钢铁城市里，你孤单得像是一条狗/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/xi-li-yixia-xia">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy;
+                    <a href="http://hellowor1d.coding.me">Hellowor1d&#39;s Blog </a>
+                    2019
+                 <!--    <br>
+                   Theme by <a href="http://huangxuan.me">Hux</a>
+                   <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                    -->
+
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://hellowor1d.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-81280350-1';
+    var _gaDomain = 'auto';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '8d393b7b03a85328717992b6e2517904';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://hellowor1d.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

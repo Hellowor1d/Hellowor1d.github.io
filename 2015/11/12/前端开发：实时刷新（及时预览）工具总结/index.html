@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="前端博客 javaScript Nodejs 技术 生活 Todo">
+    <meta name="keyword" content="undefined">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          前端开发：实时刷新（及时预览）工具小汇总，gulp+browser-sync设置方法 - 犀利一下下的博客 | Hellowor1d&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://hellowor1d.github.io/2015/11/12/前端开发：实时刷新（及时预览）工具总结/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hellowor1d&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://hellowor1d.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('http://7xo9xp.com1.z0.glb.clouddn.com/image/bg/desktop.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#前端工具" title="前端工具">前端工具</a>
+                        
+                    </div>
+                    <h1>前端开发：实时刷新（及时预览）工具小汇总，gulp+browser-sync设置方法</h1>
+                    <h2 class="subheading">Tools about frontend development</h2>
+                    <span class="meta">
+                        Posted by 犀利一下下 on
+                        2015-11-12
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>开门见山，首先讲明一下本文的定位吧：<br>写这篇文章是因为自己在平时的学习中，一次次试验了很多的前端实时刷新工具，有顺手的，有蹩脚的，有简单的，有麻烦的，安装完又折腾，折腾完又卸载，体验完这些也着实花费了不少时间，就在昨天又刚刚折腾完<code>gulp</code>+<code>browser-sync</code>的方法，估计可以让我消停一阵子了。这篇文章主要介绍和汇总一下我用过和见过的前端页面实时刷新工具（就是ctrl+s之后实现页面刷新的意思，觉得F5刷新也不麻烦的朋友们就可以不必往下读了哈），希望能为你挑选自己喜欢的工具节省些时间，也少些纠结，闲言少叙，下面开始<br><a id="more"></a></p>
+<h2 id="工具列表（顺序：从安装方便到功能强大）"><a href="#工具列表（顺序：从安装方便到功能强大）" class="headerlink" title="工具列表（顺序：从安装方便到功能强大）"></a>工具列表（顺序：从安装方便到功能强大）</h2><h3 id="1-自带及时预览功能的编辑器："><a href="#1-自带及时预览功能的编辑器：" class="headerlink" title="1.自带及时预览功能的编辑器："></a>1.自带及时预览功能的编辑器：</h3><p><code>Atom</code>    <code>brackets</code>     <code>webstorm</code><br>上述三者都是大名鼎鼎的编辑器，插件众多，功能强大，为前端开发人员们在工作中立下汗马功劳，也深受开发人员们的喜爱，因此也是教程众多，我就不再多说了。google一下，你就知道如何使用它们的及时预览功能了。但是这些工具的及时预览有一点不爽：预览界面内嵌在编辑器界面内，减小了对整张网页的视觉效果，Atom和Brackets都存在这样的问题（当然这也不算是问题了，全看个人喜好）。如Atom编辑器使用atom-preview-html实现的效果：<img src="http://7xo9xp.com1.z0.glb.clouddn.com/xiliAtom-preview-html.png" alt="Atom页面实时预览效果图"><br>而webstorm实现预览的效果是很赞的，右上角会有多个浏览器的logo图标，想在哪个浏览器打开就点击哪个就好了，挺方便。webstorm本身也是算是前端人员熟知的编辑器中体量和功能相当强大的了，除了打开速度有点慢之外，没啥说的。</p>
+<h3 id="2-sublime-text3"><a href="#2-sublime-text3" class="headerlink" title="2.sublime text3"></a>2.sublime text3</h3><ul>
+<li>把<code>sublime text3</code>单独拿出来说是有原因的，首先它是我长期使用的第一款编辑器，有个人情愫在其中难免没有偏爱之心。最喜欢的就是它超快的打开响应速度，有种说干就干的爽快劲儿，即便安装了一大堆的插件儿也丝毫没有觉得变缓慢，点个赞。<br>说到插件就不得不说sublime编辑器是没有自带及时预览功能的，但是可以通过插件来实现：比如<code>sidebarEnhancement</code>，在html文件名上右键打开open in Browser就可以查看效果了，这其实就是最传统的 ctrl+s+F5刷新预览大法，只不过直接在编辑器上打开浏览器了而已。</li>
+<li>还可以使用<code>livereload</code>方法，但是比较古老了，感兴趣的话可以google一下（如果你可以忍受各种各样的V1推广，V2推广等不相关内容强占你的页面，当然也可以用百度啦）</li>
+<li>以前作为新手，对于命令行操作的工具有畏惧感，所以接触到<a href="http://getf5.com/" target="_blank" rel="noopener">“F5免刷新工具的时候”(点击进入它的官网可下载)</a>一下子被其可视化的界面操作吸引了，用它在浏览器中打开文件之后，在编辑器中编辑完代码，ctrl+s即可实现自动刷新，很方便，用了很长一段时间都觉得十分方便，但是最近发现它总是在没有进行任何操作的时候自动刷新一遍，在浏览器中找好的节点位置一下子又不见了，搞得正在盯着屏幕看代码的我很诧异，有种正津津有味看着大片儿一下子电脑黑屏的赶脚，看了下工具作者好多年没更新了，只好依依不舍地先弃掉这一工具另谋它法。</li>
+</ul>
+<p>在网上百般寻找，最后找到了这么一款工具：<a href="http://www.browsersync.cn/" target="_blank" rel="noopener">browser-sync</a><br>Browsersync能让浏览器实时、快速响应您的文件更改（html、js、css、sass、less等）并自动刷新页面。更重要的是 Browsersync可以同时在PC、平板、手机等设备下进项调试。您可以想象一下：“假设您的桌子上有pc、ipad、iphone、android等设备，同时打开了您需要调试的页面，当您使用browsersync后，您的任何一次代码保存，以上的设备都会同时显示您的改动”。无论您是前端还是后端工程师，使用它将提高您30%的工作效率。<br><img src="http://7xo9xp.com1.z0.glb.clouddn.com/xilisync-demo.gif" alt="browser-sync"><br>有了它，您不用在多个浏览器、多个设备间来回切换，频繁的刷新页面。更神奇的是您在一个浏览器中滚动页面、点击等行为也会同步到其他浏览器和设备中，这一切还可以通过可视化界面来控制。<br><img src="http://7xo9xp.com1.z0.glb.clouddn.com/xiliscroll-demo.gif" alt="browser-sync"></p>
+<p>以上是中文网站上的介绍，很是吸引我，果断决定就用它了！（其实国内也有一款之类似的工具<a href="http://leeluolee.github.io/2014/10/24/use-puer-helpus-developer-frontend/" target="_blank" rel="noopener">puer</a> ,二者功能接近，但BrowserSync更强大，我就主要介绍他了</p>
+<h3 id="开始安装："><a href="#开始安装：" class="headerlink" title="开始安装："></a>开始安装：</h3><p>1.下载安装node.js<br>2.安装 BrowserSync</p>
+<p>您可以选择从Node.js的包管理（NPM）库中 安装BrowserSync。打开一个终端窗口，运行以下命令：</p>
+<pre><code>npm install -g browser-sync
+</code></pre><p>这条命令相当于告诉包管理器下载BrowserSync文件，并在全局下安装它们，您可以在所有项目(任何目录)中使用。</p>
+<p>当然您也可以结合gulpjs或gruntjs构建工具来使用，在您需要构建的项目里运行下面的命令:</p>
+<pre><code>npm install --save-dev browser-sync
+</code></pre><p>3.启动 BrowserSync<br>一个基本用途是，如果您只希望在对某个css文件进行修改后会同步到浏览器里。那么您只需要运行命令行工具，进入到该项目（目录）下，并运行相应的命令：</p>
+<h4 id="静态网站"><a href="#静态网站" class="headerlink" title="静态网站"></a>静态网站</h4><p>如果您想要监听.css文件, 您需要使用服务器模式。 BrowserSync 将启动一个小型服务器，并提供一个URL来查看您的网站。<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">//</span> <span class="params">--files</span> 路径是相对于运行该命令的项目（目录）</span><br><span class="line">browser-sync start <span class="params">--server</span> <span class="params">--files</span> <span class="string">"css/*.css"</span></span><br></pre></td></tr></table></figure></p>
+<p>如果您需要监听多个类型的文件，您只需要用逗号隔开。例如我们再加入一个.html文件</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">//</span> <span class="params">--files</span> 路径是相对于运行该命令的项目（目录）</span><br><span class="line">browser-sync start <span class="params">--server</span> <span class="params">--files</span> <span class="string">"css/*.css, *.html"</span></span><br><span class="line"><span class="string">//</span> 如果你的文件层级比较深，您可以考虑使用 **（表示任意目录）匹配，任意目录下任意<span class="string">.css</span> 或 <span class="string">.html</span>文件。</span><br><span class="line">browser-sync start <span class="params">--server</span> <span class="params">--files</span> <span class="string">"**/*.css, **/*.html"</span></span><br></pre></td></tr></table></figure>
+<p>我们做了一个静态例子的示范，您可以下载示例包，文件您可以解压任何盘符的任何目录下，不能是中文路径。打开您的命令行工具，进入到BrowsersyncExample目录下，运行以下其中一条命令。Browsersync将创建一个本地服务器并自动打开你的浏览器后访问<a href="http://localhost:3000" target="_blank" rel="noopener">http://localhost:3000</a> 地址， 这一切都会在命令行工具里显示。如果遇到can not GET/这样的提示，说明你在当前文件夹下没有index.html文件，如果想查看的是当前目录下的css文件夹下面的某html5.html文，要更改访问地址为：<a href="http://localhost:3000/css/html5.html" target="_blank" rel="noopener">http://localhost:3000/css/html5.html</a> ，这样就能正常访问了。<br>你也可以查看Browsersync静态示例视频：</p>
+<p><a href="http://www.browsersync.cn/example/video/browsersync1.mp4" target="_blank" rel="noopener">不明白上述教程一定要点开看！！！这里是视频演示的使用方法</a></p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">//</span> 监听css文件</span><br><span class="line">browser-sync start <span class="params">--server</span> <span class="params">--files</span> <span class="string">"css/*.css"</span></span><br><span class="line"><span class="string">//</span> 监听css和html文件</span><br><span class="line">browser-sync start <span class="params">--server</span> <span class="params">--files</span> <span class="string">"css/*.css, *.html"</span></span><br></pre></td></tr></table></figure>
+<h4 id="动态网站"><a href="#动态网站" class="headerlink" title="动态网站"></a>动态网站</h4><p>如果您已经有其他本地服务器环境PHP或类似的，您需要使用代理模式。 BrowserSync将通过代理URL(localhost:3000)来查看您的网站。<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 主机名可以是<span class="built_in">ip</span>或域名</span><br><span class="line"><span class="keyword">browser-sync </span>start --proxy <span class="string">"主机名"</span> <span class="string">"css/*.css"</span></span><br></pre></td></tr></table></figure></p>
+<p>在本地创建了一个PHP服务器环境，并通过绑定Browsersync.cn来访问本地服务器，使用以下命令方式，Browsersync将提供一个新的地址localhost:3000来访问Browsersync.cn，并监听其css目录下的所有css文件。<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">browser-sync </span>start --proxy <span class="string">"Browsersync.cn"</span> <span class="string">"css/* .css"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="一点建议，其实也是gulp-browser-sync方法的介绍，算是本文核心（我现在用的方法）"><a href="#一点建议，其实也是gulp-browser-sync方法的介绍，算是本文核心（我现在用的方法）" class="headerlink" title="一点建议，其实也是gulp+browser-sync方法的介绍，算是本文核心（我现在用的方法）"></a>一点建议，其实也是gulp+browser-sync方法的介绍，算是本文核心（我现在用的方法）</h2><p>我们建议您结合gulp或grunt来使用，我们这里有详细说明Gulp文档、Grunt文档。如果您还没有使用gulp或grunt，那么可以通过以上方式创建Browsersync<br>鉴于browser-sync中文网站上给出的教程已经很去那面细致了，我就照搬了部分过来，但是实际使用browser-sync之后，估计你会发现，每次启动都要打开git bash或者其他命令窗工具，输入<br>     browsersync start –server –file “**/*.html，**/*.css”<br>命令行的方法太冗长，所以我就研究了下搭配gulp使用的方法，实际证明官方推荐的方法确实蛮省劲儿的，但是他们没有给出具体详细的设置方法，我在这里写点更为详细的方法好了：<br>肯定有对<code>gulp</code>工具不是很熟悉的人看这篇文，一次都没接触过也不用怕，他就像个大管家，是来统筹管理前端各类比较杂的工具的大总管，你是主人，有什么需要提前给他吩咐好，他会去让各种工具有序干活儿。所以这里可以理解为把启动browser-sync的命令交由gulp去完成，我们的目标是只要在命令框里输入个gulp就能执行browser-sync。<br><a href="http://www.ydcss.com/archives/18" target="_blank" rel="noopener">这里推荐一篇学习gulp的文章,注意学习其中对于命令行参数的解释</a><br>在上面的教程中的gulpfile.js文件中写好如下内容：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp        = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> browserSync = <span class="built_in">require</span>(<span class="string">'browser-sync'</span>).create();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Static server</span></span><br><span class="line">gulp.task(<span class="string">'browser-sync'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> files = [</span><br><span class="line">	<span class="string">'**/*.html'</span>,</span><br><span class="line">	<span class="string">'**/*.css'</span>,</span><br><span class="line">	<span class="string">'**/*.js'</span></span><br><span class="line">	];</span><br><span class="line">    browserSync.init(files,&#123;</span><br><span class="line">        server: &#123;</span><br><span class="line">            baseDir: <span class="string">"./"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">gulp.task(<span class="string">'default'</span>,[<span class="string">'browser-sync'</span>]); <span class="comment">//定义默认任务</span></span><br></pre></td></tr></table></figure></p>
+<p>然后重新打开命令行工具，键入“gulp+enter”看看是不是就能打开browser-sync了？<br>这里其实就是把browser-sync设置为了gulp的默认任务了而已，等你需要用到gulp调用其他工具的时候，可以再作修改。</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2015/12/14/在这钢铁城市里，你孤单得像是一条狗/" data-toggle="tooltip" data-placement="top" title="在这钢铁城市里，你孤单得像是一条狗">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2015/07/11/JavaScript-function/" data-toggle="tooltip" data-placement="top" title="JavaScript 函数">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#前端工具" title="前端工具">前端工具</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hellowor1d";
+    var disqus_identifier = "http://hellowor1d.github.io/2015/11/12/前端开发：实时刷新（及时预览）工具总结/";
+    var disqus_url = "http://hellowor1d.github.io/2015/11/12/前端开发：实时刷新（及时预览）工具总结/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/xi-li-yixia-xia">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy;
+                    <a href="http://hellowor1d.coding.me">Hellowor1d&#39;s Blog </a>
+                    2019
+                 <!--    <br>
+                   Theme by <a href="http://huangxuan.me">Hux</a>
+                   <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                    -->
+
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://hellowor1d.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-81280350-1';
+    var _gaDomain = 'auto';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '8d393b7b03a85328717992b6e2517904';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://hellowor1d.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

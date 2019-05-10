@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="前端博客 javaScript Nodejs 技术 生活 Todo">
+    <meta name="keyword" content="undefined">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Nginx使用笔记（一）： 处理前端跨域问题 - 犀利一下下的博客 | Hellowor1d&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://hellowor1d.github.io/2017/07/18/Nginx-使用笔记（一）：解决前端跨域问题/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hellowor1d&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://hellowor1d.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('http://7xo9xp.com1.z0.glb.clouddn.com/NGINX.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#跨域" title="跨域">跨域</a>
+                        
+                          <a class="tag" href="/tags/#proxy" title="proxy">proxy</a>
+                        
+                          <a class="tag" href="/tags/#nginx" title="nginx">nginx</a>
+                        
+                    </div>
+                    <h1>Nginx使用笔记（一）： 处理前端跨域问题</h1>
+                    <h2 class="subheading">Note of Nginx : handle the issue about cross origin</h2>
+                    <span class="meta">
+                        Posted by 犀利一下下 on
+                        2017-07-18
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h3 id="Nginx虽然不算新朋友，但也不敢妄称老熟人"><a href="#Nginx虽然不算新朋友，但也不敢妄称老熟人" class="headerlink" title="Nginx虽然不算新朋友，但也不敢妄称老熟人"></a>Nginx虽然不算新朋友，但也不敢妄称老熟人</h3><p>从第一次接触 Nginx 算起，也是快有两年时间了，之前只是在组长写好的配置下使用它，虽然了解一些它安装和使用，但对于其极其强大且复杂的配置功能项还是有些胆怯的，没有亲自设置过，就没法细细感受它的复杂与强大。一直也想好好学习一下 Nginx 的使用，体会一下它的功能，但都没有比较合适的机会（也许因为自己太懒了，没有主动去开这个坑，看过一些介绍 Nginx 配置的文章，缺少练习也都被忘到脑后了）。这次正好帮一个同事写了个简单的静态页面，需要放到阿里云上方便他的使用，这就正好给了我一个合适的练手机会，果断把页面上线（其实就是放到服务器上，开启 Nginx 服务罢了）的差事也给接了下来。</p>
+<h3 id="先说说这个静态页"><a href="#先说说这个静态页" class="headerlink" title="先说说这个静态页"></a>先说说这个静态页</h3><p>最初只是一个业务方提供的接口，返回 json 数据，但由于数据结构稍微复杂一些，不便于查看，我就写了个 table 页面来装这些数据。鉴于公司的项目都是在用 jQuery 这些比较陈旧的技术栈开发，苦于不能用上新的技术栈和前端工作流，我还是比较心痒的，所以在这个小小的项目里搭建了个比较时髦的开发环境，算是练习一下项目搭建吧。</p>
+<p>首先选择了 Vue-cli 这个脚手架工具，直接 vue init 了一套 Vue2 的开发目录，工具还是比较方便的，直接内置了 Webpack2、Eslint4、babel，算是为了体验和节省一些时间吧，如果按照我自己的思路来安装的话，一定直接上最新的了，反正都是为了练习嘛，毕竟Webpack3、TypeScript 等都是值得研究和练习的趋势化工具。</p>
+<p>初步搭建完成，因为只是个单页面，也没有其他复杂功能，vue-router, vuex, 这些就不赶鸭子硬上架的安装了。出于单页面也不能少了展示的美观性，所以又添加了 bootstrap-vue,这是一套封装了bootstrap4 样式的 vue 组件库，但是并不依赖 jQuery，还是蛮好的，就拿来当 bootstrap 用了，比较方便。再者，还想感受一下 element-ui 是否真的如他宣传的那么好，果断紧跟着上了一套。组件的动效以及展示效果还是比较不错的，但是正好被我发现，el-table 组件竟然缺少table 关键的 “rowspan、colspan”功能，看了他们的组件设计思路，想要支持基本要把 el-table 重构了。不过还是有解决思路的，最近还是太忙了，看以后有没有机会贡献一发 PR 吧。这里面又踩了一个小坑，就是想要在页面加载的时候就去请求数据，要把 getData() 函数放在 Vue 的created() 周期中（可能不太准确，回头继续研究）</p>
+<h3 id="关键的数据获取"><a href="#关键的数据获取" class="headerlink" title="关键的数据获取"></a>关键的数据获取</h3><p>最终 table 还是手写了，用上一些 bootstrap 的样式，关键的第三方数据接口，直接请求会出现跨域问题，很明显不能使用 jsonp 或者 CORS 的手段来解决跨域问题了。凭借之前对于 axios 了解的一些印象，隐约记得这货是被小右推荐过的请求数据或者资源的小神器，跨个域这种小需求应该能够轻易解决吧。然而并不是，跨域是浏览器端的问题，在 vue-cli 建立的项目可以通过 config.js proxyTable 设置 rewrite 来解决, 当然也可以通过 webpack 的 proxy 方式来解决。由于 axios 只是被我用来发了个 get 请求，跨域的责任自然要旁移了，对，其实就是为了 熟悉一下 webpack 的配置，强制自己通过 webpack 的方式来解决这个问题。然后，有了下面的配置；<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">  host: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">  port: <span class="number">8010</span>,</span><br><span class="line">      proxy: &#123;</span><br><span class="line">    <span class="string">'/api/'</span>: &#123;</span><br><span class="line">      target: <span class="string">'http://api.server.com'</span>,</span><br><span class="line">      changeOrigin: <span class="literal">true</span>,</span><br><span class="line">      pathRewrite: &#123;</span><br><span class="line">        <span class="string">'^/api'</span>: <span class="string">''</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  historyApiFallback: &#123;</span><br><span class="line">    index: url.parse(options.dev ? <span class="string">'/assets/'</span> : publicPath).pathname</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这就是在开发环境的代理转发了，webpack 的 dev server 收到 ‘/api/some/request’这样的请求时，就会拦截下来。重新修改一下（这里是通过正则的方式匹配到‘/api’，替换为空字符串），然后发送新的请求 <a href="http://api.server.com/some/request" target="_blank" rel="noopener">http://api.server.com/some/request</a> 并会在接收到返回数据时再转给浏览器页面的这次请求，从而完成整个请求和接收的流程，完美解决开发环境的浏览器跨域问题。这是前后端分离的一个重要功能啊！</p>
+<h3 id="扯了半天，终于要说到今天的主角——Nginx"><a href="#扯了半天，终于要说到今天的主角——Nginx" class="headerlink" title="扯了半天，终于要说到今天的主角——Nginx"></a>扯了半天，终于要说到今天的主角——Nginx</h3><p>经过上面的开发和设置，终于在本地环境完成了一个有数据的长相还不错的页面。</p>
+<blockquote>
+<p>npm run build  走你</p>
+</blockquote>
+<p>终于，一个崭新的dist文件夹诞生，里面饱含着我折腾一下午的辛酸。终于要发布到阿里云服务器上了，一丝丝小激动，等下，先在本地跑下试试。。。</p>
+<p>然而，无情打脸。。。</p>
+<p>由于<code>npm run build</code>之后，没有了webpack dev server 的给力支持，跨域问题又回来了。又是一个新的问题，线上环境应该给用个什么方式来解决这个跨域问题会比较好呢？虽说只是个内部使用的工具页面，访问量不会太大，硬是要用 webpack server 跑在线上也可以满足需求，但总觉的这种方式不靠谱儿，毕竟“懒惰都是要付出代价的”，想了想还是应该用 Nginx 来做 线上的代理转发比较稳妥，毕竟04年诞生的 Nginx 久经世界 IT 人民的考验，会是个不错的选择。</p>
+<p>说干就干，还是先在本地模拟线上环境了。</p>
+<blockquote>
+<p>brew install nginx </p>
+</blockquote>
+<p>对，mac 安装 nginx 就是这么轻松简单。</p>
+<blockquote>
+<p>whereis nginx </p>
+</blockquote>
+<blockquote>
+<p>nginx -h 查看基本信息</p>
+</blockquote>
+<p>查看一下nginx 的安装目录，默认是在 /usr/local/Cellar/nginx/1.12.1<br>配置文件，默认位置               /usr/local/etc/nginx/nginx.conf</p>
+<p>提前说一下踩坑总结出来的 nginx 使用命令：</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx                  <span class="comment"># 启动nginx</span></span><br><span class="line">sudo nginx -s <span class="keyword">reload</span>        <span class="comment"># 重启并使用新的配置文件</span></span><br><span class="line">sudo nginx -s <span class="keyword">quit</span>          <span class="comment"># 强制退出</span></span><br><span class="line">sudo nginx -s stop          <span class="comment"># 强制停止</span></span><br><span class="line">sudo nginx -s reopen        <span class="comment"># 重新打开</span></span><br></pre></td></tr></table></figure>
+<p>要么通过系统命令使用上面方式进行操作，要么就得在安装目录下 ./bin/nginx 进行命令操作，<br>其他操作方式会入坑（只能通过 kill pid 方式来停下 nginx），谨慎</p>
+<h3 id="重头戏来了，-Nginx-配置"><a href="#重头戏来了，-Nginx-配置" class="headerlink" title="重头戏来了， Nginx 配置"></a>重头戏来了， Nginx 配置</h3><p>虽然敲定了使用 Nginx 来帮助解决线上跨域问题，但是为什么呢？ 怎样配置才能达到我所需要的效果呢？</p>
+<p>google 一下，大概了解一下 Nginx 的一些典型特点：</p>
+<ol>
+<li>反向代理 ： 顾名思义，就是反着代理，你懂了吗？<br>好吧，其实，这个名字起得太恶心了，让人摸不着头脑，不了解起名背景的人很难通过名字就想象到实际所表述的功能。分析一下，与之相对应的应该就是正向代理，简称“代理”了，上文提到的 webpack dev server就是如此，一般来说，代理是架设在客户端的一种方案，比如科学上个网什么的，client 的网络不能直接访问，那就通过代理来访问 一个指定的 server，需要明确知道访问的 server 地址，这是正向的代理，被代理的对象是 client。而对于 Nginx “反向代理”功能来说，它是架设在 server 端的，被代理的对象是 server ，此时server 并不知道 具体是哪一个client 访问的,只是把资源抛给了 Nginx 。</li>
+<li>负载均衡：<br>协调处理服务器集群的任务分配，防止大量请求堆积在某个服务器上导致宕机</li>
+</ol>
+<p>就会发现，其实是可以通过反向代理的方式来解决跨域，让 Nginx 检测到发送的 api 请求，然后再重新指向到 <a href="http://server.com" target="_blank" rel="noopener">http://server.com</a> ，像 webpack proxy 功能一样，也是涉及到 rewrite 的，重点查一下这个功能就 OK 了。</p>
+<p>经过一番折腾，有了下面的配置：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">        <span class="attribute">listen</span>       <span class="number">80</span>;  <span class="comment">#配置一台服务器，80是默认端口，好处是可以不用在访问地址上写端口号了，当然80经常被占用，也可以通过匹配访问路径，映射到其他端口号</span></span><br><span class="line">        <span class="attribute">server_name</span>  localhost;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#charset koi8-r;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#access_log  logs/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> /urlpath &#123;</span><br><span class="line">            <span class="attribute">alias</span> /Users/Workspace/personal/Vue/vue-ele-table/dist/;  <span class="comment">#打包文件路径，或者开发环境的源码文件地址</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> /api/ &#123;</span><br><span class="line">            <span class="attribute">rewrite</span><span class="regexp"> ^/api/(.*)$</span> /<span class="variable">$1</span> <span class="literal">break</span>;  <span class="comment">#为请求加一个api便于让Nginx 匹配到，然后替换一下，发送请求到真正的接口地址</span></span><br><span class="line">            <span class="comment"># API Server</span></span><br><span class="line">            <span class="attribute">proxy_pass</span> http://api.server.com;  <span class="comment">#将真正的请求代理到server ，如果 ajax发送的url为/api/some/request,实际发出的的请求是http://www.server.com/api/some/request</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#error_page  404              /404.html;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># redirect server error pages to the static page /50x.html</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="attribute">error_page</span>   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /50x.html;</span><br><span class="line">        <span class="attribute">location</span> = /50x.html &#123;</span><br><span class="line">            <span class="attribute">root</span>   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>值得提醒的一点是：dist 文件夹在放到服务器的存储空间时，不要放在权限较高的文件夹，比如 root ，否则会造成403 forbidden报错，即 服务器无权限访问的路径，浏览器也无法看到，会报 403 错误。要么 chmod -R 777 修改文件夹的访问权限，要么就需要放在另一个权限低的目录下</p>
+<p>最后，Nginx 配置的 server 如果访问不了，会被重新指向到 nginx 安装目录下 的 html 默认文件夹里的 index.html 页面，这是默认的，如果有需要可以替换该文件，设置默认的提示页面。</p>
+<p>（有些部分还待研究确认，如有问题，欢迎指出，共同学习，谢谢）</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/03/11/字符串验证包含子串的方法/" data-toggle="tooltip" data-placement="top" title="字符串验证包含子串的方法">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/05/14/2017-5-14-你好，form/" data-toggle="tooltip" data-placement="top" title="你好，form">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#跨域" title="跨域">跨域</a>
+                        
+                          <a class="tag" href="/tags/#proxy" title="proxy">proxy</a>
+                        
+                          <a class="tag" href="/tags/#nginx" title="nginx">nginx</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hellowor1d";
+    var disqus_identifier = "http://hellowor1d.github.io/2017/07/18/Nginx-使用笔记（一）：解决前端跨域问题/";
+    var disqus_url = "http://hellowor1d.github.io/2017/07/18/Nginx-使用笔记（一）：解决前端跨域问题/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/xi-li-yixia-xia">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy;
+                    <a href="http://hellowor1d.coding.me">Hellowor1d&#39;s Blog </a>
+                    2019
+                 <!--    <br>
+                   Theme by <a href="http://huangxuan.me">Hux</a>
+                   <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                    -->
+
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://hellowor1d.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-81280350-1';
+    var _gaDomain = 'auto';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '8d393b7b03a85328717992b6e2517904';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://hellowor1d.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

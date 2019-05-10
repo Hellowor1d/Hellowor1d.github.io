@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="前端博客 javaScript Nodejs 技术 生活 Todo">
+    <meta name="keyword" content="undefined">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          JavaScript 面向对象 - 犀利一下下的博客 | Hellowor1d&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://hellowor1d.github.io/2015/06/15/JavaScript-Object-Oriented/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hellowor1d&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://hellowor1d.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('http://7xo9xp.com1.z0.glb.clouddn.com/image/bg/desktop.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        
+                    </div>
+                    <h1>JavaScript 面向对象</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 犀利一下下 on
+                        2015-06-15
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <ul>
+<li>content<br>{:toc}</li>
+</ul>
+<p>本文为慕课网 <a href="http://www.imooc.com/learn/277" target="_blank" rel="noopener">JavaScript深入浅出</a> 笔记。</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><blockquote>
+<p>面向对象程序设计（Object-oriented programming，OOP）是一种程序设计范型，同时也是一种程序开发的方法。对象指的是类的实例。它将对象作为程序的基本单元，将程序和数据封装其中，以提高软件的重用性、灵活性和扩展性。</p>
+<p>——维基百科</p>
+</blockquote>
+<p>一般面向对象包含：继承，封装，多态，抽象</p>
+<hr>
+<h2 id="基于原型的继承"><a href="#基于原型的继承" class="headerlink" title="基于原型的继承"></a>基于原型的继承</h2><pre><code>function Foo() {
+    this.y = 2;
+}
+console.log(typeof Foo.prototype); //object
+
+Foo.prototype.x = 1;
+var obj3 = new Foo();
+
+console.log(obj3.y); //2
+console.log(obj3.x); //1
+</code></pre><p>创建函数 <code>Foo</code> 的时候，就会有一个内置的 <code>Foo.prototype</code> 属性，并且这个属性是对象。<br><a id="more"></a><br>在使用 <code>new Foo();</code> 创建对象实例时。<code>this</code> 会指向一个对象，并且这个对象的原型会指向 <code>Foo.prototype</code> 属性。<code>this.y = 2</code> 给这个对象赋值，并把这个对象返回。把这个对象赋值给 <code>obj3</code>。</p>
+<p><code>y</code> 是 <code>obj3</code> 上的，<code>x</code> 是 <code>obj3</code> 的原型 <code>Foo.prototype</code> 上的。</p>
+<p><img src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-prototype.png" alt="prototype"></p>
+<hr>
+<h3 id="prototype-属性与原型"><a href="#prototype-属性与原型" class="headerlink" title="prototype 属性与原型"></a>prototype 属性与原型</h3><p>prototype 是函数对象上预设的对象属性。</p>
+<p>原型是对象上的原型，通常是构造器的 prototype 属性。</p>
+<hr>
+<h4 id="例"><a href="#例" class="headerlink" title="例"></a>例</h4><pre><code>function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+Person.prototype.LEGS_NUM = 2;
+Person.prototype.ARMS_NUM = 2;
+
+Person.prototype.hi = function() {
+    console.log(&apos;Hi, my name is &apos; + this.name + &quot;. I&apos;m &quot; + this.age + &apos; years old now&apos;);
+};
+
+Person.prototype.walking = function() {
+    console.log(this.name + &apos; is walking...&apos;);
+};
+
+function Student(name, age, className) {
+    Person.call(this, name, age); //使 Person 中的 this 指向 Student
+    this.className = className;
+}
+
+Student.prototype = Object.create(Person.prototype);
+Student.prototype.constructor = Student;
+
+Student.prototype.hi = function() {
+    console.log(&apos;Hi, my name is &apos; + this.name + &quot;. I&apos;m &quot; + this.age + &apos; years old now, and from &apos; + this.className + &quot;.&quot;);
+};
+
+Student.prototype.learn = function(subject) {
+    console.log(this.name + &apos; is learning &apos; + subject + &apos; at &apos; + this.className + &apos;.&apos;);
+}
+
+//test
+var gao = new Student(&apos;Gao&apos;, &apos;24&apos;, &apos;Class 3123&apos;);
+console.log(gao); // 这个对象的具体内容见下图
+gao.hi(); //Hi, my name is Gao. I&apos;m 24 years old now, and from Class 3123.
+gao.LEGS_NUM; //2
+gao.walking(); //Gao is walking...
+gao.learn(&apos;JavaScript&apos;); //Gao is learning JavaScript at Class 3123.
+</code></pre><ul>
+<li><code>Object.create(arg)</code> 创建一个空对象，并且这个对象的原型指向参数 <code>arg</code>。</li>
+<li><code>Student.prototype.constructor = Student</code> 为了保证一致性，否则 constructor 指向 Person。</li>
+</ul>
+<hr>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>gao 对象的原型链：</p>
+<p><img src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-oop-gao.png" alt="Object"></p>
+<p>下面通过图形展示原型链：</p>
+<p><img src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-原型链.png" alt="原型链"></p>
+<hr>
+<h4 id="Object-create-null-amp-bind-null"><a href="#Object-create-null-amp-bind-null" class="headerlink" title="Object.create(null) &amp; .bind(null)"></a><code>Object.create(null)</code> &amp; <code>.bind(null)</code></h4><p>这两种算是特例。</p>
+<p><code>Object.create(null)</code> 和 <code>.bind(null)</code> 这两种方式创建出来的对象是没有 <code>prototype</code> 属性的，为 <code>undefined</code>。</p>
+<hr>
+<h2 id="prototype-属性"><a href="#prototype-属性" class="headerlink" title="prototype 属性"></a>prototype 属性</h2><h3 id="改变-prototype"><a href="#改变-prototype" class="headerlink" title="改变 prototype"></a>改变 prototype</h3><p>JavaScript 中的 prototype 是对象，在运行的时候可以修改。</p>
+<p>给 prototype 添加或删除一些属性，是会影响到已经创建好的实例对象的。</p>
+<p>但是，直接修改 prototype 属性，是不会影响到已经创建好的实例对象的。但是会影响到新的实例对象。如下代码：</p>
+<pre><code>// 上接上面的代码
+
+// 给 prototype 添加或删除一些属性
+Student.prototype.x = 101;
+console.log(gao.x); //101
+
+// 直接修改 prototype 属性
+Student.prototype = {
+    y: 2
+};
+
+// 不会影响到已创建好的实例对象
+console.log(gao.x); //101
+console.log(gao.y); //undefined
+
+// 会影响到新创建的实例对象
+var ying = new Student(&apos;Ying&apos;, 24, &apos;UI&apos;);
+console.log(ying.x); //undefined
+console.log(ying.y); //2
+</code></pre><hr>
+<h3 id="内置构造器的-prototype-属性"><a href="#内置构造器的-prototype-属性" class="headerlink" title="内置构造器的 prototype 属性"></a>内置构造器的 <code>prototype</code> 属性</h3><p>修改内置构造器的 <code>prototype</code> 属性后，在实例化这个对象后，枚举其属性时，会把修改的内置构造器的 <code>prototype</code> 属性也枚举出来，有时候这是要避免的。可用 <code>defineProperty</code> 方法解决。如下代码：</p>
+<pre><code>Object.prototype.x = 1;
+var obj = {};
+console.log(obj.x); //1
+console.log(obj);
+
+for (var k in obj) {
+    console.log(&apos;result---&gt;&apos; + k);
+}
+// result---&gt;x
+</code></pre><p>使用 <code>defineProperty</code> 后：</p>
+<pre><code>Object.defineProperty(Object.prototype, &apos;x&apos;, {
+    writable: true,
+    value: 1
+});
+var obj = {};
+console.log(obj.x);//1
+console.log(obj);
+for (var k in obj) {
+    console.log(&apos;result---&gt;&apos; + k);
+}
+// nothing output here
+</code></pre><p>其实也可以这样枚举，使用 <code>hasOwnProperty</code> 方法：</p>
+<pre><code>for (var key in obj) {
+    if (obj.hasOwnProperty(key)) {
+        console.log(&quot;result---&gt;&quot; + key);
+    }
+}
+</code></pre><hr>
+<h3 id="创建对象-new-原型链"><a href="#创建对象-new-原型链" class="headerlink" title="创建对象-new/原型链"></a>创建对象-new/原型链</h3><p><img src="http://7q5cdt.com1.z0.glb.clouddn.com/blog-new prototype.png" alt="prototype"></p>
+<hr>
+<h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h2><pre><code>console.log([1, 2] instanceof Array); //true
+console.log([1, 2] instanceof Object); //true
+console.log(new Object() instanceof Array); //false
+</code></pre><p>左边要求是对象，右边要求是构造器或函数。它会判断：<strong>右边的构造器中的 <code>prototype</code> 属性是否出现在左边的对象的原型链上。</strong></p>
+<ul>
+<li><strong>注意：</strong>不同的 window 或 iframe 间的对象类型检测<strong>不能</strong>使用 <code>instanceof</code>！</li>
+</ul>
+<hr>
+<h2 id="实现继承的方式"><a href="#实现继承的方式" class="headerlink" title="实现继承的方式"></a>实现继承的方式</h2><pre><code>function Person() {}
+
+function Student() {}
+
+Student.prototype = Person.prototype; //1
+
+Student.prototype = new Person(); //2
+
+Student.prototype = Object.create(Person.prototype); //3
+
+Student.prototype.constructor = Student;
+</code></pre><p>注释中：</p>
+<p>1 是错误的。如果改变了 Student 就会改变 Person</p>
+<p>2 可以实现继承，但是其调用了构造函数，若父类构造函数中有形参，那么传值就会比较奇怪。</p>
+<p>3 是最好的方法。创建了一个空对象，并且对象的原型指向参数 Person.prototype。这样便实现了继承。同时原型链写，不向上查找。但是 <code>Object.create</code> 是ES5 中的方法，所以可以使用下列代码做兼容：</p>
+<pre><code>if (!Object.create) {
+    Object.create = function(proto) {
+        function F() {}
+        F.prototype = proto;
+        return new F;
+    };
+}
+</code></pre><hr>
+<h2 id="模拟重载"><a href="#模拟重载" class="headerlink" title="模拟重载"></a>模拟重载</h2><pre><code>function Person() {
+    var args = arguments;
+    if (typeof args[0] === &apos;object&apos; &amp;&amp; args[0]) {
+        if (args[0].name) {
+            this.name = args[0].name;
+        }
+        if(args[0].age){
+            this.age = args[0].age;
+        }
+    } else {
+        if (args[0]) {
+            this.name = args[0];
+        }
+        if (args[1]) {
+            this.age = args[1];
+        }
+    }
+}
+
+//重写 toString 方法
+Person.prototype.toString = function() {
+    console.log(&apos;name=&apos;+this.name+&apos;, age=&apos;+this.age);
+};
+
+var gao = new Person({name:&apos;Gao&apos;,age:24});
+gao.toString(); // name=Gao, age=24
+
+var ying = new Person(&apos;Ying&apos;,25);
+ying.toString(); // name=Ying, age=25
+</code></pre><p>对参数进行判断，模拟实现重载。</p>
+<hr>
+<h2 id="调用子类方法"><a href="#调用子类方法" class="headerlink" title="调用子类方法"></a>调用子类方法</h2><pre><code>function Person(name) {
+    this.name = name;
+}
+
+function Student(name, className) {
+    this.className = className;
+    Person.call(this, name); // 调用基类的构造器
+}
+
+var gao = new Student(&apos;Gao&apos;, &apos;3123&apos;);
+console.log(gao); // Student {className: &quot;3123&quot;, name: &quot;Gao&quot;}
+
+Person.prototype.init = function() {};
+
+Student.prototype.init = function() {
+    // do sth...
+    Person.prototype.init.apply(this, arguments); // 同时也想调用父类被覆盖的方法
+};
+</code></pre><p>主要是两种：调用父类的构造器，调用原型链上父类被覆盖的方法。</p>
+<hr>
+<h2 id="链式调用"><a href="#链式调用" class="headerlink" title="链式调用"></a>链式调用</h2><pre><code>function ClassManager() {}
+ClassManager.prototype.addClass = function(str) {
+    console.log(&apos;Class: &apos; + str + &apos; added&apos;);
+    return this;
+};
+
+var manager = new ClassManager();
+manager.addClass(&apos;classA&apos;).addClass(&apos;classB&apos;).addClass(&apos;classC&apos;);
+// Class: classA added
+// Class: classB added
+// Class: classC added
+</code></pre><p>重点在于 return this。返回这个 ClassManager 的实例。这样这个实例又可以继续调用方法。</p>
+<hr>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><p>在构造器中 <code>throw new Error(&#39;&#39;);</code> 抛异常。这样防止这个类被直接调用。</p>
+<pre><code>function DetectorBase() {
+    throw new Error(&apos;Abstract class can not be invoked directly!&apos;);
+}
+
+DetectorBase.detect = function() {
+    console.log(&apos;Detection starting...&apos;);
+}
+DetectorBase.stop = function() {
+    console.log(&apos;Detection stopped.&apos;);
+};
+DetectorBase.init = function() {
+    throw new Error(&apos;Error&apos;);
+}
+
+var d = new DetectorBase();// Uncaught Error: Abstract class can not be invoked directly!
+
+function LinkDetector() {}
+LinkDetector.prototype = Object.create(DetectorBase.prototype);
+LinkDetector.prototype.constructor = LinkDetector;
+
+var l = new LinkDetector();
+console.log(l); //LinkDetector {}__proto__: LinkDetector
+l.detect(); //Uncaught TypeError: l.detect is not a function
+l.init(); //Uncaught TypeError: l.init is not a function
+</code></pre><p><code>var d = new DetectorBase();</code> 是不能实例化的，会报错</p>
+<p><code>l.detect();</code> 但是这个为什么报错我就不知道了。</p>
+<p>已经在原课程下提问了，期待老师的讲解。 <a href="http://www.imooc.com/qadetail/82732" target="_blank" rel="noopener">抽象类中子类为什么不能调用父类的非抽象方法？</a></p>
+<p>问题已经解决了，应该是老师当时的课件写错了，应该再基类中将这两个方法写在其原型 prototype 上。如下：</p>
+<pre><code>function DetectorBase() {
+    throw new Error(&apos;Abstract class can not be invoked directly!&apos;);
+}
+
+DetectorBase.prototype.detect = function() {
+    console.log(&apos;Detection starting...&apos;);
+};
+DetectorBase.prototype.stop = function() {
+    console.log(&apos;Detection stopped.&apos;);
+};
+DetectorBase.prototype.init = function() {
+    throw new Error(&apos;Error&apos;);
+};
+
+// var d = new DetectorBase();// Uncaught Error: Abstract class can not be invoked directly!
+
+function LinkDetector() {}
+LinkDetector.prototype = Object.create(DetectorBase.prototype);
+LinkDetector.prototype.constructor = LinkDetector;
+
+var l = new LinkDetector();
+console.log(l); //LinkDetector {}__proto__: LinkDetector
+l.detect(); //Detection starting...
+l.init(); //Uncaught Error: Error
+</code></pre><hr>
+<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><pre><code>var moduleA;
+moduleA = function() {
+    var prop = 1;
+
+    function func() {}
+
+    return {
+        func: func,
+        prop: prop
+    };
+}(); // 立即执行匿名函数
+</code></pre><p>prop，func 不会被泄露到全局作用域。</p>
+<p>或者另一种写法，使用 new</p>
+<pre><code>moduleA = new function() {
+    var prop = 1;
+
+    function func() {}
+
+    this.func = func;
+    this.prop = prop;
+}
+</code></pre><p>更复杂的可以使用 Sea.js Kissy Require.js 模块化工具。</p>
+<hr>
+<p>最后补充一点设计模式相关的资料，我还没有来得及看的：</p>
+<ul>
+<li><a href="http://www.oschina.net/translate/learning-javascript-design-patterns" target="_blank" rel="noopener">学用 JavaScript 设计模式</a></li>
+<li><a href="http://blog.jobbole.com/29454/" target="_blank" rel="noopener">常用的Javascript设计模式</a></li>
+<li><a href="http://developer.51cto.com/art/201109/288650_all.htm" target="_blank" rel="noopener">JavaScript设计模式深入分析</a></li>
+</ul>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2015/06/15/baidu-ife-1/" data-toggle="tooltip" data-placement="top" title="百度Web前端技术学院(1)-HTML, CSS基础">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2015/06/14/JavaScript-closure/" data-toggle="tooltip" data-placement="top" title="JavaScript 中的闭包">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hellowor1d";
+    var disqus_identifier = "http://hellowor1d.github.io/2015/06/15/JavaScript-Object-Oriented/";
+    var disqus_url = "http://hellowor1d.github.io/2015/06/15/JavaScript-Object-Oriented/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/xi-li-yixia-xia">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy;
+                    <a href="http://hellowor1d.coding.me">Hellowor1d&#39;s Blog </a>
+                    2019
+                 <!--    <br>
+                   Theme by <a href="http://huangxuan.me">Hux</a>
+                   <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                    -->
+
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://hellowor1d.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-81280350-1';
+    var _gaDomain = 'auto';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '8d393b7b03a85328717992b6e2517904';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://hellowor1d.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

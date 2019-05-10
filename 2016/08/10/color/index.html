@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="前端博客 javaScript Nodejs 技术 生活 Todo">
+    <meta name="keyword" content="undefined">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          color highlight test - 犀利一下下的博客 | Hellowor1d&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://hellowor1d.github.io/2016/08/10/color/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hellowor1d&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="http://hellowor1d.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('http://7xo9xp.com1.z0.glb.clouddn.com/image/bg/desktop.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#颜色" title="颜色">颜色</a>
+                        
+                          <a class="tag" href="/tags/#tag" title="tag">tag</a>
+                        
+                    </div>
+                    <h1>color highlight test</h1>
+                    <h2 class="subheading">highlight test</h2>
+                    <span class="meta">
+                        Posted by 犀利一下下 on
+                        2016-08-10
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="code-代码高亮功能测试-请看我在代码注释中描述的内容"><a href="#code-代码高亮功能测试-请看我在代码注释中描述的内容" class="headerlink" title="code 代码高亮功能测试(请看我在代码注释中描述的内容)"></a>code 代码高亮功能测试(请看我在代码注释中描述的内容)</h2><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># Header</span></span><br><span class="line"><span class="symbol">menu:</span></span><br><span class="line">  主页: /</span><br><span class="line">  所有文章: /archives</span><br><span class="line">  <span class="meta"># 随笔: /tags/随笔</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># SubNav</span></span><br><span class="line"><span class="symbol">subnav:</span></span><br><span class="line"><span class="symbol">  github:</span> <span class="string">"https://github.com/litten"</span></span><br><span class="line"><span class="symbol">  weibo:</span> <span class="string">"http://weibo.com/litten225"</span></span><br><span class="line"><span class="symbol">  rss:</span> <span class="string">"http://feed.feedsky.com/litten"</span></span><br><span class="line">  <span class="meta"># facebook: <span class="string">"/"</span></span></span><br><span class="line">  <span class="meta"># google: <span class="string">"/"</span></span></span><br><span class="line">  <span class="meta"># twitter: <span class="string">"/"</span></span></span><br><span class="line">  <span class="meta"># linkedin: <span class="string">"/"</span></span></span><br><span class="line"></span><br><span class="line"><span class="symbol">rss:</span> /atom.xml</span><br><span class="line"></span><br><span class="line"><span class="meta"># Content</span></span><br><span class="line"><span class="symbol">excerpt_link:</span> more</span><br><span class="line"><span class="symbol">fancybox:</span> true</span><br><span class="line"></span><br><span class="line"><span class="meta"># Miscellaneous</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">favicon:</span> /favicon.png</span><br><span class="line"></span><br><span class="line"><span class="symbol">avatar:</span> <span class="string">"https://avatars2.githubusercontent.com/u/2024949?v=2&amp;s=150"</span></span><br><span class="line"><span class="symbol">share:</span> true</span><br><span class="line"><span class="symbol">duoshuo:</span> true</span><br></pre></td></tr></table></figure>
+<p>一般的引用部分</p>
+<blockquote>
+<p>一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分一般的引用部分</p>
+</blockquote>
+<pre><code>&lt;!--一般的html代码未能正常高亮,这里在 markdown 中是用四空格缩进写的代码块,由 markdown 转换为 html 之后, 由标签 pre code 包裹,审查元素可见&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Script Defer Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;script type=&quot;text/javascript&quot; defer&gt;
+        alert(&quot;defer&quot;);
+    &lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        alert(&quot;script&quot;);
+    &lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload = function(){
+            alert(&quot;load&quot;);
+        };
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3 id="一些要点"><a href="#一些要点" class="headerlink" title="一些要点"></a>一些要点</h3><ul>
+<li>一个没有被赋值的变量会有个默认值 undefined</li>
+<li>null 与 undefined 的不同点：<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这里使用 三个`包含缩写的代码块,会显示行号,以 hexo-theme-huxblog 为基础,</span></span><br><span class="line"><span class="comment">//修改了背景和滚动条部分样式,为了高亮更加明显.但是遗憾没能正常高亮,这部分在开启 auto_detect: true 之后,</span></span><br><span class="line"><span class="comment">//能高亮,但是你看到的状态是未开启.在 markdown 转换为 html 之后,此部分代码由标签 figure 包裹</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span>        <span class="comment">// object (bug in ECMAScript, should be null)</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span>   <span class="comment">// undefined</span></span><br><span class="line"><span class="literal">null</span> === <span class="literal">undefined</span> <span class="comment">// false</span></span><br><span class="line"><span class="literal">null</span> == <span class="literal">undefined</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code class="javascript"><span class="comment">//代码能正常高亮,这里在 markdown 三个`包含缩写的代码块,并指定了语言为javascript,不指定则不高亮</span>
+<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++) {
+ <span class="built_in">console</span>.log(i);
+}
+<span class="comment">/*</span>
+<span class="comment"> * jQuery One Page Nav Plugin</span>
+<span class="comment"> * http://github.com/davist11/jQuery-One-Page-Nav</span>
+<span class="comment"> *</span>
+<span class="comment"> * Copyright (c) 2010 Trevor Davis (http://trevordavis.net)</span>
+<span class="comment"> * Dual licensed under the MIT and GPL licenses.</span>
+<span class="comment"> * Uses the same license as jQuery, see:</span>
+<span class="comment"> * http://jquery.org/license</span>
+<span class="comment"> *</span>
+<span class="comment"> * @version 3.0.0</span>
+<span class="comment"> *</span>
+<span class="comment"> * Example usage:</span>
+<span class="comment"> * $('#nav').onePageNav({</span>
+<span class="comment"> *   currentClass: 'current',</span>
+<span class="comment"> *   changeHash: false,</span>
+<span class="comment"> *   scrollSpeed: 750</span>
+<span class="comment"> * });</span>
+<span class="comment"> */</span>
+
+;(<span class="function"><span class="keyword">function</span>(<span class="params">$, window, document, undefined</span>)</span>{
+
+    <span class="comment">// our plugin constructor</span>
+    <span class="keyword">var</span> OnePageNav = <span class="function"><span class="keyword">function</span>(<span class="params">elem, options</span>)</span>{
+        <span class="keyword">this</span>.elem = elem;
+        <span class="keyword">this</span>.$elem = $(elem);
+        <span class="keyword">this</span>.options = options;
+        <span class="keyword">this</span>.metadata = <span class="keyword">this</span>.$elem.data(<span class="string">'plugin-options'</span>);
+        <span class="keyword">this</span>.$win = $(<span class="built_in">window</span>);
+        <span class="keyword">this</span>.sections = {};
+        <span class="keyword">this</span>.didScroll = <span class="literal">false</span>;
+        <span class="keyword">this</span>.$doc = $(<span class="built_in">document</span>);
+        <span class="keyword">this</span>.docHeight = <span class="keyword">this</span>.$doc.height();
+    };
+
+    <span class="comment">// the plugin prototype</span>
+    OnePageNav.prototype = {
+        defaults: {
+            navItems: <span class="string">'a'</span>,
+            currentClass: <span class="string">'current'</span>,
+            changeHash: <span class="literal">false</span>,
+            easing: <span class="string">'swing'</span>,
+            filter: <span class="string">''</span>,
+            scrollSpeed: <span class="number">750</span>,
+            scrollThreshold: <span class="number">0.5</span>,
+            begin: <span class="literal">false</span>,
+            end: <span class="literal">false</span>,
+            scrollChange: <span class="literal">false</span>,
+            padding: <span class="number">0</span>
+        },
+
+        init: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+            <span class="comment">// Introduce defaults that can be extended either</span>
+            <span class="comment">// globally or using an object literal.</span>
+            <span class="keyword">this</span>.config = $.extend({}, <span class="keyword">this</span>.defaults, <span class="keyword">this</span>.options, <span class="keyword">this</span>.metadata);
+
+            <span class="keyword">this</span>.$nav = <span class="keyword">this</span>.$elem.find(<span class="keyword">this</span>.config.navItems);
+
+            <span class="comment">//Filter any links out of the nav</span>
+            <span class="keyword">if</span>(<span class="keyword">this</span>.config.filter !== <span class="string">''</span>) {
+                <span class="keyword">this</span>.$nav = <span class="keyword">this</span>.$nav.filter(<span class="keyword">this</span>.config.filter);
+            }
+
+            <span class="comment">//Handle clicks on the nav</span>
+            <span class="keyword">this</span>.$nav.on(<span class="string">'click.onePageNav'</span>, $.proxy(<span class="keyword">this</span>.handleClick, <span class="keyword">this</span>));
+
+            <span class="comment">//Get the section positions</span>
+            <span class="keyword">this</span>.getPositions();
+
+            <span class="comment">//Handle scroll changes</span>
+            <span class="keyword">this</span>.bindInterval();
+
+            <span class="comment">//Update the positions on resize too</span>
+            <span class="keyword">this</span>.$win.on(<span class="string">'resize.onePageNav'</span>, $.proxy(<span class="keyword">this</span>.getPositions, <span class="keyword">this</span>));
+
+            <span class="keyword">return</span> <span class="keyword">this</span>;
+        },
+
+        adjustNav: <span class="function"><span class="keyword">function</span>(<span class="params">self, $parent</span>) </span>{
+            self.$elem.find(<span class="string">'.'</span> + self.config.currentClass).removeClass(self.config.currentClass);
+            $parent.addClass(self.config.currentClass);
+        },
+
+        bindInterval: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+            <span class="keyword">var</span> self = <span class="keyword">this</span>;
+            <span class="keyword">var</span> docHeight;
+
+            self.$win.on(<span class="string">'scroll.onePageNav'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+                self.didScroll = <span class="literal">true</span>;
+            });
+
+            self.t = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+                docHeight = self.$doc.height();
+
+                <span class="comment">//If it was scrolled</span>
+                <span class="keyword">if</span>(self.didScroll) {
+                    self.didScroll = <span class="literal">false</span>;
+                    self.scrollChange();
+                }
+
+                <span class="comment">//If the document height changes</span>
+                <span class="keyword">if</span>(docHeight !== self.docHeight) {
+                    self.docHeight = docHeight;
+                    self.getPositions();
+                }
+            }, <span class="number">250</span>);
+        },
+
+        getHash: <span class="function"><span class="keyword">function</span>(<span class="params">$link</span>) </span>{
+            <span class="keyword">return</span> $link.attr(<span class="string">'href'</span>).split(<span class="string">'#'</span>)[<span class="number">1</span>];
+        },
+
+        getPositions: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+            <span class="keyword">var</span> self = <span class="keyword">this</span>;
+            <span class="keyword">var</span> linkHref;
+            <span class="keyword">var</span> topPos;
+            <span class="keyword">var</span> $target;
+
+            self.$nav.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+                linkHref = self.getHash($(<span class="keyword">this</span>));
+                $target = $(<span class="string">'#'</span> + linkHref);
+
+                <span class="keyword">if</span>($target.length) {
+                    topPos = $target.offset().top;
+                    self.sections[linkHref] = <span class="built_in">Math</span>.round(topPos);
+                }
+            });
+        },
+
+        getSection: <span class="function"><span class="keyword">function</span>(<span class="params">windowPos</span>) </span>{
+            <span class="keyword">var</span> returnValue = <span class="literal">null</span>;
+            <span class="keyword">var</span> windowHeight = <span class="built_in">Math</span>.round(<span class="keyword">this</span>.$win.height() * <span class="keyword">this</span>.config.scrollThreshold);
+
+            <span class="keyword">for</span>(<span class="keyword">var</span> section <span class="keyword">in</span> <span class="keyword">this</span>.sections) {
+                <span class="keyword">if</span>((<span class="keyword">this</span>.sections[section] - windowHeight) &lt; windowPos) {
+                    returnValue = section;
+                }
+            }
+
+            <span class="keyword">return</span> returnValue;
+        },
+
+        handleClick: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>{
+            <span class="keyword">var</span> self = <span class="keyword">this</span>;
+            <span class="keyword">var</span> $link = $(e.currentTarget);
+            <span class="keyword">var</span> $parent = $link.parent();
+            <span class="keyword">var</span> newLoc = <span class="string">'#'</span> + self.getHash($link);
+
+            <span class="keyword">if</span>(!$parent.hasClass(self.config.currentClass)) {
+                <span class="comment">//Start callback</span>
+                <span class="keyword">if</span>(self.config.begin) {
+                    self.config.begin();
+                }
+
+                <span class="comment">//Change the highlighted nav item</span>
+                self.adjustNav(self, $parent);
+
+                <span class="comment">//Removing the auto-adjust on scroll</span>
+                self.unbindInterval();
+
+                <span class="comment">//Scroll to the correct position</span>
+                self.scrollTo(newLoc, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+                    <span class="comment">//Do we need to change the hash?</span>
+                    <span class="keyword">if</span>(self.config.changeHash) {
+                        <span class="built_in">window</span>.location.hash = newLoc;
+                    }
+
+                    <span class="comment">//Add the auto-adjust on scroll back in</span>
+                    self.bindInterval();
+
+                    <span class="comment">//End callback</span>
+                    <span class="keyword">if</span>(self.config.end) {
+                        self.config.end();
+                    }
+                });
+            }
+
+            e.preventDefault();
+        },
+
+        scrollChange: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+            <span class="keyword">var</span> windowTop = <span class="keyword">this</span>.$win.scrollTop();
+            <span class="keyword">var</span> position = <span class="keyword">this</span>.getSection(windowTop);
+            <span class="keyword">var</span> $parent;
+
+            <span class="comment">//If the position is set</span>
+            <span class="keyword">if</span>(position !== <span class="literal">null</span>) {
+                $parent = <span class="keyword">this</span>.$elem.find(<span class="string">'a[href$="#'</span> + position + <span class="string">'"]'</span>).parent();
+
+                <span class="comment">//If it's not already the current section</span>
+                <span class="keyword">if</span>(!$parent.hasClass(<span class="keyword">this</span>.config.currentClass)) {
+                    <span class="comment">//Change the highlighted nav item</span>
+                    <span class="keyword">this</span>.adjustNav(<span class="keyword">this</span>, $parent);
+
+                    <span class="comment">//If there is a scrollChange callback</span>
+                    <span class="keyword">if</span>(<span class="keyword">this</span>.config.scrollChange) {
+                        <span class="keyword">this</span>.config.scrollChange($parent);
+                    }
+                }
+            }
+        },
+
+        scrollTo: <span class="function"><span class="keyword">function</span>(<span class="params">target, callback</span>) </span>{
+            <span class="keyword">var</span> offset = $(target).offset().top - <span class="keyword">this</span>.config.padding;
+
+            $(<span class="string">'html, body'</span>).animate({
+                scrollTop: offset
+            }, <span class="keyword">this</span>.config.scrollSpeed, <span class="keyword">this</span>.config.easing, callback);
+        },
+
+        unbindInterval: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+            clearInterval(<span class="keyword">this</span>.t);
+            <span class="keyword">this</span>.$win.unbind(<span class="string">'scroll.onePageNav'</span>);
+        }
+    };
+
+    OnePageNav.defaults = OnePageNav.prototype.defaults;
+
+    $.fn.onePageNav = <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>{
+        <span class="keyword">return</span> <span class="keyword">this</span>.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+            <span class="keyword">new</span> OnePageNav(<span class="keyword">this</span>, options).init();
+        });
+    };
+
+})( jQuery, <span class="built_in">window</span> , <span class="built_in">document</span> );
+
+</code></pre>
+<ul>
+<li>Number 数字类型，它并没有为整数给出一种特定的类型。除了能够表示浮点数外，还有一些带符号的值：+Infinity，</li>
+</ul>
+<h4 id="问题是所有这些代码-不指定语言-也不开启-auto-detect-true-在-yilia-中-却是能正常高亮的-比较好奇是如何做到的-想迁移到-hexo-theme-huxblog-中"><a href="#问题是所有这些代码-不指定语言-也不开启-auto-detect-true-在-yilia-中-却是能正常高亮的-比较好奇是如何做到的-想迁移到-hexo-theme-huxblog-中" class="headerlink" title="问题是所有这些代码,不指定语言,也不开启 auto_detect: true ,在 yilia 中,却是能正常高亮的.比较好奇是如何做到的,想迁移到 hexo-theme-huxblog 中"></a>问题是所有这些代码,不指定语言,也不开启 auto_detect: true ,在 <a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">yilia</a> 中,却是能正常高亮的.比较好奇是如何做到的,想迁移到 hexo-theme-huxblog 中</h4>
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/09/23/windows10-linuxMint-双系统中分区合并的操作记录/" data-toggle="tooltip" data-placement="top" title="windows10+linuxMint 双系统中分区合并的操作记录">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2015/12/14/在这钢铁城市里，你孤单得像是一条狗/" data-toggle="tooltip" data-placement="top" title="在这钢铁城市里，你孤单得像是一条狗">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#颜色" title="颜色">颜色</a>
+                        
+                          <a class="tag" href="/tags/#tag" title="tag">tag</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "hellowor1d";
+    var disqus_identifier = "http://hellowor1d.github.io/2016/08/10/color/";
+    var disqus_url = "http://hellowor1d.github.io/2016/08/10/color/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/xi-li-yixia-xia">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="http://weibo.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://github.com/Hellowor1d">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy;
+                    <a href="http://hellowor1d.coding.me">Hellowor1d&#39;s Blog </a>
+                    2019
+                 <!--    <br>
+                   Theme by <a href="http://huangxuan.me">Hux</a>
+                   <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span>
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                    -->
+
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://hellowor1d.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-81280350-1';
+    var _gaDomain = 'auto';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '8d393b7b03a85328717992b6e2517904';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!-- Side Catalog -->
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://hellowor1d.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
